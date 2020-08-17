@@ -42,6 +42,7 @@
     "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "jest": "^26.4.0",
+    "jest-styled-components": "^7.0.2",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "prettier-eslint": "^11.0.0",
@@ -52,7 +53,8 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "husky": {
     "hooks": {
