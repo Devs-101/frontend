@@ -4,15 +4,18 @@ module.exports = {
   modulePaths: ['<rootDir>/src'],
   collectCoverage: true,
   collectCoverageFrom: [
-    'components/**/**/*.{js,jsx}',
-    '!components/**/**/index.js',
-    '!components/**/index.js',
-    'services/**/*.{js,jsx}',
-    'services/*.{js,jsx}',
-    'i18n/**/*.{js,jsx}',
-    'pages/*.{js,jsx}',
-    'pages/**/*.{js,jsx}',
-    'util/**/*.{js,jsx}'
+    'src/components/**/**/*.{js,jsx}',
+    '!src/components/**/**/index.js',
+    '!src/components/**/index.js',
+    'src/pages/**/*.{js,jsx}',
+    '!src/pages/index.js',
+    '!src/pages/**/index.js',
+    'src/services/**/*.{js,jsx}',
+    'src/services/*.{js,jsx}',
+    'src/utils/**/*.{js,jsx}',
+    'src/utils/*.{js,jsx}',
+    '!src/utils/**/index.js',
+    '!src/utils/index.js'
   ],
   coverageThreshold: {
     global: {
