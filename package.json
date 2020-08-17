@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --env.NODE_ENV=development",
     "build": "webpack --env.NODE_ENV=production",
     "test": "jest --config=jest.config.js",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "lint": "prettier --write \"src/**/*.+(js|jsx|json)\" && eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,8 @@
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.4.0",
     "prettier": "^2.0.5",
+    "prettier-eslint": "^11.0.0",
+    "prettier-eslint-cli": "^5.0.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
