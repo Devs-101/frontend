@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../../atoms/Button/Button'
 import { FormField } from '../../molecules/FormField/FormField'
 import loginFormData from './LoginForm.json'
 import { useForm } from 'react-hook-form'
+import { LoginFormStyled } from './LoginForm.styles'
 
 export function LoginForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
@@ -12,8 +13,8 @@ export function LoginForm({ onFormChange }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>{loginFormData.title}</h1>
+    <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>
+      <h3>{loginFormData.title}</h3>
       {loginFormData.fields.map(field => (
         <FormField
           key={field.id}
@@ -26,6 +27,6 @@ export function LoginForm({ onFormChange }) {
       <Button>{loginFormData.button}</Button>
       <p>Still don´t have an acount?</p>
       <p onClick={onFormChange}>Create an account</p>
-    </form>
+    </LoginFormStyled>
   )
 }

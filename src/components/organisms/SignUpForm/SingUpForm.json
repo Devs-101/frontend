@@ -21,6 +21,11 @@
       "label": "Password",
       "id": "signUpFormPassword",
       "type": "password"
+    },
+    {
+      "label": "Confirm Password",
+      "id": "signUpFormConfirmPassword",
+      "type": "password"
     }
   ]
 }

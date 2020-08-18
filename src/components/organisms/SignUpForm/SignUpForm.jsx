@@ -3,6 +3,7 @@ import { FormField } from '../../molecules/FormField/FormField'
 import signUpFormData from './SingUpForm.json'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../atoms/Button/Button'
+import { SingUpFormStyled } from './SingUpForm.styles'
 
 export function SignUpForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
@@ -12,8 +13,8 @@ export function SignUpForm({ onFormChange }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>{signUpFormData.title}</h1>
+    <SingUpFormStyled onSubmit={handleSubmit(onSubmit)}>
+      <h3>{signUpFormData.title}</h3>
       {signUpFormData.fields.map(field => (
         <FormField
           key={field.id}
@@ -26,6 +27,6 @@ export function SignUpForm({ onFormChange }) {
       <Button>{signUpFormData.button}</Button>
       <p>Wait! i have an acount.</p>
       <p onClick={onFormChange}>Log in here</p>
-    </form>
+    </SingUpFormStyled>
   )
 }

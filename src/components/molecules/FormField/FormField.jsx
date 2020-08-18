@@ -1,10 +1,11 @@
 import React from 'react'
+import { LabelStyled, InputStyled } from './FormField.styles'
 
 export function FormField({ id, label, register, type }) {
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
-      <input name={id} id={id} type={type} ref={register} />
+      <LabelStyled htmlFor={id}>{label}</LabelStyled>
+      <InputStyled name={id} id={id} type={type} ref={register} />
     </div>
   )
 }
