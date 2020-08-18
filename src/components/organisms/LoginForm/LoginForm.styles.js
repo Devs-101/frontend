@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { formMixin } from '../../../styles/mixin'
+import { FormStyled, FormTitle } from '../SignUpForm/SingUpForm.styles'
 
-export const LoginFormStyled = styled.form`
-  ${formMixin}
-  h3 {
-    padding: 0 110px 0 100px;
-  }
+export const LoginFormStyled = styled(FormStyled)`
+  padding: 45px 20px 45px 30px;
+`
+export const LoginFormTitle = styled(FormTitle)`
+  padding: 0 60px 0 50px;
 `

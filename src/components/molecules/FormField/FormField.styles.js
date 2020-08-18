@@ -6,7 +6,7 @@ export const LabelStyled = styled.label`
   display: block;
   padding-left: 20px;
   margin-bottom: 5px;
-  margin-top: 24px;
+  margin-top: 15px;
 `
 
 export const InputStyled = styled.input`

@@ -3,7 +3,12 @@ import { Button } from '../../atoms/Button/Button'
 import { FormField } from '../../molecules/FormField/FormField'
 import loginFormData from './LoginForm.json'
 import { useForm } from 'react-hook-form'
-import { LoginFormStyled } from './LoginForm.styles'
+import { LoginFormStyled, LoginFormTitle } from './LoginForm.styles'
+import {
+  FormActionText,
+  FormActionLink,
+  SubmitSection
+} from '../SignUpForm/SingUpForm.styles'
 
 export function LoginForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
@@ -14,7 +19,7 @@ export function LoginForm({ onFormChange }) {
 
   return (
     <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>
-      <h3>{loginFormData.title}</h3>
+      <LoginFormTitle>{loginFormData.title}</LoginFormTitle>
       {loginFormData.fields.map(field => (
         <FormField
           key={field.id}
@@ -24,9 +29,11 @@ export function LoginForm({ onFormChange }) {
           register={register}
         />
       ))}
-      <Button>{loginFormData.button}</Button>
-      <p>Still don´t have an acount?</p>
-      <p onClick={onFormChange}>Create an account</p>
+      <SubmitSection>
+        <Button>{loginFormData.button}</Button>
+      </SubmitSection>
+      <FormActionText>Still don´t have an acount?</FormActionText>
+      <FormActionLink onClick={onFormChange}>Create an account</FormActionLink>
     </LoginFormStyled>
   )
 }
