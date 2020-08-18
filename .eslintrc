@@ -17,11 +17,10 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "rules": {
     "indent": ["error", 2],
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "react/prop-types": "off"
   }
 }
