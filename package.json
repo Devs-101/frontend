@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.NODE_ENV=development",
     "build": "webpack --env.NODE_ENV=production",
-    "test": "jest --config=jest.config.js",
+    "test": "jest .",
     "test:watch": "npm run test --watch",
     "lint": "prettier --write \"src/**/*.+(js|jsx|json)\" && eslint --fix"
   },
@@ -25,6 +25,7 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "clean-webpack-plugin": "^3.0.0",
@@ -68,5 +69,42 @@
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{js,jsx,css,scss,md}": "prettier --write"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/components/**/**/*.{js,jsx}",
+      "!src/components/**/**/index.js",
+      "!src/components/**/index.js",
+      "src/pages/**/*.{js,jsx}",
+      "!src/pages/index.js",
+      "!src/pages/**/index.js",
+      "src/services/**/*.{js,jsx}",
+      "src/services/*.{js,jsx}",
+      "src/utils/**/*.{js,jsx}",
+      "src/utils/*.{js,jsx}",
+      "!src/utils/**/index.js",
+      "!src/utils/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": -10
+      }
+    }
   }
 }
