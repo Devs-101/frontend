@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormField } from '../../molecules/FormField/FormField'
-import signUpFormData from './SingUpForm.json'
+import signUpFormData from './SingUpFormData.json'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../atoms/Button/Button'
 import {

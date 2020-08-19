@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '../../atoms/Button/Button'
 import { FormField } from '../../molecules/FormField/FormField'
-import loginFormData from './LoginForm.json'
+import loginFormData from './LoginFormData.json'
 import { useForm } from 'react-hook-form'
 import { LoginFormStyled, LoginFormTitle } from './LoginForm.styles'
 import {
