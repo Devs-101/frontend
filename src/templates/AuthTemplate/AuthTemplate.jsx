@@ -7,7 +7,7 @@ export function AuthTemplate({ children }) {
       <HeaderStyled>
         <h1>oneEvent</h1>
       </HeaderStyled>
-      <main>{children}</main>
+      {children}
     </>
   )
 }

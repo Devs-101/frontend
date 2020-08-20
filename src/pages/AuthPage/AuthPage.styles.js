@@ -3,32 +3,63 @@ import { colors } from '../../styles/colors'
 import background from '../../assets/images/background.png'
 import breakpoint from '../../styles/breakpoints'
 
-export const AuthStyled = styled.div`
+export const AuthStyled = styled.main`
   background-image: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
   height: calc(100vh - 40px);
-  min-height: 770px;
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  grid-template-rows: 46px 1fr;
-  row-gap: 24px;
-  padding: 50px 30px 90px 30px;
-  color: ${colors.white};
+  min-height: 800px;
 
   ${breakpoint.sm`
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    min-height: 1200px;
+    min-height: 1100px;
+    height: calc(100vh - 60px);
+  `}
+
+  ${breakpoint.md`
+    min-height: 770px;
+  `}
+`
+
+export const ContainerStyled = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 50px 30px 30px 30px;
+  color: ${colors.white};
+  max-width: 1200px;
+  margin: 0 auto;
+
+  ${breakpoint.md`
+    grid-template-columns: 1fr 1fr;
+    padding-top: 100px;
+  `}
+`
+
+export const AuthTextStyled = styled.div`
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 15px;
+
+  ${breakpoint.sm`
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
   `}
 
   h1 {
-    padding-left: 15px;
     font-size: 18px;
 
     ${breakpoint.sm`
       font-size: 30px;;
-      grid-row: 2 / 3;
-      padding-left: 0;
       text-align: center;
+      margin-bottom: 20px;
+    `}
+
+    ${breakpoint.md`
+      text-align: left;
+      margin-bottom: 20px;
     `}
   }
 
@@ -40,28 +71,26 @@ export const AuthStyled = styled.div`
       height: auto;
     }
     ${breakpoint.sm`
-      margin: auto;
       width: 150px;
       height: 150px;
-      grid-row: 1 / 2;
+      margin-bottom: 40px;
+    `}
+
+    ${breakpoint.md`
+      width: 300px;
+      height: 300px;
     `}
   }
 `
 
 export const AuthFormStyled = styled.div`
-  margin: auto;
-  grid-column: 1 / 3;
-
-  ${breakpoint.sm`
-      grid-row: 4 / 5;
-  `}
+  margin: 0 auto;
 `
 
 export const AuthIntroStyled = styled.p`
   display: none;
   ${breakpoint.sm`
     display: block;
-    grid-row: 3 / 4;
     line-height: 1.5;
   `}
 `
