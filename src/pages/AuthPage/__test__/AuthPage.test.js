@@ -2,8 +2,8 @@ import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
 import { AuthPage } from '../AuthPage'
-import { AuthTemplate } from '../../../templates'
-import { AuthStyled, AuthFormStyled, AuthTextStyled } from '../AuthPage.styles'
+import { FormActionLink } from '../../../components/organisms/SignUpForm/SingUpForm.styles'
+import { LoginForm, SignUpForm } from '../../../components/organisms'
 
 describe('AuthPage pages', () => {
   describe('render', () => {
@@ -12,15 +12,18 @@ describe('AuthPage pages', () => {
       expect(component.length).toBe(1)
     })
   })
-  // describe('To have props', () => {
-  //   const component = mount(<AuthStyled />)
-  //   it('is expected to have title text', () => {
-  //     expect(component.find('h1').text()).toBe(
-  //       'We make your plans come true! conect with your audience'
-  //     )
-  //   })
-  //   it('is expected to have paragraf text', () => {
-  //     expect(component.find('p').text()).toBe('')
-  //   })
-  // })
+  describe('To change the form', () => {
+    const component = mount(<AuthPage />)
+    it('is expected to have SignUp form', () => {
+      expect(component.find(SignUpForm).length).toBe(1)
+    })
+    it('is expected to have component LoginForm after click', () => {
+      component.find(FormActionLink).simulate('click')
+      expect(component.find(LoginForm).length).toBe(1)
+    })
+    it('is expected to have component SignUpForm after click', () => {
+      component.find(FormActionLink).simulate('click')
+      expect(component.find(SignUpForm).length).toBe(1)
+    })
+  })
 })

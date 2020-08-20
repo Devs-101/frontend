@@ -26,7 +26,7 @@ export function AuthPage() {
             nisi! Eaque, voluptates rerum.
           </p>
         </AuthTextStyled>
-        <AuthFormStyled className="AuthTemplate__form">
+        <AuthFormStyled>
           {isLogin ? (
             <LoginForm onFormChange={handleFormChange} />
           ) : (

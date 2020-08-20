@@ -2,7 +2,7 @@ import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
 import { LoginForm } from '../LoginForm'
-import { LoginFormTitle, LoginFormStyled } from '../LoginForm.styles'
+import { LoginFormTitle } from '../LoginForm.styles'
 import loginFormData from '../LoginFormData.json'
 import {
   SubmitSection,
@@ -35,10 +35,5 @@ describe('LoginForm organism', () => {
     it('is expected to have FormActionLink', () => {
       expect(component.find(FormActionLink).length).toBe(1)
     })
-  })
-  describe('Submit to have been called', () => {
-    const handleSubmit = jest.fn()
-    const wrapper = mount(<LoginForm />).find(LoginFormStyled)
-    // const component = wrapper.
   })
 })

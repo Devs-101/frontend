@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import { FormStyled, FormTitle } from '../SignUpForm/SingUpForm.styles'
 
-export const LoginFormStyled = styled.form`
-  ${FormStyled}
+export const LoginFormStyled = styled(FormStyled)`
   padding: 45px 20px 45px 30px;
 `
 export const LoginFormTitle = styled(FormTitle)`
