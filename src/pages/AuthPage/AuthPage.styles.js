@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles/colors'
-import background from '../../assets/images/background.png'
+import background from '../../assets/images/background.jpg'
 import breakpoint from '../../styles/breakpoints'
 
 export const AuthStyled = styled.main`
