@@ -14,7 +14,7 @@ export function LoginForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
 
   function onSubmit(data) {
-    console.log(data)
+    return Promise.resolve(data)
   }
 
   return (

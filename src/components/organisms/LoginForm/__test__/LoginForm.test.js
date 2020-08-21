@@ -1,6 +1,7 @@
 import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
+import { render, act, fireEvent } from '@testing-library/react'
 import { LoginForm } from '../LoginForm'
 import { LoginFormTitle } from '../LoginForm.styles'
 import loginFormData from '../LoginFormData.json'
@@ -10,6 +11,7 @@ import {
   FormActionText
 } from '../../SignUpForm/SingUpForm.styles'
 import { FormField } from '../../../molecules'
+// import { Button } from '../../../atoms'
 
 describe('LoginForm organism', () => {
   describe('render', () => {
@@ -34,6 +36,31 @@ describe('LoginForm organism', () => {
     })
     it('is expected to have FormActionLink', () => {
       expect(component.find(FormActionLink).length).toBe(1)
+    })
+  })
+  describe('handle submit', () => {
+    test('is expeted to run submit function', async () => {
+      const { container } = render(<LoginForm />)
+      const emailInput = container.querySelector("input[name='loginFormEmail']")
+      const passwordInput = container.querySelector(
+        "input[name='loginFormPassword']"
+      )
+      const submitButton = container.querySelector('button')
+
+      fireEvent.input(emailInput, {
+        target: {
+          value: 'email'
+        }
+      })
+      fireEvent.input(passwordInput, {
+        target: {
+          value: 'password'
+        }
+      })
+
+      await act(async () => {
+        fireEvent.submit(submitButton)
+      })
     })
   })
 })
