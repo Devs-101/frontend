@@ -1,6 +1,7 @@
 import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
+import { render, act, fireEvent } from '@testing-library/react'
 import { SignUpForm } from '../SignUpForm'
 import { FormField } from '../../../molecules/FormField'
 import {
@@ -35,6 +36,55 @@ describe('SignUpForm organism', () => {
     })
     it('is expected to have FormActionLink', () => {
       expect(component.find(FormActionLink).length).toBe(1)
+    })
+  })
+  describe('handle submit', () => {
+    test('is expeted to run submit function', async () => {
+      const { container } = render(<SignUpForm />)
+      const nameInput = container.querySelector("input[name='signUpFormName']")
+      const organizationInput = container.querySelector(
+        "input[name='signUpFormOrganization']"
+      )
+      const emailInput = container.querySelector(
+        "input[name='signUpFormEmail']"
+      )
+      const passwordInput = container.querySelector(
+        "input[name='signUpFormPassword']"
+      )
+      const confirmPasswordInput = container.querySelector(
+        "input[name='signUpFormConfirmPassword']"
+      )
+      const submitButton = container.querySelector('button')
+
+      fireEvent.input(nameInput, {
+        target: {
+          value: 'name'
+        }
+      })
+      fireEvent.input(organizationInput, {
+        target: {
+          value: 'organization'
+        }
+      })
+      fireEvent.input(emailInput, {
+        target: {
+          value: 'email'
+        }
+      })
+      fireEvent.input(passwordInput, {
+        target: {
+          value: 'password'
+        }
+      })
+      fireEvent.input(confirmPasswordInput, {
+        target: {
+          value: 'password'
+        }
+      })
+
+      await act(async () => {
+        fireEvent.submit(submitButton)
+      })
     })
   })
 })
