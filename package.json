@@ -48,7 +48,6 @@
     "jest": "^26.4.0",
     "jest-styled-components": "^7.0.2",
     "lint-staged": "^10.2.11",
-    "mutationobserver-shim": "^0.3.7",
     "prettier": "^2.0.5",
     "prettier-eslint": "^11.0.0",
     "prettier-eslint-cli": "^5.0.0",
