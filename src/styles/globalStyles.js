@@ -8,6 +8,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    h1, h2, h3{
+      font-family: 'Montserrat', sans-serif;
+    }
   }
 `
