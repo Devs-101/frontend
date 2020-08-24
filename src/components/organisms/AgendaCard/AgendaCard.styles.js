@@ -28,22 +28,6 @@ export const AgendaCardText = styled.div`
     grid-template-rows: auto 1fr;
   `}
 
-  h3 {
-    font-size: 18px;
-  }
-
-  h3:nth-of-type(2) {
-    text-align: end;
-    grid-row: 3 / 4;
-    font-weight: lighter;
-
-    ${breakpoint.md`
-      grid-column: 3 / 4;
-      grid-row: 1 / 2; 
-      font-weight: 600;
-    `}
-  }
-
   p {
     grid-row: 2 / 3;
     ${breakpoint.md`
@@ -51,4 +35,20 @@ export const AgendaCardText = styled.div`
       grid-row: 2 / 3; 
     `}
   }
+`
+
+export const AgendaCardDate = styled.h3`
+  text-align: end;
+  grid-row: 3 / 4;
+  font-weight: lighter;
+
+  ${breakpoint.md`
+      grid-column: 3 / 4;
+      grid-row: 1 / 2; 
+      font-weight: 600;
+    `}
+`
+
+export const AgendaCardTitle = styled.h3`
+  font-size: 18px;
 `

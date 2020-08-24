@@ -1,5 +1,10 @@
 import React from 'react'
-import { AgendaCardStyled, AgendaCardText } from './AgendaCard.styles'
+import {
+  AgendaCardStyled,
+  AgendaCardText,
+  AgendaCardDate,
+  AgendaCardTitle
+} from './AgendaCard.styles'
 import profile from '../../../assets/images/avatar.png'
 
 export function AgendaCard({ avatar, date, title, description }) {
@@ -9,8 +14,8 @@ export function AgendaCard({ avatar, date, title, description }) {
         <img src={avatar || profile} alt="" />
       </figure>
       <AgendaCardText>
-        <h3>{title}</h3>
-        <h3>{date}</h3>
+        <AgendaCardTitle>{title}</AgendaCardTitle>
+        <AgendaCardDate>{date}</AgendaCardDate>
         <p>{description}</p>
       </AgendaCardText>
     </AgendaCardStyled>
