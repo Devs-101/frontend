@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from '../../../styles/colors'
 import ConferencePlaceHolder from '../../../assets/images/ConferencePlaceHolder.jpg'
 
 export const EventCardStyled = styled.div`
@@ -8,7 +9,7 @@ export const EventCardStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: ${colors.white};
   border-radius: 10px;
   margin: 8px 8px;
   box-shadow: 0px 3px 6px #00000029;
@@ -17,8 +18,7 @@ export const EventCardImg = styled.div`
   display: flex;
   flex-direction: column-reverse;
   position: relative;
-  /* background-image: url(${({ url }) => url || ConferencePlaceHolder}); */
-  background-image: url(${ConferencePlaceHolder});
+  background-image: url(${({ url }) => url || ConferencePlaceHolder});
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 10px 10px 0px 0px;
@@ -30,7 +30,7 @@ export const EventTitle = styled.div`
   display: flex;
   position: absolute;
   height: 35px;
-  background-color: black;
+  background-color: ${colors.primary};
   width: 100%;
   align-items: center;
 
@@ -39,7 +39,7 @@ export const EventTitle = styled.div`
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 18px;
-    color: white;
+    color: ${colors.white};
   }
 `
 export const EventDescription = styled.div`

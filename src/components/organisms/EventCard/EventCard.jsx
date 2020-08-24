@@ -9,29 +9,29 @@ import {
   EventDate
 } from './EventCard.styes'
 
-export function EventCard(url, eventName) {
+export function EventCard(
+  url,
+  eventName,
+  eventDescription,
+  attendeeCounter,
+  eventDate
+) {
   return (
     <EventCardStyled>
       <EventCardImg url={url}>
         <EventTitle>
-          <h3>Aqui va el eventName</h3>
+          <h3>{eventName}</h3>
         </EventTitle>
       </EventCardImg>
       <EventDescription>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet. Lorem.
-        </p>
+        <p>{eventDescription}</p>
       </EventDescription>
       <EventFooter>
         <EventAttendeeCounter>
-          <p>25</p>
+          <p>{attendeeCounter}</p>
         </EventAttendeeCounter>
         <EventDate>
-          <p>28 / 08 / 2020</p>
+          <p>{eventDate}</p>
         </EventDate>
       </EventFooter>
     </EventCardStyled>
