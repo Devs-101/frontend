@@ -1,15 +1,21 @@
 import React from 'react'
-import { SponsorCartStyled } from './SponsorCart.styles'
+import { SponsorCartStyled, SponsorCartText } from './SponsorCart.styles'
 import sponsorImage from '../../../assets/images/sponsor.png'
 
-export function SponsorCard({ url, name, web }) {
+export function SponsorCard({
+  url,
+  name = 'Sponsor',
+  web = 'www.sponsor.com'
+}) {
   return (
     <SponsorCartStyled>
       <figure>
         <img src={url || sponsorImage} alt="sponsor" />
       </figure>
-      <h2>{name}</h2>
-      <p>{web}</p>
+      <SponsorCartText>
+        <h2>{name}</h2>
+        <p>{web}</p>
+      </SponsorCartText>
     </SponsorCartStyled>
   )
 }
