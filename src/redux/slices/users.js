@@ -7,7 +7,7 @@ const signupThunk = createAsyncThunk(
   async (userData, thunkApi) => {
     const userDataSerialized = serializeSignupData(userData)
     const response = await signupUser(userDataSerialized)
-    return response.json()
+    return response
   }
 )
 
