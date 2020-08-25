@@ -2,7 +2,6 @@ import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
 import { CollaboratorCard } from '../CollaboratorCard'
-import { CollaboratorCardPic } from '../CollaboratorCard.styles'
 
 describe('CollaboratorCard organism', () => {
   describe('render', () => {
@@ -17,11 +16,8 @@ describe('to have props', () => {
   const component = mount(
     <CollaboratorCard name="name" url="url" userType="userType" />
   )
-  it('is expected to have url', () => {
-    expect(component.find(CollaboratorCardPic)).toHaveStyleRule(
-      'background-image',
-      'url(url)'
-    )
+  it('Is expected to have image sponsor', () => {
+    expect(component.find('img').prop('src')).toBe('url')
   })
   it('is expected to have name', () => {
     expect(component.find('h3').text()).toBe('name')

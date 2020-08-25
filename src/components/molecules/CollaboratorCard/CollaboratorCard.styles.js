@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../../../styles/colors'
-import UserPic from '../../../assets/images/user_placeholder.png'
 
 export const CollaboratorCardStyled = styled.div`
-  border: solid 1px grey;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,10 +11,13 @@ export const CollaboratorCardStyled = styled.div`
   border-radius: 10px;
   margin: 8px 8px;
 
-  img {
+  figure {
     margin: 0px 24px;
+  }
+
+  img {
     height: 40px;
-    width: 40px;
+    border-radius: 50%;
   }
 
   h3 {
@@ -33,15 +34,6 @@ export const CollaboratorCardStyled = styled.div`
     font-weight: 400;
     text-align: left;
   }
-`
-export const CollaboratorCardPic = styled.div`
-  margin: 0px 24px;
-  height: 40px;
-  width: 40px;
-  background-image: url(${({ url }) => url || UserPic});
-  border-radius: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
 `
 
 export const CollaboratorCardDataStyled = styled.div`
