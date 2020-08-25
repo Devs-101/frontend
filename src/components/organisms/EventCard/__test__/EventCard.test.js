@@ -2,7 +2,12 @@ import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
 import { EventCard } from '../EventCard'
-import { EventCardImg } from '../EventCard.styes'
+import {
+  EventTitle,
+  EventDescription,
+  EventAttendeeCounter,
+  EventDate
+} from '../EventCard.styes'
 
 describe('EventCard organism', () => {
   describe('render', () => {
@@ -12,6 +17,7 @@ describe('EventCard organism', () => {
     })
   })
 })
+
 describe('to have props', () => {
   const component = mount(
     <EventCard
@@ -22,24 +28,21 @@ describe('to have props', () => {
       eventDate="eventDate"
     />
   )
-  it('is expected to have url', () => {
-    expect(component.find(EventCardImg)).toHaveStyleRule(
-      'background-image',
-      'url(url)'
-    )
+  it('Is expected to have image Conference image', () => {
+    expect(component.find('img').prop('src')).toBe('url')
   })
   it('is expected to have eventName', () => {
-    expect(component.find('h3').text()).toBe('eventName')
+    expect(component.find(EventTitle).text()).toBe('eventName')
   })
   it('is expected to have eventDescription', () => {
-    expect(component.find('p').text()).toBe('eventDescription')
+    expect(component.find(EventDescription).text()).toBe('eventDescription')
   })
 
   it('is expected to have attendeeCounter', () => {
-    expect(component.find('p').text()).toBe('attendeeCounter')
+    expect(component.find(EventAttendeeCounter).text()).toBe('attendeeCounter')
   })
 
   it('is expected to have eventDate', () => {
-    expect(component.find('p').text()).toBe('eventDate')
+    expect(component.find(EventDate).text()).toBe('eventDate')
   })
 })

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { colors } from '../../../styles/colors'
-import ConferencePlaceHolder from '../../../assets/images/ConferencePlaceHolder.jpg'
 
 export const EventCardStyled = styled.div`
   width: 300px;
@@ -14,35 +13,36 @@ export const EventCardStyled = styled.div`
   margin: 8px 8px;
   box-shadow: 0px 3px 6px #00000029;
 `
-export const EventCardImg = styled.div`
+
+export const EventImage = styled.figure`
   display: flex;
   flex-direction: column-reverse;
-  position: relative;
-  background-image: url(${({ url }) => url || ConferencePlaceHolder});
-  background-size: cover;
-  background-repeat: no-repeat;
   border-radius: 10px 10px 0px 0px;
   width: 100%;
   min-height: 150px;
   height: 200px;
+
+  img {
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+    min-height: 150px;
+    height: 200px;
+  }
 `
-export const EventTitle = styled.div`
+
+export const EventTitle = styled.h3`
   display: flex;
-  position: absolute;
   height: 35px;
   background-color: ${colors.primary};
   width: 100%;
   align-items: center;
-
-  h3 {
-    margin-left: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    color: ${colors.white};
-  }
+  padding-left: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: ${colors.white};
 `
-export const EventDescription = styled.div`
+export const EventDescription = styled.p`
   margin: 20px 20px 0px;
   font-family: 'Work Sans', sans-serif;
   font-size: 16px;
@@ -54,11 +54,11 @@ export const EventFooter = styled.div`
   margin: 20px 0px 20px 0px;
   font-family: 'Work Sans', sans-serif;
 `
-export const EventAttendeeCounter = styled.div`
+export const EventAttendeeCounter = styled.p`
   padding: 0px 20px;
   display: flex;
 `
-export const EventDate = styled.div`
+export const EventDate = styled.p`
   padding: 0px 20px;
   display: flex;
 `

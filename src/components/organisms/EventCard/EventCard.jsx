@@ -1,7 +1,8 @@
 import React from 'react'
+import ConferencePlaceHolder from '../../../assets/images/ConferencePlaceHolder.jpg'
 import {
   EventCardStyled,
-  EventCardImg,
+  EventImage,
   EventTitle,
   EventDescription,
   EventFooter,
@@ -9,30 +10,23 @@ import {
   EventDate
 } from './EventCard.styes'
 
-export function EventCard(
+export function EventCard({
   url,
   eventName,
   eventDescription,
   attendeeCounter,
   eventDate
-) {
+}) {
   return (
     <EventCardStyled>
-      <EventCardImg url={url}>
-        <EventTitle>
-          <h3>{eventName}</h3>
-        </EventTitle>
-      </EventCardImg>
-      <EventDescription>
-        <p>{eventDescription}</p>
-      </EventDescription>
+      <EventImage>
+        <img src={url || ConferencePlaceHolder} alt="ConferencePlaceHolder" />
+      </EventImage>
+      <EventTitle>{eventName}</EventTitle>
+      <EventDescription>{eventDescription}</EventDescription>
       <EventFooter>
-        <EventAttendeeCounter>
-          <p>{attendeeCounter}</p>
-        </EventAttendeeCounter>
-        <EventDate>
-          <p>{eventDate}</p>
-        </EventDate>
+        <EventAttendeeCounter>{attendeeCounter}</EventAttendeeCounter>
+        <EventDate>{eventDate}</EventDate>
       </EventFooter>
     </EventCardStyled>
   )
