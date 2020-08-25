@@ -5,7 +5,7 @@
   "buttonSave": "Save",
   "fields": [
     {
-      "label": "Sponsor Logo:",
+      "label": "",
       "id": "SponsorFormLogo",
       "type": "file"
     },
