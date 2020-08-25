@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import UserPic from '../../../assets/images/devs101.png'
 import { colors } from '../../../styles/colors'
 
 export const SpeakerCardStyled = styled.div`
@@ -12,35 +11,39 @@ export const SpeakerCardStyled = styled.div`
   width: 300px;
   border-radius: 10px;
   margin: 8px 8px;
-  border: solid 1px red;
 
-  h3 {
-    font-weight: 600;
-    font-size: 18px;
-    text-align: center;
-  }
+  figure {
+    margin: 24px 0px;
 
-  h5 {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    text-align: center;
-  }
-
-  p {
-    font-family: 'Work Sans', sans-serif;
-    margin: 16px 24px;
-    padding: 8px;
+    img {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+    }
   }
 `
-export const SpeakerCardPic = styled.div`
-  margin: 24px 0px;
-  min-height: 90px;
-  min-width: 90px;
-  background-image: url(${({ url }) => url || UserPic});
-  border-radius: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
+
+export const SpeakerName = styled.h3`
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+`
+
+export const SpeakerRol = styled.h5`
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+`
+export const SpeakerBio = styled.p`
+  font-family: 'Work Sans', sans-serif;
+  margin: 16px 24px;
+  padding: 8px;
+`
+export const SpeakerTwitter = styled.p`
+  font-family: 'Work Sans', sans-serif;
+  margin: 16px 24px;
+  padding: 8px;
 `
 
 export const SpeakerCardData = styled.div`

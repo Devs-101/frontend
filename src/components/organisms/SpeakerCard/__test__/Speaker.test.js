@@ -1,7 +1,12 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { SpeakerCard } from '../SpeakerCard'
-import { SpeakerCardStyled, SpeakerCardData } from '../SpeakerCard.styles'
+import {
+  SpeakerName,
+  SpeakerRol,
+  SpeakerBio,
+  SpeakerTwitter
+} from '../SpeakerCard.styles'
 
 describe('SpeakerCard organism', () => {
   describe('render', () => {
@@ -12,6 +17,7 @@ describe('SpeakerCard organism', () => {
     describe('To have props', () => {
       const component = mount(
         <SpeakerCard
+          url="url"
           speakerName="name"
           speakerRol="rol"
           speakerBio="bio"
@@ -19,16 +25,19 @@ describe('SpeakerCard organism', () => {
         />
       )
       it('Is expect to have speakername', () => {
-        expect(component.find(SpeakerCardData).text()).toBe('name')
+        expect(component.find('img').prop('src')).toBe('url')
+      })
+      it('Is expect to have speakername', () => {
+        expect(component.find(SpeakerName).text()).toBe('name')
       })
       it('Is expect to have rol', () => {
-        expect(component.find(SpeakerCardData).text()).toBe('rol')
+        expect(component.find(SpeakerRol).text()).toBe('rol')
       })
       it('Is expect to have bio', () => {
-        expect(component.find(SpeakerCardData).text()).toBe('bio')
+        expect(component.find(SpeakerBio).text()).toBe('bio')
       })
       it('Is expect to have twitter', () => {
-        expect(component.find(SpeakerCardData).text()).toBe('twitter')
+        expect(component.find(SpeakerTwitter).text()).toBe('twitter')
       })
     })
   })

@@ -1,11 +1,16 @@
 import React from 'react'
 import {
   SpeakerCardStyled,
-  SpeakerCardPic,
+  SpeakerName,
+  SpeakerRol,
+  SpeakerBio,
+  SpeakerTwitter,
   SpeakerCardData
 } from './SpeakerCard.styles'
+import UserPic from '../../../assets/images/userplaceholder.jpg'
 
 export function SpeakerCard({
+  url,
   speakerName,
   speakerRol,
   speakerBio,
@@ -13,12 +18,14 @@ export function SpeakerCard({
 }) {
   return (
     <SpeakerCardStyled>
-      <SpeakerCardPic />
+      <figure>
+        <img src={url || UserPic} alt="" />
+      </figure>
       <SpeakerCardData>
-        <h3>{speakerName}</h3>
-        <h5>{speakerRol}</h5>
-        <p>{speakerBio}</p>
-        <p>{speakerTwitter}</p>
+        <SpeakerName>{speakerName}</SpeakerName>
+        <SpeakerRol>{speakerRol}</SpeakerRol>
+        <SpeakerBio>{speakerBio}</SpeakerBio>
+        <SpeakerTwitter>{speakerTwitter}</SpeakerTwitter>
       </SpeakerCardData>
     </SpeakerCardStyled>
   )
