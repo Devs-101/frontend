@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = function webpackConfig(env) {
@@ -11,6 +12,11 @@ module.exports = function webpackConfig(env) {
 
   if (env.NODE_ENV === 'production') {
     plugins.push(new CleanWebpackPlugin())
+    plugins.push(
+      new CopyPlugin({
+        patterns: [{ from: 'public/_redirects' }]
+      })
+    )
   }
 
   return {
@@ -36,6 +42,17 @@ module.exports = function webpackConfig(env) {
           exclude: '/node_modules',
           use: {
             loader: 'babel-loader'
+          }
+        },
+        {
+          test: /\.(jpg|png|gif|svg)$/,
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 1000000,
+              fallback: 'file-loader',
+              name: 'images/[name].[hash].[ext]'
+            }
           }
         }
       ]

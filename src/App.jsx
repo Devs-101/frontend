@@ -1,5 +1,6 @@
 import React from 'react'
+import { AuthPage } from './pages'
 
 export function App() {
-  return <h1>It&apos;s Alive</h1>
+  return <AuthPage />
 }
