@@ -11,7 +11,9 @@ describe('SponsorCard Molecule', () => {
     })
   })
   describe('To have props', () => {
-    const component = mount(<SponsorCard url="url" name="name" web="web" />)
+    const component = mount(
+      <SponsorCard logoUrl="url" name="name" webSiteUrl="web" />
+    )
     it('Is expected to have image sponsor', () => {
       expect(component.find('img').prop('src')).toBe('url')
     })
