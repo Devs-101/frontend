@@ -58,9 +58,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.4.0",
+    "react-redux": "^7.2.1",
     "styled-components": "^5.1.1"
   },
   "husky": {
