@@ -61,7 +61,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.4.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "styled-loaders-react": "^1.1.0"
   },
   "husky": {
     "hooks": {
