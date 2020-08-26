@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { signupUser } from '../../services'
 import { serializeSignupData } from '../../utils'
 
-const signupThunk = createAsyncThunk(
+export const signupThunk = createAsyncThunk(
   'users/signUp',
   async (userData, thunkApi) => {
     const userDataSerialized = serializeSignupData(userData)
@@ -14,7 +14,11 @@ const signupThunk = createAsyncThunk(
 export const usersSlice = createSlice({
   name: 'users',
   initialState: {
-    userInfo: {},
+    userInfo: {
+      userId: '',
+      email: '',
+      name: ''
+    },
     loading: false,
     error: null
   },
