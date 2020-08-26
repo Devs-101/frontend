@@ -6,7 +6,7 @@ export function signupUser(userSignupData) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: userSignupData
+    body: JSON.stringify(userSignupData)
   })
     .then(response => response.json())
     .then(data => data)

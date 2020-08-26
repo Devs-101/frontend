@@ -9,13 +9,9 @@ export const signupUserAsync = createAsyncThunk(
   'users/signUp',
   async (userData, thunkApi) => {
     const userDataSerialized = serializeSignupData(userData)
-    try {
-      const signupResponse = await signupUser(userDataSerialized)
-      const signupResponseSerialized = serializeSignupResponse(signupResponse)
-      return signupResponseSerialized
-    } catch (err) {
-      throw Error(err)
-    }
+    const signupResponse = await signupUser(userDataSerialized)
+    const signupResponseSerialized = serializeSignupResponse(signupResponse)
+    return signupResponseSerialized
   }
 )
 
