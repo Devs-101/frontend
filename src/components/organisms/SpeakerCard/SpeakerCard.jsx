@@ -10,7 +10,7 @@ import {
 import UserPic from '../../../assets/images/userplaceholder.jpg'
 
 export function SpeakerCard({
-  url,
+  imageUrl,
   speakerName,
   speakerRol,
   speakerBio,
@@ -19,7 +19,7 @@ export function SpeakerCard({
   return (
     <SpeakerCardStyled>
       <figure>
-        <img src={url || UserPic} alt="" />
+        <img src={imageUrl || UserPic} alt="" />
       </figure>
       <SpeakerCardData>
         <SpeakerName>{speakerName}</SpeakerName>

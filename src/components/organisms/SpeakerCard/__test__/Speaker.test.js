@@ -17,7 +17,7 @@ describe('SpeakerCard organism', () => {
     describe('To have props', () => {
       const component = mount(
         <SpeakerCard
-          url="url"
+          imageUrl="url"
           speakerName="name"
           speakerRol="rol"
           speakerBio="bio"
