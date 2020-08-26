@@ -14,7 +14,7 @@ describe('CollaboratorCard organism', () => {
 
 describe('to have props', () => {
   const component = mount(
-    <CollaboratorCard name="name" url="url" userType="userType" />
+    <CollaboratorCard name="name" imageUrl="url" userType="userType" />
   )
   it('Is expected to have image sponsor', () => {
     expect(component.find('img').prop('src')).toBe('url')
