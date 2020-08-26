@@ -15,7 +15,7 @@ export function SignUpForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
 
   function onSubmit(data) {
-    Promise.resolve(data)
+    console.log(data)
   }
 
   return (

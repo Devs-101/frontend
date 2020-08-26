@@ -15,4 +15,5 @@ export const InputStyled = styled.input`
   border-radius: 10px;
   border: none;
   width: 100%;
+  padding: 4px 8px;
 `
