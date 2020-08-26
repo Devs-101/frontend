@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { FormField } from '../../molecules/FormField/FormField'
 import signUpFormData from './SingUpFormData.json'
 import { useForm } from 'react-hook-form'
@@ -10,12 +11,16 @@ import {
   FormActionLink,
   SubmitSection
 } from './SingUpForm.styles'
+import { serializeSignupFormData } from './helpers'
+import { signupUserAsync } from '../../../redux/slices/users'
 
 export function SignUpForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
+  const dispatch = useDispatch()
 
-  function onSubmit(data) {
-    console.log(data)
+  function onSubmit(signupFormData) {
+    const signupFormDataSerialized = serializeSignupFormData(signupFormData)
+    dispatch(signupUserAsync(signupFormDataSerialized))
   }
 
   return (
