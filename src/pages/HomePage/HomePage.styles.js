@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoints'
 
 export const HomeStyled = styled.div`
+  padding: 24px 0;
+
   ${breakpoint.md`
     padding: 35px 120px;
   `}
