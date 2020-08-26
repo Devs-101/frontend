@@ -1,7 +1,7 @@
-const API_URL = process.env.API_URL
+import { config } from '../config'
 
 export function signupUser(userSignupData) {
-  return fetch(`${API_URL}/auth/register`, {
+  return fetch(`${config.API_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
