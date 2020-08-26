@@ -11,7 +11,7 @@ import {
 } from './EventCard.styes'
 
 export function EventCard({
-  url,
+  imageUrl,
   eventName,
   eventDescription,
   attendeeCounter,
@@ -20,7 +20,10 @@ export function EventCard({
   return (
     <EventCardStyled>
       <EventImage>
-        <img src={url || ConferencePlaceHolder} alt="ConferencePlaceHolder" />
+        <img
+          src={imageUrl || ConferencePlaceHolder}
+          alt="ConferencePlaceHolder"
+        />
       </EventImage>
       <EventTitle>{eventName}</EventTitle>
       <EventDescription>{eventDescription}</EventDescription>

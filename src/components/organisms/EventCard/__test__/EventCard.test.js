@@ -21,7 +21,7 @@ describe('EventCard organism', () => {
 describe('to have props', () => {
   const component = mount(
     <EventCard
-      url="url"
+      imageUrl="url"
       eventName="eventName"
       eventDescription="eventDescription"
       attendeeCounter="attendeeCounter"
