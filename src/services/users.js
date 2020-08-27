@@ -8,7 +8,4 @@ export function signupUser(userSignupData) {
     },
     body: JSON.stringify(userSignupData)
   })
-    .then(response => response.json())
-    .then(data => data)
-    .catch(err => err)
 }

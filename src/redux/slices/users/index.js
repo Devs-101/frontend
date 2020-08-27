@@ -10,8 +10,18 @@ export const signupUserAsync = createAsyncThunk(
   async (userData, thunkApi) => {
     const userDataSerialized = serializeSignupData(userData)
     const signupResponse = await signupUser(userDataSerialized)
-    const signupResponseSerialized = serializeSignupResponse(signupResponse)
-    return signupResponseSerialized
+    if (signupResponse.status === 409) {
+      const { errors } = await signupResponse.json()
+      throw errors[0].msg
+    }
+    if (signupResponse.status === 422) {
+      throw Error('Some fields are incomplete')
+    }
+    const signupResponseData = await signupResponse.json()
+    const signupResponseDataSerialized = serializeSignupResponse(
+      signupResponseData
+    )
+    return signupResponseDataSerialized
   }
 )
 
