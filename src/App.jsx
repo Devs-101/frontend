@@ -1,6 +1,14 @@
 import React from 'react'
-import { AuthPage } from './pages'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { AuthPage, HomePage } from './pages'
 
 export function App() {
-  return <AuthPage />
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/join" component={AuthPage} />
+      </Switch>
+    </Router>
+  )
 }
