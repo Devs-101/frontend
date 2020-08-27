@@ -3,7 +3,7 @@ import breakpoint from '../../../styles/breakpoints'
 
 export const AgendaFomrStyled = styled.form`
   padding: 24px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #f0f0f0;
 
   ${breakpoint.md`
     display: grid;
