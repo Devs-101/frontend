@@ -7,15 +7,16 @@ import {
 } from 'react-router-dom'
 import { AuthPage, HomePage } from './pages'
 
-function PrivateRoute({ component, ...rest }) {
-  const isAuthenticated = window.sessionStorage.getItem('jwt') !== null
+function PrivateRoute({ children, ...rest }) {
+  const jwt = window.sessionStorage.getItem('jwt')
+  const isAuthenticated = jwt
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
         isAuthenticated ? (
-          component
+          children
         ) : (
           <Redirect
             to={{
@@ -33,7 +34,9 @@ export function App() {
   return (
     <Router>
       <Switch>
-        <PrivateRoute exact path="/" component={HomePage} />
+        <PrivateRoute exact path="/">
+          <HomePage />
+        </PrivateRoute>
         <Route path="/join" component={AuthPage} />
       </Switch>
     </Router>

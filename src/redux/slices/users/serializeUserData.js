@@ -16,3 +16,11 @@ export function serializeSignupResponse(signupResponse) {
     name: signupResponse.data.name
   }
 }
+
+export function serializeVerifyUserResponse(verifyUserResponseData) {
+  return {
+    userId: verifyUserResponseData.user._id,
+    email: verifyUserResponseData.user.email,
+    name: verifyUserResponseData.user.name
+  }
+}
