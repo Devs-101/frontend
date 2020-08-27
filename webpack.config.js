@@ -6,10 +6,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const dotenv = require('dotenv')
 
 module.exports = function webpackConfig(env) {
-  const dotEnv = dotenv.config().parsed
+  const dotenvParsed = dotenv.config().parsed
 
-  const envKeys = Object.keys(dotEnv).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(env[next])
+  const envKeys = Object.keys(dotenvParsed).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(dotenvParsed[next])
     return prev
   }, {})
 
