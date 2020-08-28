@@ -2,11 +2,11 @@ import React from 'react'
 import { TitlePageStyled } from './TitlePage.styles'
 import { Button } from '../../atoms'
 
-export function TitlePage() {
+export function TitlePage({ title, button }) {
   return (
     <TitlePageStyled>
-      <h3>Your Events</h3>
-      <Button>Add Event</Button>
+      <h3>{title}</h3>
+      <Button>{button}</Button>
     </TitlePageStyled>
   )
 }
