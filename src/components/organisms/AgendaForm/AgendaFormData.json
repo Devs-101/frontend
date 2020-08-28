@@ -1,0 +1,22 @@
+{
+  "title": "Agenda",
+  "buttonCancel": "Cancel",
+  "buttonSave": "Save",
+  "fields": [
+    {
+      "label": "Conference name:",
+      "id": "agendaFormName",
+      "type": "text"
+    },
+    {
+      "label": "Time",
+      "id": "agendaFormTime",
+      "type": "date"
+    },
+    {
+      "label": "Conference description:",
+      "id": "agendaFormConference",
+      "type": "textarea"
+    }
+  ]
+}
