@@ -7,6 +7,7 @@ export const TitlePageStyled = styled.div`
   padding: 0 24px;
   align-items: center;
   margin-bottom: 24px;
+  width: 100%;
 
   h3 {
     font-size: 18px;
