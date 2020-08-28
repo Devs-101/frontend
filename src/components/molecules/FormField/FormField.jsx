@@ -1,7 +1,36 @@
 import React from 'react'
-import { LabelStyled, InputStyled } from './FormField.styles'
+import {
+  LabelStyled,
+  InputStyled,
+  TextAreaStyled,
+  SelectStyled
+} from './FormField.styles'
 
-export function FormField({ id, label, register, type }) {
+export function FormField({ id, label, register, type, options }) {
+  if (type === 'select') {
+    return (
+      <div>
+        <LabelStyled htmlFor={id}>{label}</LabelStyled>
+        <SelectStyled name={id} id={id}>
+          {options.map(option => (
+            <option value={option.value} key={option.id}>
+              {option.label}
+            </option>
+          ))}
+        </SelectStyled>
+      </div>
+    )
+  }
+
+  if (type === 'textarea') {
+    return (
+      <div>
+        <LabelStyled htmlFor={id}>{label}</LabelStyled>
+        <TextAreaStyled name={id} id={id}></TextAreaStyled>
+      </div>
+    )
+  }
+
   return (
     <div>
       <LabelStyled htmlFor={id}>{label}</LabelStyled>
