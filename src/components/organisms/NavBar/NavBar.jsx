@@ -19,31 +19,31 @@ export function NavBar() {
           </Link>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link href="/join">
+          <Link to="/join">
             <img src="https://img.icons8.com/material/24/000000/businessman--v1.png" />
             <span>Speaker</span>
           </Link>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link href="/join">
+          <Link to="/join">
             <img src="https://img.icons8.com/material/24/000000/classroom--v1.png" />
             <span>Agenda</span>
           </Link>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link href="/join">
+          <Link to="/join">
             <img src="https://img.icons8.com/material/24/000000/new-company--v1.png" />
             <span>Sponsor</span>
           </Link>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link href="/join">
+          <Link to="/join">
             <img src="https://img.icons8.com/material/24/000000/filled-sent.png" />
             <span>Broadcast</span>
           </Link>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link href="/join">
+          <Link to="/join">
             <img src="https://img.icons8.com/material/24/000000/web.png" />
             <span>Publish</span>
           </Link>
