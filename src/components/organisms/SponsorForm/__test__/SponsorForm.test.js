@@ -21,27 +21,24 @@ describe('SponsorForm Organism', () => {
       expect(component.find('h2').text()).toBe('Sponsor')
     })
     it('Is epected to have 3 FormField', () => {
-      expect(component.find(FormField).length).toBe(3)
+      expect(component.find(FormField).length).toBe(2)
     })
   })
 
   describe('handle submit', () => {
     test('is expeted to run submit function', async () => {
       const { container } = render(<SponsorForm />)
-      const photoInput = container.querySelector(
-        "input[name='SponsorFormLogo']"
-      )
       const nameImput = container.querySelector("input[name='SponsorFormName']")
       const webUrlInput = container.querySelector(
         "input[name='SponsorFormUrl']"
       )
       const submitButton = container.querySelector('button[type="submit"]')
 
-      fireEvent.input(photoInput, {
-        target: {
-          value: 'Photo'
-        }
-      })
+      console.log(
+        'BOTOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNN _________________________',
+        submitButton
+      )
+
       fireEvent.input(nameImput, {
         target: {
           value: 'name'

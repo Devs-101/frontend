@@ -4,11 +4,6 @@
   "buttonSave": "Save",
   "fields": [
     {
-      "label": "",
-      "id": "SponsorFormLogo",
-      "type": "file"
-    },
-    {
       "label": "Name:",
       "id": "SponsorFormName",
       "type": "text"
