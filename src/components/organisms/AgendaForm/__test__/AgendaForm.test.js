@@ -62,7 +62,7 @@ describe('AgendaForm organism', () => {
           value: 'time'
         }
       })
-      fireEvent.textarea(agendaFormConference, {
+      fireEvent.change(agendaFormConference, {
         target: {
           value: 'email'
         }
