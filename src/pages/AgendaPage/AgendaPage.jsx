@@ -1,6 +1,5 @@
 import React from 'react'
-import { AgendaStyled, AgendaTitle, ContainerStyled } from './AgendaPage.styles'
-import { Button } from '../../components/atoms'
+import { AgendaStyled, ContainerStyled } from './AgendaPage.styles'
 import { HomeTemplate } from '../../templates'
 import { AgendaCard } from '../../components/organisms/'
 
@@ -29,10 +28,6 @@ export function AgendaPage() {
   return (
     <HomeTemplate>
       <AgendaStyled>
-        <AgendaTitle>
-          <h3>Your Schedule</h3>
-          <Button>Add Talk</Button>
-        </AgendaTitle>
         <main>
           <ContainerStyled>
             {MOCKS.map(talk => (
