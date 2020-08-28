@@ -34,11 +34,6 @@ describe('SponsorForm Organism', () => {
       )
       const submitButton = container.querySelector('button[type="submit"]')
 
-      console.log(
-        'BOTOOOOOOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNNNNN _________________________',
-        submitButton
-      )
-
       fireEvent.input(nameImput, {
         target: {
           value: 'name'
