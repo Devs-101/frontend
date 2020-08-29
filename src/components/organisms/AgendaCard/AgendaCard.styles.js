@@ -1,10 +1,13 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
+import { colors } from '../../../styles/colors'
 
 export const AgendaCardStyled = styled.div`
   display: flex;
   border-radius: 10px;
   padding: 30px 16px 30px 24px;
+  background: ${colors.white};
+  color: ${colors.primary};
 
   figure {
     margin: auto;

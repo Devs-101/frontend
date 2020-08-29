@@ -1,4 +1,7 @@
 import React from 'react'
+import { unwrapResult } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Button } from '../../atoms/Button/Button'
 import { FormField } from '../../molecules/FormField/FormField'
 import loginFormData from './LoginFormData.json'
@@ -9,12 +12,27 @@ import {
   FormActionLink,
   SubmitSection
 } from '../SignUpForm/SingUpForm.styles'
+import { serializeLoginFormData } from './helpers'
+import { loginUserAsync, verifyUserAsync } from '../../../redux/slices/users'
 
 export function LoginForm({ onFormChange }) {
   const { register, handleSubmit } = useForm()
+  const dispatch = useDispatch()
+  const { state } = useLocation()
+  const { replace } = useHistory()
 
-  function onSubmit(data) {
-    return Promise.resolve(data)
+  function onSubmit(loginFormData) {
+    const loginFormDataSerialized = serializeLoginFormData(loginFormData)
+    const { from } = state || { from: { pathname: '/' } }
+    dispatch(loginUserAsync(loginFormDataSerialized))
+      .then(unwrapResult)
+      .then(originalResponse => {
+        const { token } = originalResponse
+        window.sessionStorage.setItem('jwt', token)
+        return token
+      })
+      .then(token => dispatch(verifyUserAsync(token)))
+      .then(() => replace(from))
   }
 
   return (
