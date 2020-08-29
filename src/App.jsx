@@ -11,7 +11,8 @@ import {
   SponsorPage,
   SpeakerPage,
   AgendaPage,
-  BroadcastPage
+  BroadcastPage,
+  EventInfo
 } from './pages'
 
 function PrivateRoute({ children, ...rest }) {
@@ -44,11 +45,22 @@ export function App() {
         <PrivateRoute exact path="/">
           <HomePage />
         </PrivateRoute>
+        <PrivateRoute path="/event-info">
+          <EventInfo />
+        </PrivateRoute>
+        <PrivateRoute path="/agenda">
+          <AgendaPage />
+        </PrivateRoute>
+        <PrivateRoute path="/speaker">
+          <SpeakerPage />
+        </PrivateRoute>
+        <PrivateRoute path="/sponsor">
+          <SponsorPage />
+        </PrivateRoute>
+        <PrivateRoute path="/broadcast">
+          <BroadcastPage />
+        </PrivateRoute>
         <Route path="/join" component={AuthPage} />
-        <Route path="/agenda" component={AgendaPage} />
-        <Route path="/speaker" component={SpeakerPage} />
-        <Route path="/sponsor" component={SponsorPage} />
-        <Route path="/broadcast" component={BroadcastPage} />
       </Switch>
     </Router>
   )
