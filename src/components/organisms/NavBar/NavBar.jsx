@@ -5,7 +5,8 @@ import {
   NavBarItemStyled,
   NavBarStyled
 } from './NavBar.styles'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { Icon } from '../../atoms'
 
 export function NavBar() {
   return (
@@ -13,40 +14,40 @@ export function NavBar() {
       <NavBarTitleStyled>Proyecton Cohort 3</NavBarTitleStyled>
       <NavBarStyled>
         <NavBarItemStyled>
-          <Link to="/join">
-            <img src="https://img.icons8.com/material/24/000000/edit-calendar.png" />
+          <NavLink to="/join" activeClassName="active">
+            <Icon className="far fa-calendar-alt" size={30} />
             <span>Event Info</span>
-          </Link>
+          </NavLink>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link to="/join">
-            <img src="https://img.icons8.com/material/24/000000/businessman--v1.png" />
+          <NavLink to="/join" activeClassName="active">
+            <Icon className="fas fa-user-alt" size={30} />
             <span>Speaker</span>
-          </Link>
+          </NavLink>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link to="/join">
-            <img src="https://img.icons8.com/material/24/000000/classroom--v1.png" />
+          <NavLink to="/join" activeClassName="active">
+            <Icon className="fas fa-chalkboard-teacher" size={30} />
             <span>Agenda</span>
-          </Link>
+          </NavLink>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link to="/join">
-            <img src="https://img.icons8.com/material/24/000000/new-company--v1.png" />
+          <NavLink to="/join" activeClassName="active">
+            <Icon className="fas fa-building" size={30} />
             <span>Sponsor</span>
-          </Link>
+          </NavLink>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link to="/join">
-            <img src="https://img.icons8.com/material/24/000000/filled-sent.png" />
+          <NavLink to="/join" activeClassName="active">
+            <Icon className="fas fa-broadcast-tower" size={30} />
             <span>Broadcast</span>
-          </Link>
+          </NavLink>
         </NavBarItemStyled>
         <NavBarItemStyled>
-          <Link to="/join">
-            <img src="https://img.icons8.com/material/24/000000/web.png" />
+          <NavLink to="/join" activeClassName="active">
+            <Icon className="fas fa-table" size={30} />
             <span>Publish</span>
-          </Link>
+          </NavLink>
         </NavBarItemStyled>
       </NavBarStyled>
     </NavBarContainerStyled>
