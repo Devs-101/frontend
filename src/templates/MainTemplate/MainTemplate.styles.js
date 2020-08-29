@@ -57,6 +57,11 @@ export const Main = styled.main`
     display: flex;
   `}
 `
+
 export const MainContentStyled = styled.div`
   width: 100%;
+
+  ${breakpoint.md`
+    padding: 20px 100px;
+  `}
 `
