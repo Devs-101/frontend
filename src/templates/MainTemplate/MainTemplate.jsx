@@ -10,7 +10,6 @@ import {
 } from './MainTemplate.styles'
 import { NavBar } from '../../components/organisms'
 import { Icon } from '../../components/atoms'
-import { TitlePage } from '../../components/molecules'
 
 export function MainTemplate({ children, title, button }) {
   return (
@@ -29,10 +28,7 @@ export function MainTemplate({ children, title, button }) {
       </HeaderStyled>
       <Main>
         <NavBar />
-        <MainContentStyled>
-          <TitlePage title={title} button={button} />
-          {children}
-        </MainContentStyled>
+        <MainContentStyled>{children}</MainContentStyled>
       </Main>
     </MainTemplateStyled>
   )

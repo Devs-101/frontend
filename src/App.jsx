@@ -12,7 +12,7 @@ import {
   SpeakerPage,
   AgendaPage,
   BroadcastPage,
-  EventInfo
+  EventInfoPage
 } from './pages'
 
 function PrivateRoute({ children, ...rest }) {
@@ -46,7 +46,7 @@ export function App() {
           <HomePage />
         </PrivateRoute>
         <PrivateRoute path="/event-info">
-          <EventInfo />
+          <EventInfoPage />
         </PrivateRoute>
         <PrivateRoute path="/agenda">
           <AgendaPage />
