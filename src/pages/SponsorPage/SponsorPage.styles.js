@@ -5,6 +5,7 @@ import { colors } from '../../styles/colors'
 export const SponsorPageStyled = styled.div`
   padding: 24px 0;
   background-color: ${colors.grey};
+  margin-top: 24px;
 
   ${breakpoint.md`
     display: flex;
