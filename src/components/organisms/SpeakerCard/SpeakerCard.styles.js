@@ -8,7 +8,7 @@ export const SpeakerCardStyled = styled.div`
   background-color: ${colors.white};
   color: ${colors.primary};
   height: 380px;
-  width: 300px;
+  min-width: 150px;
   border-radius: 10px;
   margin: 8px 8px;
 

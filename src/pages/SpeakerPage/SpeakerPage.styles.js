@@ -25,13 +25,14 @@ export const HomeTitle = styled.div`
   `}
 `
 export const ContainerStyled = styled.div`
-  display: grid;
   grid-template-columns: 1fr;
+  display: grid;
   gap: 24px;
   padding: 50px 30px 30px 30px;
   background-color: ${colors.grey};
-  max-width: 100%;
+  width: auto;
   margin: 0 auto;
+
   ${breakpoint.md`
     grid-template-columns: 1fr 1fr 1fr;
     padding-top: 100px;
