@@ -5,14 +5,12 @@ import {
   BroadcastCardDate,
   BroadcastCardTitle
 } from './BroadcastCard.styles'
-import profile from '../../../assets/images/devs101.png'
+import { Icon } from '../../atoms'
 
 export function BroadcastCard({ avatar, date, title, message }) {
   return (
     <BroadcastCardStyled>
-      <figure>
-        <img src={avatar || profile} alt="" />
-      </figure>
+      <Icon className="fas fa-envelope" size={30} />
       <BroadcastCardText>
         <BroadcastCardTitle>{title}</BroadcastCardTitle>
         <BroadcastCardDate>{date}</BroadcastCardDate>
