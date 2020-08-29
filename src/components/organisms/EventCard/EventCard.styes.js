@@ -1,17 +1,25 @@
 import styled from 'styled-components'
 import { colors } from '../../../styles/colors'
+import breakpoint from '../../../styles/breakpoints'
 
 export const EventCardStyled = styled.div`
-  width: 300px;
+  width: 100%;
   height: fit-content;
   min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${colors.white};
-  border-radius: 10px;
-  margin: 8px 8px;
+  margin: 0px;
+  border-radius: 0px;
   box-shadow: 0px 3px 6px #00000029;
+
+  ${breakpoint.md`
+    border-radius: 10px;
+    width: 300px;
+    margin: 8px 8px;
+
+`}
 `
 
 export const EventImage = styled.figure`
@@ -23,10 +31,15 @@ export const EventImage = styled.figure`
   height: 200px;
 
   img {
-    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+    border-radius: 0px;
     width: 100%;
     min-height: 150px;
     height: 200px;
+
+    ${breakpoint.md`
+      border-radius: 10px 10px 0px 0px;
+    `}
   }
 `
 
