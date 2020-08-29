@@ -5,7 +5,8 @@ import {
   LogoHeader,
   IconStyled,
   HeaderStyled,
-  Main
+  Main,
+  MainContentStyled
 } from './MainTemplate.styles'
 import { NavBar } from '../../components/organisms'
 import { Icon } from '../../components/atoms'
@@ -28,7 +29,10 @@ export function MainTemplate({ children, title, button }) {
       </HeaderStyled>
       <Main>
         <NavBar />
-        <TitlePage title={title} button={button} />
+        <MainContentStyled>
+          <TitlePage title={title} button={button} />
+          {children}
+        </MainContentStyled>
       </Main>
     </MainTemplateStyled>
   )
