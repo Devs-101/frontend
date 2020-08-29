@@ -48,27 +48,20 @@ export const loginUserAsync = createAsyncThunk(
   }
 )
 
-export const verifyUserAsync = createAsyncThunk(
-  'users/verify',
-  async (args, { getState }) => {
-    const {
-      users: {
-        userInfo: { jwt }
-      }
-    } = getState()
-    const verifyUserResponse = await verifyUser(jwt)
+export const verifyUserAsync = createAsyncThunk('users/verify', async () => {
+  const jwt = window.sessionStorage.getItem('jwt')
+  const verifyUserResponse = await verifyUser(jwt)
 
-    if (!verifyUserResponse.ok) {
-      throw Error('An error has occurred. Please try again')
-    }
-    const verifyUserResponseData = await verifyUserResponse.json()
-    const verifyUserResponseDataSerialized = serializeVerifyUserResponse(
-      verifyUserResponseData,
-      jwt
-    )
-    return verifyUserResponseDataSerialized
+  if (!verifyUserResponse.ok) {
+    throw Error('An error has occurred. Please try again')
   }
-)
+  const verifyUserResponseData = await verifyUserResponse.json()
+  const verifyUserResponseDataSerialized = serializeVerifyUserResponse(
+    verifyUserResponseData,
+    jwt
+  )
+  return verifyUserResponseDataSerialized
+})
 
 export const usersSlice = createSlice({
   name: 'users',
