@@ -10,16 +10,25 @@ import {
   FormActionLink,
   FormActionText
 } from '../SingUpForm.styles'
+import { ProviderMock } from '../../../../../__mocks__/providerMock'
 
 describe('SignUpForm organism', () => {
   describe('render', () => {
-    const component = shallow(<SignUpForm />)
+    const component = shallow(
+      <ProviderMock>
+        <SignUpForm />
+      </ProviderMock>
+    )
     it('is expected to be rendered', () => {
       expect(component.length).toBe(1)
     })
   })
   describe('To have props', () => {
-    const component = mount(<SignUpForm />)
+    const component = mount(
+      <ProviderMock>
+        <SignUpForm />
+      </ProviderMock>
+    )
     it('is expected to have title text', () => {
       expect(component.find(FormTitle).text()).toBe(
         'A couple of clicks separate us from creating great events'
@@ -40,7 +49,11 @@ describe('SignUpForm organism', () => {
   })
   describe('handle submit', () => {
     test('is expeted to run submit function', async () => {
-      const { container } = render(<SignUpForm />)
+      const { container } = render(
+        <ProviderMock>
+          <SignUpForm />
+        </ProviderMock>
+      )
       const nameInput = container.querySelector("input[name='signUpFormName']")
       const organizationInput = container.querySelector(
         "input[name='signUpFormOrganization']"

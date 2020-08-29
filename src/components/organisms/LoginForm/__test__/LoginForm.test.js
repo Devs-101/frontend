@@ -11,17 +11,25 @@ import {
   FormActionText
 } from '../../SignUpForm/SingUpForm.styles'
 import { FormField } from '../../../molecules'
-// import { Button } from '../../../atoms'
+import { ProviderMock } from '../../../../../__mocks__/providerMock'
 
 describe('LoginForm organism', () => {
   describe('render', () => {
-    const component = shallow(<LoginForm />)
+    const component = shallow(
+      <ProviderMock>
+        <LoginForm />
+      </ProviderMock>
+    )
     it('is expected to be rendered', () => {
       expect(component.length).toBe(1)
     })
   })
   describe('To have props', () => {
-    const component = mount(<LoginForm />)
+    const component = mount(
+      <ProviderMock>
+        <LoginForm />
+      </ProviderMock>
+    )
     it('is expected to have title text', () => {
       expect(component.find(LoginFormTitle).text()).toBe(loginFormData.title)
     })
@@ -40,7 +48,11 @@ describe('LoginForm organism', () => {
   })
   describe('handle submit', () => {
     test('is expeted to run submit function', async () => {
-      const { container } = render(<LoginForm />)
+      const { container } = render(
+        <ProviderMock>
+          <LoginForm />
+        </ProviderMock>
+      )
       const emailInput = container.querySelector("input[name='loginFormEmail']")
       const passwordInput = container.querySelector(
         "input[name='loginFormPassword']"

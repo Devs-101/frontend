@@ -1,14 +1,30 @@
-const API_URL = process.env.API_URL
+import { config } from '../config'
 
 export function signupUser(userSignupData) {
-  return fetch(`${API_URL}/auth/register`, {
+  return fetch(`${config.API_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: userSignupData
+    body: JSON.stringify(userSignupData)
   })
-    .then(response => response.json())
-    .then(data => data)
-    .catch(err => err)
+}
+
+export function loginUser(userLoginData) {
+  return fetch(`${config.API_URL}/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userLoginData)
+  })
+}
+
+export function verifyUser(token) {
+  return fetch(`${config.API_URL}/auth/me`, {
+    method: 'POST',
+    headers: {
+      'x-access-token': token
+    }
+  })
 }
