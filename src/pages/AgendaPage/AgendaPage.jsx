@@ -1,6 +1,6 @@
 import React from 'react'
 import { AgendaStyled, ContainerStyled } from './AgendaPage.styles'
-import { HomeTemplate } from '../../templates'
+import { MainTemplate } from '../../templates'
 import { AgendaCard } from '../../components/organisms/'
 
 const MOCKS = [
@@ -26,7 +26,7 @@ const MOCKS = [
 
 export function AgendaPage() {
   return (
-    <HomeTemplate>
+    <MainTemplate title="Agenda" button="Add">
       <AgendaStyled>
         <main>
           <ContainerStyled>
@@ -41,6 +41,6 @@ export function AgendaPage() {
           </ContainerStyled>
         </main>
       </AgendaStyled>
-    </HomeTemplate>
+    </MainTemplate>
   )
 }

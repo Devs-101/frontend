@@ -57,3 +57,6 @@ export const Main = styled.main`
     display: flex;
   `}
 `
+export const MainContentStyled = styled.div`
+  width: 100%;
+`
