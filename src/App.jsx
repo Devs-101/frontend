@@ -5,7 +5,8 @@ import {
   HomePage,
   SponsorPage,
   SpeakerPage,
-  AgendaPage
+  AgendaPage,
+  BroadcastPage
 } from './pages'
 
 export function App() {
@@ -17,6 +18,7 @@ export function App() {
         <Route path="/agenda" component={AgendaPage} />
         <Route path="/speaker" component={SpeakerPage} />
         <Route path="/sponsor" component={SponsorPage} />
+        <Route path="/broadcast" component={BroadcastPage} />
       </Switch>
     </Router>
   )
