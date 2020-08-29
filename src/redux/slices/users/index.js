@@ -40,7 +40,7 @@ export const loginUserAsync = createAsyncThunk(
     }
     const loginResponseData = await loginResponse.json()
 
-    return loginResponseData
+    return loginResponseData.data
   }
 )
 

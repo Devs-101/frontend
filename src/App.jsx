@@ -17,7 +17,7 @@ import {
 
 function PrivateRoute({ children, ...rest }) {
   const jwt = window.sessionStorage.getItem('jwt')
-  const isAuthenticated = jwt
+  const isAuthenticated = !!jwt && jwt !== 'undefined'
 
   return (
     <Route
@@ -33,6 +33,20 @@ function PrivateRoute({ children, ...rest }) {
             }}
           />
         )
+      }
+    />
+  )
+}
+
+function AuthRoute({ children, ...rest }) {
+  const jwt = window.sessionStorage.getItem('jwt')
+  const isAuthenticated = !!jwt && jwt !== 'undefined'
+
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        !isAuthenticated ? children : <Redirect to="/" />
       }
     />
   )
@@ -60,7 +74,9 @@ export function App() {
         <PrivateRoute path="/broadcast">
           <BroadcastPage />
         </PrivateRoute>
-        <Route path="/join" component={AuthPage} />
+        <AuthRoute path="/join">
+          <AuthPage />
+        </AuthRoute>
       </Switch>
     </Router>
   )
