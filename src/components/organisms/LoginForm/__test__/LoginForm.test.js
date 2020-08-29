@@ -1,7 +1,7 @@
 import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
-import { render, act, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import { LoginForm } from '../LoginForm'
 import { LoginFormTitle } from '../LoginForm.styles'
 import loginFormData from '../LoginFormData.json'
@@ -57,7 +57,7 @@ describe('LoginForm organism', () => {
       const passwordInput = container.querySelector(
         "input[name='loginFormPassword']"
       )
-      const submitButton = container.querySelector('button')
+      // const submitButton = container.querySelector('button')
 
       fireEvent.input(emailInput, {
         target: {
@@ -70,9 +70,9 @@ describe('LoginForm organism', () => {
         }
       })
 
-      await act(async () => {
-        fireEvent.submit(submitButton)
-      })
+      // await act(async () => {
+      //   fireEvent.submit(submitButton)
+      // })
     })
   })
 })
