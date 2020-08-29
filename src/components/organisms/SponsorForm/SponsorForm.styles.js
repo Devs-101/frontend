@@ -48,6 +48,7 @@ export const FormStyled = styled.form`
 export const SubmitSection = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 24px;
   margin-bottom: 45px;
 
   ${breakpoint.md`
