@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
+import { colors } from '../../../styles/colors'
 
 export const TitlePageStyled = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ export const TitlePageStyled = styled.div`
   align-items: center;
   width: 100%;
   height: 60px;
+  background-color: ${colors.white};
   box-shadow: 0px 3px 6px #00000029;
 
   h3 {
