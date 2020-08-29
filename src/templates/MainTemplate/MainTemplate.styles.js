@@ -51,5 +51,9 @@ export const IconStyled = styled.p`
   cursor: pointer;
 `
 export const Main = styled.main`
-  display: flex;
+  display: block;
+  width: 100%;
+  ${breakpoint.md`
+    display: flex;
+  `}
 `

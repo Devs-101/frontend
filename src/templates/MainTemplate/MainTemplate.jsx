@@ -9,8 +9,9 @@ import {
 } from './MainTemplate.styles'
 import { NavBar } from '../../components/organisms'
 import { Icon } from '../../components/atoms'
+import { TitlePage } from '../../components/molecules'
 
-export function MainTemplate({ children }) {
+export function MainTemplate({ children, title, button }) {
   return (
     <MainTemplateStyled>
       <HeaderStyled>
@@ -27,7 +28,7 @@ export function MainTemplate({ children }) {
       </HeaderStyled>
       <Main>
         <NavBar />
-        {children}
+        <TitlePage title={title} button={button} />
       </Main>
     </MainTemplateStyled>
   )
