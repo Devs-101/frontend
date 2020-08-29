@@ -5,6 +5,7 @@ import { render, fireEvent } from '@testing-library/react'
 import { LoginForm } from '../LoginForm'
 import { LoginFormTitle } from '../LoginForm.styles'
 import loginFormData from '../LoginFormData.json'
+import { serializeLoginFormData } from '../helpers'
 import {
   SubmitSection,
   FormActionLink,
@@ -74,5 +75,20 @@ describe('LoginForm organism', () => {
       //   fireEvent.submit(submitButton)
       // })
     })
+  })
+})
+
+describe('serializeLoginFormData helper', () => {
+  test('it returns the parsed data', () => {
+    const unparsedData = {
+      loginFormEmail: 'email@example.com',
+      loginFormPassword: 'supersecure'
+    }
+    const expected = {
+      email: unparsedData.loginFormEmail,
+      password: unparsedData.loginFormPassword
+    }
+
+    expect(serializeLoginFormData(unparsedData)).toEqual(expected)
   })
 })
