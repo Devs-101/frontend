@@ -2,6 +2,7 @@ import React from 'react'
 import { AgendaStyled, ContainerStyled } from './AgendaPage.styles'
 import { MainTemplate } from '../../templates'
 import { AgendaCard } from '../../components/organisms/'
+import { TitlePage } from '../../components/molecules'
 
 const MOCKS = [
   {
@@ -26,7 +27,8 @@ const MOCKS = [
 
 export function AgendaPage() {
   return (
-    <MainTemplate title="Agenda" button="Add">
+    <MainTemplate>
+      <TitlePage title="Agenda" button="Add" />
       <AgendaStyled>
         <main>
           <ContainerStyled>
