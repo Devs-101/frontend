@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { BroadcastCard } from '../BroadcastCard'
 import { BroadcastCardDate, BroadcastCardTitle } from '../BroadcastCard.styles'
+import { Icon } from '../../../atoms'
 
 describe('BroadcastCard organism', () => {
   describe('render', () => {
@@ -18,8 +19,8 @@ describe('BroadcastCard organism', () => {
           message="message"
         />
       )
-      it('Is expect to have image', () => {
-        expect(component.find('img').prop('src')).toBe('img')
+      it('Is expect to have Icon component', () => {
+        expect(component.find(Icon).length).toBe(1)
       })
       it('Is expect to have title', () => {
         expect(component.find(BroadcastCardTitle).text()).toBe('title')

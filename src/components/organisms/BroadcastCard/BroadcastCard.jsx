@@ -7,7 +7,7 @@ import {
 } from './BroadcastCard.styles'
 import { Icon } from '../../atoms'
 
-export function BroadcastCard({ avatar, date, title, message }) {
+export function BroadcastCard({ date, title, message }) {
   return (
     <BroadcastCardStyled>
       <Icon className="fas fa-envelope" size={30} />
