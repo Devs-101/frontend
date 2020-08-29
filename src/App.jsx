@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { AuthPage, HomePage, SponsorPage } from './pages'
+import { AuthPage, HomePage, SponsorPage, SpeakerPage } from './pages'
 
 export function App() {
   return (
@@ -8,6 +8,7 @@ export function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/join" component={AuthPage} />
+        <Route path="/speaker" component={SpeakerPage} />
         <Route path="/sponsor" component={SponsorPage} />
       </Switch>
     </Router>
