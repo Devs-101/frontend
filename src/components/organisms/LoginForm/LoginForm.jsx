@@ -31,9 +31,7 @@ export function LoginForm({ onFormChange }) {
         window.sessionStorage.setItem('jwt', token)
         return token
       })
-      .then(token => {
-        dispatch(verifyUserAsync(token))
-      })
+      .then(token => dispatch(verifyUserAsync(token)))
       .then(() => replace(from))
   }
 
