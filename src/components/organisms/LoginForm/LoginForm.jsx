@@ -28,8 +28,11 @@ export function LoginForm({ onFormChange }) {
       .then(unwrapResult)
       .then(originalResponse => {
         const { token } = originalResponse
-        window.sessionStorage.setItem('jwt', token)
-        return token
+        if (token) {
+          window.sessionStorage.setItem('jwt', token)
+          return token
+        }
+        throw Error('An error has occurred')
       })
       .then(token => dispatch(verifyUserAsync(token)))
       .then(() => replace(from))
