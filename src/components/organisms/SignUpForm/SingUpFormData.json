@@ -1,0 +1,31 @@
+{
+  "title": "A couple of clicks separate us from creating great events",
+  "button": "Sign Up",
+  "fields": [
+    {
+      "label": "Name",
+      "id": "signUpFormName",
+      "type": "text"
+    },
+    {
+      "label": "Organization",
+      "id": "signUpFormOrganization",
+      "type": "text"
+    },
+    {
+      "label": "Email",
+      "id": "signUpFormEmail",
+      "type": "email"
+    },
+    {
+      "label": "Password",
+      "id": "signUpFormPassword",
+      "type": "password"
+    },
+    {
+      "label": "Confirm Password",
+      "id": "signUpFormConfirmPassword",
+      "type": "password"
+    }
+  ]
+}

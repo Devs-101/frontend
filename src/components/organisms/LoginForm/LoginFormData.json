@@ -1,0 +1,16 @@
+{
+  "title": "Login and connect with your audience",
+  "button": "Sign In",
+  "fields": [
+    {
+      "label": "Email",
+      "id": "loginFormEmail",
+      "type": "email"
+    },
+    {
+      "label": "Password",
+      "id": "loginFormPassword",
+      "type": "password"
+    }
+  ]
+}
