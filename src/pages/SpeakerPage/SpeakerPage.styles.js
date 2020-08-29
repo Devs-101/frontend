@@ -30,7 +30,7 @@ export const ContainerStyled = styled.div`
   gap: 24px;
   padding: 50px 30px 30px 30px;
   background-color: ${colors.grey};
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   ${breakpoint.md`
     grid-template-columns: 1fr 1fr 1fr;

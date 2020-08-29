@@ -1,6 +1,6 @@
 import React from 'react'
 import { HomeStyled, ContainerStyled } from './SpeakerPage.styles'
-import { HomeTemplate } from '../../templates'
+import { MainTemplate } from '../../templates'
 import { SpeakerCard } from '../../components/organisms/SpeakerCard'
 
 const MOCKS = [
@@ -40,7 +40,7 @@ const MOCKS = [
 
 export function SpeakerPage() {
   return (
-    <HomeTemplate>
+    <MainTemplate title="Agenda" button="Add">
       <HomeStyled>
         <main>
           <ContainerStyled>
@@ -57,6 +57,6 @@ export function SpeakerPage() {
           </ContainerStyled>
         </main>
       </HomeStyled>
-    </HomeTemplate>
+    </MainTemplate>
   )
 }
