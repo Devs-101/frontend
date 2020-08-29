@@ -5,7 +5,14 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import { AuthPage, HomePage } from './pages'
+import {
+  AuthPage,
+  HomePage,
+  SponsorPage,
+  SpeakerPage,
+  AgendaPage,
+  BroadcastPage
+} from './pages'
 
 function PrivateRoute({ children, ...rest }) {
   const jwt = window.sessionStorage.getItem('jwt')
@@ -38,6 +45,10 @@ export function App() {
           <HomePage />
         </PrivateRoute>
         <Route path="/join" component={AuthPage} />
+        <Route path="/agenda" component={AgendaPage} />
+        <Route path="/speaker" component={SpeakerPage} />
+        <Route path="/sponsor" component={SponsorPage} />
+        <Route path="/broadcast" component={BroadcastPage} />
       </Switch>
     </Router>
   )
