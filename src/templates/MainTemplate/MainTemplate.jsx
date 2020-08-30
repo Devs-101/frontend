@@ -25,7 +25,7 @@ export function MainTemplate({ children, title, button }) {
         <NavbarHeader>
           <h3></h3>
           <IconStyled>
-            <Link to="*">
+            <Link to="/account">
               <Icon className="fas fa-user-circle" size={22} />
             </Link>
           </IconStyled>
