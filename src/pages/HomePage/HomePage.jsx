@@ -1,22 +1,37 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllEventsAsync } from '../../redux/slices/events'
 import { HomeStyled, HomeTitle } from './HomePage.styles'
 import { Button } from '../../components/atoms'
 import { HomeTemplate } from '../../templates'
 import { EventCard } from '../../components/organisms'
 
-const MOCKS = [
-  {
-    id: '1',
-    imageUrl: '',
-    eventName: 'El Evento',
-    eventDescription:
-      'Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, ',
-    attendeeCounter: '25',
-    eventDate: '25 / 04 / 2020'
-  }
-]
-
 export function HomePage() {
+  const dispatch = useDispatch()
+  const {
+    eventsIds,
+    eventsById,
+    eventsLoading,
+    eventsError,
+    organizationId,
+    organizationIdLoading,
+    organizationIdError
+  } = useSelector(state => {
+    return {
+      eventsIds: state.events.ids,
+      eventsById: state.events.entities,
+      eventsLoading: state.events.loading,
+      eventsError: state.events.error,
+      organizationId: state.users.organizationInfo.id,
+      organizationIdLoading: state.users.loading,
+      organizationIdError: state.users.error
+    }
+  })
+
+  React.useEffect(() => {
+    dispatch(getAllEventsAsync(organizationId))
+  }, [organizationId])
+
   return (
     <HomeTemplate>
       <HomeStyled>
@@ -24,18 +39,27 @@ export function HomePage() {
           <h3>Your Events</h3>
           <Button>Add Event</Button>
         </HomeTitle>
-        <main>
-          {MOCKS.map(event => (
-            <EventCard
-              key={event.id}
-              imageUrl={event.imageUrl}
-              eventName={event.eventName}
-              eventDescription={event.eventDescription}
-              attendeeCounter={event.attendeeCounter}
-              eventDate={event.eventDate}
-            />
-          ))}
-        </main>
+        {eventsLoading || organizationIdLoading ? (
+          <h1>Loading...</h1>
+        ) : !!eventsError || organizationIdError ? (
+          <h1>Error</h1>
+        ) : (
+          <main>
+            {eventsIds.map(eventId => {
+              const event = eventsById[eventId]
+              return (
+                <EventCard
+                  key={eventId}
+                  imageUrl={event.imageUrl}
+                  eventName={event.name}
+                  eventDescription={event.description}
+                  attendeeCounter={event.attendeeCounter}
+                  eventDate={event.eventDate}
+                />
+              )
+            })}
+          </main>
+        )}
       </HomeStyled>
     </HomeTemplate>
   )

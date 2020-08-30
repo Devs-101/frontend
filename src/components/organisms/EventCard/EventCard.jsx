@@ -20,10 +20,7 @@ export function EventCard({
   return (
     <EventCardStyled>
       <EventImage>
-        <img
-          src={imageUrl || ConferencePlaceHolder}
-          alt="ConferencePlaceHolder"
-        />
+        <img src={imageUrl || ConferencePlaceHolder} alt={eventName} />
       </EventImage>
       <EventTitle>{eventName}</EventTitle>
       <EventDescription>{eventDescription}</EventDescription>

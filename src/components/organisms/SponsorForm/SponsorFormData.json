@@ -1,0 +1,17 @@
+{
+  "title": "Sponsor",
+  "buttonCancel": "Cancel",
+  "buttonSave": "Save",
+  "fields": [
+    {
+      "label": "Name:",
+      "id": "SponsorFormName",
+      "type": "text"
+    },
+    {
+      "label": "Url",
+      "id": "SponsorFormUrl",
+      "type": "text"
+    }
+  ]
+}

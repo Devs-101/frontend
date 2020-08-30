@@ -1,0 +1,33 @@
+{
+  "title": "Speaker",
+  "buttonCancel": "Cancel",
+  "buttonAdd": "Add",
+  "buttonSave": "Save",
+  "fields": [
+    {
+      "label": "",
+      "id": "SpeakerFormLogo",
+      "type": "file"
+    },
+    {
+      "label": "Name:",
+      "id": "SpeakerFormName",
+      "type": "text"
+    },
+    {
+      "label": "Rol",
+      "id": "SpeakerFormRol",
+      "type": "text"
+    },
+    {
+      "label": "Bio:",
+      "id": "SpeakerFormBio",
+      "type": "textarea"
+    },
+    {
+      "label": "Twitter",
+      "id": "SpeakerFormTwitter",
+      "type": "text"
+    }
+  ]
+}

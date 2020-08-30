@@ -25,6 +25,11 @@ export const LogoHeader = styled.div`
     margin-right: 10px;
   }
 
+  a {
+    color: ${colors.white};
+    text-decoration: none;
+  }
+
   ${breakpoint.sm`
     h1{
       font-size: 30px;
@@ -49,6 +54,11 @@ export const NavbarHeader = styled.nav`
 
 export const IconStyled = styled.p`
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: ${colors.white};
+  }
 `
 export const Main = styled.main`
   display: block;
