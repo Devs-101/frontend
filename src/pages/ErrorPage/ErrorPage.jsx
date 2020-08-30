@@ -9,7 +9,6 @@ export function ErrorPage() {
       <ErrorStyled>
         <main>
           <h1>Error 404</h1>
-          <h1>ups!</h1>
           <img src={ErrorImg} alt="" />
         </main>
       </ErrorStyled>

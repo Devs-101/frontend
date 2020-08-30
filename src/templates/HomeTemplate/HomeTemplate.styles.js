@@ -53,4 +53,9 @@ export const NavbarHeader = styled.nav`
 
 export const IconStyled = styled.p`
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: ${colors.white};
+  }
 `
