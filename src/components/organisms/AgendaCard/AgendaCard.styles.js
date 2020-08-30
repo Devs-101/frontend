@@ -8,6 +8,7 @@ export const AgendaCardStyled = styled.div`
   padding: 30px 16px 30px 24px;
   background: ${colors.white};
   color: ${colors.primary};
+  margin-bottom: 15px;
 
   figure {
     margin: auto;
