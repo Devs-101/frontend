@@ -12,7 +12,8 @@ import {
   SpeakerPage,
   AgendaPage,
   BroadcastPage,
-  EventInfoPage
+  EventInfoPage,
+  ErrorPage
 } from './pages'
 
 function PrivateRoute({ children, ...rest }) {
@@ -77,6 +78,9 @@ export function App() {
         <AuthRoute path="/join">
           <AuthPage />
         </AuthRoute>
+        <Route path="*">
+          <ErrorPage />
+        </Route>
       </Switch>
     </Router>
   )
