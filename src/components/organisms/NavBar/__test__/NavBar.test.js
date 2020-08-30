@@ -1,11 +1,11 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { ProviderMock } from '../../../../../__mocks__/providerMock'
 import { NavBar } from '../NavBar'
 
 describe('NavBar organism', () => {
   describe('render', () => {
-    const component = shallow(
+    const component = mount(
       <ProviderMock>
         <NavBar />
       </ProviderMock>
