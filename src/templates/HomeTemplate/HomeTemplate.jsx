@@ -20,8 +20,11 @@ export function HomeTemplate({ children }) {
         </LogoHeader>
         <NavbarHeader>
           <h3></h3>
+
           <IconStyled>
-            <Icon className="fas fa-user-circle" size={22} />
+            <Link to="*">
+              <Icon className="fas fa-user-circle" size={22} />
+            </Link>
           </IconStyled>
         </NavbarHeader>
       </HomeTemplateStyled>

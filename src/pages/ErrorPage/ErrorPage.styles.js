@@ -3,15 +3,13 @@ import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
 export const ErrorStyled = styled.div`
-  width: 100%;
-  height: 60%;
   align-items: center;
   justify-content: center;
   padding: 24px 0;
   display: flex;
 
   img {
-    height: 300px;
+    width: 100%;
   }
 
   h1 {
@@ -23,14 +21,12 @@ export const ErrorStyled = styled.div`
   }
 
   ${breakpoint.sm`
-    width: 100%;
-    height: 60%;
+    display: flex;
     align-items: center;
     justify-content: center;
 
     img {
     width: 100%;
-    height: 100%;
   }
 
   h1 {
