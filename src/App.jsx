@@ -13,7 +13,8 @@ import {
   AgendaPage,
   BroadcastPage,
   EventInfoPage,
-  ErrorPage
+  ErrorPage,
+  AccountPage
 } from './pages'
 
 function PrivateRoute({ children, ...rest }) {
@@ -74,6 +75,9 @@ export function App() {
         </PrivateRoute>
         <PrivateRoute path="/broadcast">
           <BroadcastPage />
+        </PrivateRoute>
+        <PrivateRoute path="/account">
+          <AccountPage />
         </PrivateRoute>
         <AuthRoute path="/join">
           <AuthPage />
