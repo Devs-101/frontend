@@ -3,6 +3,7 @@ import { colors } from '../../../styles/colors'
 import breakpoint from '../../../styles/breakpoints'
 
 export const EventCardStyled = styled.div`
+  cursor: pointer;
   width: 100%;
   height: fit-content;
   min-height: 400px;
