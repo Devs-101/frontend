@@ -5,13 +5,13 @@ import { Provider } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import { rootReducer } from '../src/redux/slices'
 
-const store = configureStore({
+export const mockStore = configureStore({
   reducer: rootReducer
 })
 const history = createBrowserHistory()
 
 export const ProviderMock = ({ children }) => (
-  <Provider store={store}>
+  <Provider store={mockStore}>
     <Router history={history}>{children}</Router>
   </Provider>
 )
