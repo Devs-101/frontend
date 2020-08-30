@@ -7,7 +7,8 @@ import {
   EventTitle,
   EventDescription,
   EventAttendeeCounter,
-  EventDate
+  EventDate,
+  EventCardStyled
 } from '../EventCard.styes'
 
 describe('EventCard organism', () => {
@@ -51,5 +52,21 @@ describe('to have props', () => {
 
   it('is expected to have eventDate', () => {
     expect(component.find(EventDate).text()).toBe('eventDate')
+  })
+  describe('Events', () => {
+    test('handleClick', () => {
+      const component = mount(
+        <ProviderMock>
+          <EventCard
+            eventName="eventName"
+            eventDescription="eventDescription"
+            attendeeCounter="attendeeCounter"
+            eventDate="eventDate"
+          />
+        </ProviderMock>
+      )
+      const eventCardStyled = component.find(EventCardStyled)
+      eventCardStyled.simulate('click')
+    })
   })
 })
