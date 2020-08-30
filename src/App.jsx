@@ -5,6 +5,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {
   AuthPage,
   HomePage,
@@ -15,6 +16,7 @@ import {
   EventInfoPage,
   ErrorPage
 } from './pages'
+import { verifyUserAsync } from './redux/slices/users'
 
 function PrivateRoute({ children, ...rest }) {
   const jwt = window.sessionStorage.getItem('jwt')
@@ -54,6 +56,12 @@ function AuthRoute({ children, ...rest }) {
 }
 
 export function App() {
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(verifyUserAsync())
+  }, [])
+
   return (
     <Router>
       <Switch>
