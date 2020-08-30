@@ -10,7 +10,7 @@ const MOCKS = [
     imageUrl: '',
     eventName: 'El Evento',
     eventDescription:
-      'Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, ',
+      'Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!, Este es un evento muy bueno!!!!',
     attendeeCounter: '25',
     eventDate: '25 / 04 / 2020'
   }

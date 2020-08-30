@@ -1,5 +1,4 @@
 import React from 'react'
-import { unwrapResult } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
 import { Button } from '../../atoms/Button/Button'
@@ -25,16 +24,7 @@ export function LoginForm({ onFormChange }) {
     const loginFormDataSerialized = serializeLoginFormData(loginFormData)
     const { from } = state || { from: { pathname: '/' } }
     dispatch(loginUserAsync(loginFormDataSerialized))
-      .then(unwrapResult)
-      .then(originalResponse => {
-        const { token } = originalResponse
-        if (token) {
-          window.sessionStorage.setItem('jwt', token)
-          return token
-        }
-        throw Error('An error has occurred')
-      })
-      .then(token => dispatch(verifyUserAsync(token)))
+      .then(() => dispatch(verifyUserAsync()))
       .then(() => replace(from))
   }
 

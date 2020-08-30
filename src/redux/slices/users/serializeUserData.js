@@ -3,24 +3,54 @@ export function serializeSignupData(userData) {
     email: userData.email,
     password: userData.password,
     confirm_password: userData.confirmPassword,
-    user_name: userData.userName,
+    name: userData.userName,
     organization_name: userData.organizationName
   }
 }
 
 export function serializeSignupResponse(signupResponse) {
+  const {
+    data: { user, organization, token }
+  } = signupResponse
   return {
-    jwt: signupResponse.token,
-    userId: signupResponse.data._id,
-    email: signupResponse.data.email,
-    name: signupResponse.data.name
+    userInfo: {
+      jwt: token,
+      userId: user._id,
+      email: user.email,
+      name: user.name
+    },
+    organizationInfo: {
+      id: organization._id,
+      name: organization.name,
+      slug: organization.slug
+    }
   }
 }
 
-export function serializeVerifyUserResponse(verifyUserResponseData) {
+export function serializeLoginResponse(loginResponse) {
+  const {
+    data: { token }
+  } = loginResponse
+
+  return token
+}
+
+export function serializeVerifyUserResponse(verifyUserResponseData, token) {
+  const {
+    data: { user, organization }
+  } = verifyUserResponseData
+
   return {
-    userId: verifyUserResponseData.user._id,
-    email: verifyUserResponseData.user.email,
-    name: verifyUserResponseData.user.name
+    userInfo: {
+      jwt: token,
+      userId: user._id,
+      email: user.email,
+      name: user.name
+    },
+    organizationInfo: {
+      id: organization[0]._id,
+      name: organization[0].name,
+      slug: organization[0].slug
+    }
   }
 }
