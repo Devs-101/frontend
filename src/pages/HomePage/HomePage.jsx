@@ -1,19 +1,16 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllEventsAsync } from '../../redux/slices/events'
+import { useSelector } from 'react-redux'
 import { HomeStyled, HomeTitle } from './HomePage.styles'
 import { Button } from '../../components/atoms'
 import { HomeTemplate } from '../../templates'
 import { EventCard } from '../../components/organisms'
 
 export function HomePage() {
-  const dispatch = useDispatch()
   const {
     eventsIds,
     eventsById,
     eventsLoading,
     eventsError,
-    organizationId,
     organizationIdLoading,
     organizationIdError
   } = useSelector(state => {
@@ -22,15 +19,10 @@ export function HomePage() {
       eventsById: state.events.entities,
       eventsLoading: state.events.loading,
       eventsError: state.events.error,
-      organizationId: state.users.organizationInfo.id,
       organizationIdLoading: state.users.loading,
       organizationIdError: state.users.error
     }
   })
-
-  React.useEffect(() => {
-    dispatch(getAllEventsAsync(organizationId))
-  }, [organizationId])
 
   return (
     <HomeTemplate>
@@ -50,6 +42,7 @@ export function HomePage() {
               return (
                 <EventCard
                   key={eventId}
+                  eventId={eventId}
                   imageUrl={event.imageUrl}
                   eventName={event.name}
                   eventDescription={event.description}
