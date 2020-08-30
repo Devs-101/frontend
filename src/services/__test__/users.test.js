@@ -4,7 +4,7 @@ const signupDataRequestBody = {
   email: 'yourname@gmail.com',
   password: '123456',
   confirm_password: '123456',
-  user_name: 'Me Name Here',
+  name: 'Me Name Here',
   organization_name: 'Devs 101'
 }
 

@@ -5,18 +5,23 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {
   AuthPage,
   HomePage,
   SponsorPage,
   SpeakerPage,
   AgendaPage,
-  BroadcastPage
+  BroadcastPage,
+  EventInfoPage,
+  ErrorPage,
+  AccountPage
 } from './pages'
+import { verifyUserAsync } from './redux/slices/users'
 
 function PrivateRoute({ children, ...rest }) {
   const jwt = window.sessionStorage.getItem('jwt')
-  const isAuthenticated = jwt
+  const isAuthenticated = !!jwt && jwt !== 'undefined'
 
   return (
     <Route
@@ -37,18 +42,57 @@ function PrivateRoute({ children, ...rest }) {
   )
 }
 
+function AuthRoute({ children, ...rest }) {
+  const jwt = window.sessionStorage.getItem('jwt')
+  const isAuthenticated = !!jwt && jwt !== 'undefined'
+
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        !isAuthenticated ? children : <Redirect to="/" />
+      }
+    />
+  )
+}
+
 export function App() {
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(verifyUserAsync())
+  }, [])
+
   return (
     <Router>
       <Switch>
         <PrivateRoute exact path="/">
           <HomePage />
         </PrivateRoute>
-        <Route path="/join" component={AuthPage} />
-        <Route path="/agenda" component={AgendaPage} />
-        <Route path="/speaker" component={SpeakerPage} />
-        <Route path="/sponsor" component={SponsorPage} />
-        <Route path="/broadcast" component={BroadcastPage} />
+        <PrivateRoute path="/event-info">
+          <EventInfoPage />
+        </PrivateRoute>
+        <PrivateRoute path="/agenda">
+          <AgendaPage />
+        </PrivateRoute>
+        <PrivateRoute path="/speaker">
+          <SpeakerPage />
+        </PrivateRoute>
+        <PrivateRoute path="/sponsor">
+          <SponsorPage />
+        </PrivateRoute>
+        <PrivateRoute path="/broadcast">
+          <BroadcastPage />
+        </PrivateRoute>
+        <PrivateRoute path="/account">
+          <AccountPage />
+        </PrivateRoute>
+        <AuthRoute path="/join">
+          <AuthPage />
+        </AuthRoute>
+        <Route path="*">
+          <ErrorPage />
+        </Route>
       </Switch>
     </Router>
   )
