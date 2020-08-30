@@ -22,7 +22,7 @@ export function HomeTemplate({ children }) {
           <h3></h3>
 
           <IconStyled>
-            <Link to="*">
+            <Link to="/account">
               <Icon className="fas fa-user-circle" size={22} />
             </Link>
           </IconStyled>

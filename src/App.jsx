@@ -14,7 +14,8 @@ import {
   AgendaPage,
   BroadcastPage,
   EventInfoPage,
-  ErrorPage
+  ErrorPage,
+  AccountPage
 } from './pages'
 import { verifyUserAsync } from './redux/slices/users'
 
@@ -82,6 +83,9 @@ export function App() {
         </PrivateRoute>
         <PrivateRoute path="/broadcast">
           <BroadcastPage />
+        </PrivateRoute>
+        <PrivateRoute path="/account">
+          <AccountPage />
         </PrivateRoute>
         <AuthRoute path="/join">
           <AuthPage />

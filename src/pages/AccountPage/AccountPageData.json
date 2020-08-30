@@ -1,0 +1,21 @@
+{
+  "title": "Your account",
+  "button": "Save",
+  "fields": [
+    {
+      "label": "Name:",
+      "id": "DetailsFormName",
+      "type": "text"
+    },
+    {
+      "label": "Email:",
+      "id": "DetailsFormEmail",
+      "type": "email"
+    },
+    {
+      "label": "Organization:",
+      "id": "DetailsFormEmail",
+      "type": "email"
+    }
+  ]
+}
