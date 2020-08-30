@@ -18,6 +18,12 @@ export const HomeTemplateStyled = styled.header`
 export const LogoHeader = styled.div`
   display: flex;
   align-items: center;
+
+  a {
+    color: ${colors.white};
+    text-decoration: none;
+  }
+
   h1 {
     font-size: 16px;
     margin-right: 10px;
