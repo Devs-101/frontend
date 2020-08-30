@@ -8,6 +8,7 @@ import {
   SpeakerCardData
 } from './SpeakerCard.styles'
 import UserPic from '../../../assets/images/userplaceholder.jpg'
+import { Icon } from '../../atoms'
 
 export function SpeakerCard({
   imageUrl,
@@ -25,7 +26,10 @@ export function SpeakerCard({
         <SpeakerName>{speakerName}</SpeakerName>
         <SpeakerRol>{speakerRol}</SpeakerRol>
         <SpeakerBio>{speakerBio}</SpeakerBio>
-        <SpeakerTwitter>{speakerTwitter}</SpeakerTwitter>
+        <SpeakerTwitter>
+          <Icon className="fab fa-twitter" size={20} color="#0077FF" />
+          <p>{speakerTwitter}</p>
+        </SpeakerTwitter>
       </SpeakerCardData>
     </SpeakerCardStyled>
   )
