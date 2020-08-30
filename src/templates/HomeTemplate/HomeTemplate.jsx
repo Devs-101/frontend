@@ -6,13 +6,16 @@ import {
   IconStyled
 } from './HomeTemplate.styles'
 import { Icon } from '../../components/atoms'
+import { Link } from 'react-router-dom'
 
 export function HomeTemplate({ children }) {
   return (
     <>
       <HomeTemplateStyled>
         <LogoHeader>
-          <h1>oneEvent</h1>
+          <Link to="/">
+            <h1>oneEvent</h1>
+          </Link>
           <Icon className="fas fa-ticket-alt" size={18} />
         </LogoHeader>
         <NavbarHeader>
