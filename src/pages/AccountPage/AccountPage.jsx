@@ -8,7 +8,10 @@ export function AccountPage() {
   return (
     <HomeTemplate>
       <HomeStyled>
-        <TitlePage title="Account" button="Add" />
+        <TitlePage
+          title={AccountPageData.title}
+          button={AccountPageData.button}
+        />
         <main>
           <Container>
             {AccountPageData.fields.map(field => (

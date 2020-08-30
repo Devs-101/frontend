@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { AccountPage } from '../AccountPage'
 
-describe('HomePage Page', () => {
+describe('Account Page', () => {
   describe('Render', () => {
     const component = shallow(<AccountPage />)
     it('Is expected to be rendered', () => {
