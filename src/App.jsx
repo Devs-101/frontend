@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   AuthPage,
   HomePage,
@@ -18,6 +18,7 @@ import {
   AccountPage
 } from './pages'
 import { verifyUserAsync } from './redux/slices/users'
+import { getAllEventsAsync } from './redux/slices/events'
 
 function PrivateRoute({ children, ...rest }) {
   const jwt = window.sessionStorage.getItem('jwt')
@@ -58,10 +59,19 @@ function AuthRoute({ children, ...rest }) {
 
 export function App() {
   const dispatch = useDispatch()
+  const { organizationId } = useSelector(state => {
+    return {
+      organizationId: state.users.organizationInfo.id
+    }
+  })
 
   React.useEffect(() => {
     dispatch(verifyUserAsync())
   }, [])
+
+  React.useEffect(() => {
+    dispatch(getAllEventsAsync(organizationId))
+  }, [organizationId])
 
   return (
     <Router>
@@ -69,19 +79,19 @@ export function App() {
         <PrivateRoute exact path="/">
           <HomePage />
         </PrivateRoute>
-        <PrivateRoute path="/event-info">
+        <PrivateRoute path="/:eventId/event-info">
           <EventInfoPage />
         </PrivateRoute>
-        <PrivateRoute path="/agenda">
+        <PrivateRoute path="/:eventId/agenda">
           <AgendaPage />
         </PrivateRoute>
-        <PrivateRoute path="/speaker">
+        <PrivateRoute path="/:eventId/speaker">
           <SpeakerPage />
         </PrivateRoute>
-        <PrivateRoute path="/sponsor">
+        <PrivateRoute path="/:eventId/sponsor">
           <SponsorPage />
         </PrivateRoute>
-        <PrivateRoute path="/broadcast">
+        <PrivateRoute path="/:eventId/broadcast">
           <BroadcastPage />
         </PrivateRoute>
         <PrivateRoute path="/account">
