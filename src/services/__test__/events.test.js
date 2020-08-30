@@ -1,7 +1,8 @@
-import { getAllEvents, createEvent, updateEvent } from '../events'
+import { getAllEvents, createEvent, updateEvent, publishEvent } from '../events'
 
 const organizationId = '0rg4niz4710n1d'
 const token = 't0k3n5tr1ng'
+const eventId = '3v3n71d'
 const mockEventData = {
   eventStatus: false,
   countDown: true,
@@ -64,7 +65,7 @@ describe('Events services', () => {
       })
       test('it returns the data', () => {
         fetch.mockResponseOnce(() =>
-          createEvent(organizationId, token)
+          createEvent(mockEventData, organizationId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
@@ -85,7 +86,7 @@ describe('Events services', () => {
       })
       test('it fails with error', () => {
         fetch.mockResponseOnce(() =>
-          createEvent(organizationId, token)
+          createEvent(mockEventData, organizationId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
@@ -102,7 +103,7 @@ describe('Events services', () => {
       })
       test('it returns the data', () => {
         fetch.mockResponseOnce(() =>
-          updateEvent(organizationId, token)
+          updateEvent(mockEventData, organizationId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
@@ -123,11 +124,49 @@ describe('Events services', () => {
       })
       test('it fails with an error', () => {
         fetch.mockResponseOnce(() =>
-          updateEvent(organizationId, token)
+          updateEvent(mockEventData, undefined, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
         updateEvent(mockEventData, undefined, token).catch(error =>
+          expect(error).toEqual(Error('Please provide an organization Id'))
+        )
+      })
+    })
+  })
+  describe('publishEvent service', () => {
+    describe('When event id is defined', () => {
+      beforeEach(() => {
+        fetch.resetMocks()
+      })
+      test('it returns the data', () => {
+        fetch.mockResponseOnce(() =>
+          publishEvent(eventId, token)
+            .then(res => res.json())
+            .then(data => 'ok')
+        )
+        publishEvent(eventId, token).then(response =>
+          expect(response).toEqual('ok')
+        )
+      })
+      test('it fails with error message', () => {
+        fetch.mockReject(new Error('Error'))
+        updateEvent(eventId, token).catch(error =>
+          expect(error).toEqual(Error('Error'))
+        )
+      })
+    })
+    describe('When event id is undefined', () => {
+      beforeEach(() => {
+        fetch.resetMocks()
+      })
+      test('it fails with an error', () => {
+        fetch.mockResponseOnce(() =>
+          publishEvent(undefined, token)
+            .then(res => res.json())
+            .then(data => 'ok')
+        )
+        publishEvent(undefined, token).catch(error =>
           expect(error).toEqual(Error('Please provide an organization Id'))
         )
       })

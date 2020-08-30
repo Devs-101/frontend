@@ -37,3 +37,16 @@ export function updateEvent(eventInfo, organizationId, token) {
   }
   return Promise.reject(Error('Please provide an organization Id'))
 }
+
+export function publishEvent(eventId, token) {
+  if (eventId) {
+    return fetch(`${config.API_URL}/events/${eventId}/publish`, {
+      method: 'GET',
+      headers: {
+        'x-access-token': token
+      }
+    })
+  }
+
+  return Promise.reject(Error('Please provide an event Id'))
+}
