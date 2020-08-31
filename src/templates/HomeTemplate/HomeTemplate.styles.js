@@ -53,9 +53,14 @@ export const NavbarHeader = styled.nav`
 
 export const IconStyled = styled.p`
   cursor: pointer;
+  margin-right: 15px;
 
   a {
     text-decoration: none;
     color: ${colors.white};
   }
+`
+
+export const Logout = styled.p`
+  cursor: pointer;
 `

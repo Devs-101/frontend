@@ -54,6 +54,7 @@ export const NavbarHeader = styled.nav`
 
 export const IconStyled = styled.p`
   cursor: pointer;
+  margin-right: 15px;
 
   a {
     text-decoration: none;
@@ -74,4 +75,8 @@ export const MainContentStyled = styled.div`
   ${breakpoint.md`
     padding: 20px 100px;
   `}
+`
+
+export const Logout = styled.p`
+  cursor: pointer;
 `
