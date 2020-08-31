@@ -59,7 +59,7 @@ describe('Organizator Services', () => {
   })
 
   describe('updateOrganizators service', () => {
-    describe('When event id is defined', () => {
+    describe('When oeganizator id is defined', () => {
       beforeEach(() => {
         fetch.resetMocks()
       })
