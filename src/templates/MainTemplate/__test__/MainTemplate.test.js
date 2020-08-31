@@ -1,10 +1,15 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { MainTemplate } from '../MainTemplate'
+import { ProviderMock } from '../../../../__mocks__/providerMock'
 
 describe('MainTemplate template ', () => {
   describe('Render', () => {
-    const component = shallow(<MainTemplate />)
+    const component = mount(
+      <ProviderMock>
+        <MainTemplate />
+      </ProviderMock>
+    )
     it('Is expected to be rendered', () => {
       expect(component.length).toBe(1)
     })
