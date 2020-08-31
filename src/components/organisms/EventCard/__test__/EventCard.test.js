@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme'
 import { ProviderMock } from '../../../../../__mocks__/providerMock'
 import { EventCard } from '../EventCard'
 import {
+  EventCardStyled,
   EventTitle,
   EventDescription,
   EventAttendeeCounter,
@@ -51,5 +52,17 @@ describe('to have props', () => {
 
   it('is expected to have eventDate', () => {
     expect(component.find(EventDate).text()).toBe('eventDate')
+  })
+
+  describe('Handle event card click', () => {
+    const component = mount(
+      <ProviderMock>
+        <EventCard />
+      </ProviderMock>
+    )
+    test('run handleCloseModal', () => {
+      component.find(EventCardStyled).simulate('click')
+      // expect(component).toHaveBeenCalled()
+    })
   })
 })
