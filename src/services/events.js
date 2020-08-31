@@ -27,8 +27,8 @@ export function createEvent(eventInfo, organizationId, token) {
 
 export function updateEvent(eventInfo, organizationId, token) {
   if (organizationId) {
-    return fetch(`${config.API_URL}/events/${organizationId}/new`, {
-      method: 'PATCH',
+    return fetch(`${config.API_URL}/events/${organizationId}/update`, {
+      method: 'PUT',
       headers: {
         'x-access-token': token
       },

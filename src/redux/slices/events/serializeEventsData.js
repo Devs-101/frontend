@@ -7,3 +7,20 @@ export function serializeGetAllEventsResponseData(getAllEventsResponseData) {
 
   return byId
 }
+
+export function serializeEventInfo(eventInfo) {
+  return {
+    eventStatus: eventInfo.status || false,
+    countDown: eventInfo.countDown || true,
+    allowRegister: eventInfo.allowRegister || false,
+    name: eventInfo.name || '',
+    description: eventInfo.description || '',
+    dateHour: {
+      initDate: eventInfo.initDate || null,
+      endDate: eventInfo.endDate || null
+    },
+    theme: eventInfo.theme || null,
+    fullUrl: eventInfo.fullUrl || null,
+    organizators: eventInfo.organizators || []
+  }
+}
