@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import {
   NavBarContainerStyled,
   NavBarTitleStyled,
@@ -11,10 +12,15 @@ import { Icon } from '../../atoms'
 
 export function NavBar() {
   const { eventId } = useParams()
+  const { event } = useSelector(state => {
+    return {
+      event: state.events.entities[eventId]
+    }
+  })
 
   return (
     <NavBarContainerStyled>
-      <NavBarTitleStyled>Proyecton Cohort 3</NavBarTitleStyled>
+      <NavBarTitleStyled>{event && event.name}</NavBarTitleStyled>
       <NavBarStyled>
         <NavBarItemStyled>
           <NavLink to={`/${eventId}/event-info`} activeClassName="active">

@@ -17,7 +17,7 @@ export const NavBarTitleStyled = styled.h2`
   margin: 16px 0 10px;
 
   ${breakpoint.md`
-    margin: 0 60px 40px;
+    margin: 0 20px 40px;
   `}
 `
 export const NavBarStyled = styled.ul`
