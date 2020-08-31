@@ -27,10 +27,12 @@ export function AuthPage() {
             </figure>
             <h1>We make your plans come true! connect with your audience</h1>
             <AuthIntroStyled>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-              quasi culpa labore eveniet quo, iste dolorum velit blanditiis
-              adipisci voluptas maiores et, doloremque aspernatur quibusdam nemo
-              nisi! Eaque, voluptates rerum.
+              When organizing any event, it is essential to have useful and
+              quality tools that allow you to easily and effectively manage each
+              of the details of your organization. oneEvent is a practical
+              online solution that facilitates registration management,
+              management of personalized landing pages for all attendees of your
+              event.
             </AuthIntroStyled>
           </AuthTextStyled>
           <AuthFormStyled>
