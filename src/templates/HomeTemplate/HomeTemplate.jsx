@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import {
   HomeTemplateStyled,
   NavbarHeader,
@@ -9,6 +10,12 @@ import { Icon } from '../../components/atoms'
 import { Link } from 'react-router-dom'
 
 export function HomeTemplate({ children }) {
+  const { name } = useSelector(state => {
+    return {
+      name: state.users.userInfo.name
+    }
+  })
+
   return (
     <>
       <HomeTemplateStyled>
@@ -19,7 +26,7 @@ export function HomeTemplate({ children }) {
           <Icon className="fas fa-ticket-alt" size={18} />
         </LogoHeader>
         <NavbarHeader>
-          <h3></h3>
+          <h3>{name}</h3>
 
           <IconStyled>
             <Link to="/account">
