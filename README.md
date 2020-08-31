@@ -66,6 +66,7 @@ npm run test
 
 ### Frontend
 - Webpack
+- Jest
 - React
 - StyledComponents
 - Redux
