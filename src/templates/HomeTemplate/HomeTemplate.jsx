@@ -1,13 +1,14 @@
 import React from 'react'
+import { useHistory, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import {
   HomeTemplateStyled,
   NavbarHeader,
   LogoHeader,
-  IconStyled
+  IconStyled,
+  Logout
 } from './HomeTemplate.styles'
 import { Icon } from '../../components/atoms'
-import { Link } from 'react-router-dom'
 
 export function HomeTemplate({ children }) {
   const { name } = useSelector(state => {
@@ -15,6 +16,13 @@ export function HomeTemplate({ children }) {
       name: state.users.userInfo.name
     }
   })
+
+  const { push } = useHistory()
+
+  function handleLogOut() {
+    window.sessionStorage.removeItem('jwt')
+    push('/join')
+  }
 
   return (
     <>
@@ -33,6 +41,9 @@ export function HomeTemplate({ children }) {
               <Icon className="fas fa-user-circle" size={22} />
             </Link>
           </IconStyled>
+          <Logout onClick={handleLogOut}>
+            <Icon className="fas fa-sign-out-alt" size={22} />
+          </Logout>
         </NavbarHeader>
       </HomeTemplateStyled>
       {children}
