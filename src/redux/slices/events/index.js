@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllEvents } from '../../../services'
-import { serializeGetAllEventsResponseData } from './serializeEventsData'
+import { getAllEvents, createEvent } from '../../../services'
+import {
+  serializeGetAllEventsResponseData,
+  serializeCreateEventInfo
+} from './serializeEventsData'
 
 export const getAllEventsAsync = createAsyncThunk(
   'events/getAllEvents',
@@ -16,6 +19,22 @@ export const getAllEventsAsync = createAsyncThunk(
     )
 
     return getAllEventsResponseDataSerialized
+  }
+)
+
+export const createEventAsync = createAsyncThunk(
+  'events/createEvent',
+  async ({ eventInfo, organizationId }) => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    const eventInfoSerialized = serializeCreateEventInfo(eventInfo)
+    const createEventResponse = await createEvent(
+      eventInfoSerialized,
+      organizationId,
+      jwt
+    )
+    if (!createEventResponse.ok) {
+      throw Error('Error creating the event')
+    }
   }
 )
 
@@ -44,6 +63,14 @@ export const eventsSlice = createSlice({
       state.error = error.message
       state.entities = {}
       state.ids = []
+    },
+    [createEventAsync.pending]: state => {
+      state.loading = true
+      state.error = null
+    },
+    [createEventAsync.rejected]: (state, { error }) => {
+      state.loading = false
+      state.error = error.message
     }
   }
 })

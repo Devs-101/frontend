@@ -9,7 +9,7 @@ describe('HomePage Page', () => {
   describe('Render', () => {
     const component = shallow(
       <ProviderMock>
-        <HomePage />)
+        <HomePage />
       </ProviderMock>
     )
     it('Is expected to be rendered', () => {

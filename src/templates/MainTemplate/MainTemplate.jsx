@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { useHistory, Link } from 'react-router-dom'
 import {
   MainTemplateStyled,
   NavbarHeader,
@@ -6,13 +8,26 @@ import {
   IconStyled,
   HeaderStyled,
   Main,
-  MainContentStyled
+  MainContentStyled,
+  Logout
 } from './MainTemplate.styles'
 import { NavBar } from '../../components/organisms'
 import { Icon } from '../../components/atoms'
-import { Link } from 'react-router-dom'
 
 export function MainTemplate({ children, title, button }) {
+  const { name } = useSelector(state => {
+    return {
+      name: state.users.userInfo.name
+    }
+  })
+
+  const { push } = useHistory()
+
+  function handleLogOut() {
+    window.sessionStorage.removeItem('jwt')
+    push('/join')
+  }
+
   return (
     <MainTemplateStyled>
       <HeaderStyled>
@@ -23,12 +38,15 @@ export function MainTemplate({ children, title, button }) {
           <Icon className="fas fa-ticket-alt" size={18} />
         </LogoHeader>
         <NavbarHeader>
-          <h3></h3>
+          <h3>{name}</h3>
           <IconStyled>
             <Link to="/account">
               <Icon className="fas fa-user-circle" size={22} />
             </Link>
           </IconStyled>
+          <Logout onClick={handleLogOut}>
+            <Icon className="fas fa-sign-out-alt" size={22} />
+          </Logout>
         </NavbarHeader>
       </HeaderStyled>
       <Main>
