@@ -1,7 +1,9 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { HomePage } from '../HomePage'
-import { ProviderMock } from '../../../../__mocks__/providerMock'
+import { HomeTitle } from '../HomePage.styles'
+import { Button } from '../../../components/atoms'
+import { ProviderMock, mockStore } from '../../../../__mocks__/providerMock'
 
 describe('HomePage Page', () => {
   describe('Render', () => {
@@ -96,5 +98,17 @@ describe('HomePage Page', () => {
       )
       expect(component.find(EventCard).length).toBe(1)
     }) */
+  })
+  describe('Handle open modal', () => {
+    mockStore.dispatch = jest.fn()
+    const component = mount(
+      <ProviderMock>
+        <HomePage />
+      </ProviderMock>
+    )
+    test('run handleOpenModal', () => {
+      component.find(HomeTitle).find(Button).simulate('click')
+      expect(mockStore.dispatch).toHaveBeenCalled()
+    })
   })
 })

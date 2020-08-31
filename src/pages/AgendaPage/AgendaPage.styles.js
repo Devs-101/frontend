@@ -4,10 +4,11 @@ import { colors } from '../../styles/colors'
 
 export const AgendaStyled = styled.div`
   padding: 24px 0;
+  background-color: ${colors.grey};
 
   ${breakpoint.md`
-    padding: 35px 120px;
-    `};
+    padding: 40px 60px;
+  `};
 `
 export const AgendaTitle = styled.div`
   display: flex;
@@ -22,19 +23,5 @@ export const AgendaTitle = styled.div`
 
   ${breakpoint.md`
     padding: 0;
-    `}
-`
-export const ContainerStyled = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  padding: 50px 30px 30px 30px;
-  background-color: ${colors.grey};
-  max-width: 100%;
-  margin: 0 auto;
-
-  ${breakpoint.md`
-    grid-template-columns: 1fr;
-    padding-top: 100px;
-    `}
+  `}
 `
