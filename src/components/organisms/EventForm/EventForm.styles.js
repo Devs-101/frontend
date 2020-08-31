@@ -1,11 +1,22 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
+import { colors } from '../../../styles/colors'
 
 export const EventFormStyled = styled.div`
-  padding: 25px;
+  width: 90%;
+  background: ${colors.grey};
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 10px;
+
   h2 {
     text-align: center;
   }
+
   ${breakpoint.md`
     width: 769px;
     heigth: 413px;
@@ -23,7 +34,6 @@ export const EventFormStyled = styled.div`
       display: grid;
       
       div:nth-of-type(1){
-        border: 1px solid red;
         grid-column: 1 / 2;
       }
     }
@@ -32,7 +42,8 @@ export const EventFormStyled = styled.div`
 export const SubmitSection = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+
   ${breakpoint.md`
   margin-bottom: 0;
     grid-column: 2 / 3;

@@ -4,11 +4,11 @@ import { shallow, mount } from 'enzyme'
 import { ProviderMock } from '../../../../../__mocks__/providerMock'
 import { EventCard } from '../EventCard'
 import {
+  EventCardStyled,
   EventTitle,
   EventDescription,
   EventAttendeeCounter,
-  EventDate,
-  EventCardStyled
+  EventDate
 } from '../EventCard.styes'
 
 describe('EventCard organism', () => {

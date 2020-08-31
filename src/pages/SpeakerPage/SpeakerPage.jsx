@@ -1,8 +1,11 @@
 import React from 'react'
-import { SpeakerPageStyled } from './SpeakerPage.styles'
+import { SpeakerPageStyled, SpeakerTitle } from './SpeakerPage.styles'
+import { useSelector, useDispatch } from 'react-redux'
 import { MainTemplate } from '../../templates'
-import { SpeakerCard } from '../../components/organisms/SpeakerCard'
-import { TitlePage } from '../../components/molecules/TitlePage'
+import { Button } from '../../components/atoms'
+import { openModal } from '../../redux/slices/modals'
+import { SpeakerCard, SpeakerForm, Modal } from '../../components/organisms'
+
 const MOCKS = [
   {
     id: '1',
@@ -12,58 +15,33 @@ const MOCKS = [
     speakerBio:
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo voluptatum molli',
     speakerTwitter: '@Nombredelspeaker'
-  },
-  {
-    id: '2',
-    imageUrl: '',
-    speakerName: 'Speaker 2',
-    speakerRol: 'Rol del Speaker',
-    speakerBio:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo voluptatum molli',
-    speakerTwitter: '@twitter'
-  },
-  {
-    id: '3',
-    imageUrl: '',
-    speakerName: 'Speaker 3',
-    speakerRol: 'Rol del Speaker',
-    speakerBio:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo voluptatum molli',
-    speakerTwitter: '@twitter'
-  },
-  {
-    id: '4',
-    imageUrl: '',
-    speakerName: 'Speaker 4',
-    speakerRol: 'Rol del Speaker',
-    speakerBio:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo voluptatum molli',
-    speakerTwitter: '@twitter'
-  },
-  {
-    id: '5',
-    imageUrl: '',
-    speakerName: 'Speaker 4',
-    speakerRol: 'Rol del Speaker',
-    speakerBio:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo voluptatum molli',
-    speakerTwitter: '@twitter'
-  },
-  {
-    id: '6',
-    imageUrl: '',
-    speakerName: 'Speaker 4',
-    speakerRol: 'Rol del Speaker',
-    speakerBio:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo voluptatum molli',
-    speakerTwitter: '@twitter'
   }
 ]
 
 export function SpeakerPage() {
+  const { modalIsOpen } = useSelector(state => {
+    return {
+      modalIsOpen: state.modals.isOpen
+    }
+  })
+
+  const dispatch = useDispatch()
+
+  function handleOpenModal() {
+    dispatch(openModal())
+  }
+
   return (
     <MainTemplate>
-      <TitlePage title="Speaker" button="Add Speaker" />
+      <SpeakerTitle>
+        <h3>Your Events</h3>
+        <Button type="button" onClick={handleOpenModal}>
+          Add Event
+        </Button>
+        <Modal isOpen={modalIsOpen}>
+          <SpeakerForm />
+        </Modal>
+      </SpeakerTitle>
       <SpeakerPageStyled>
         {MOCKS.map(speaker => (
           <SpeakerCard

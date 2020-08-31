@@ -1,9 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { HomeStyled, HomeTitle, Main } from './HomePage.styles'
 import { Button } from '../../components/atoms'
 import { HomeTemplate } from '../../templates'
-import { EventCard } from '../../components/organisms'
+import { EventCard, Modal, EventForm } from '../../components/organisms'
+import { openModal } from '../../redux/slices/modals'
 
 export function HomePage() {
   const {
@@ -12,7 +13,8 @@ export function HomePage() {
     eventsLoading,
     eventsError,
     organizationIdLoading,
-    organizationIdError
+    organizationIdError,
+    modalIsOpen
   } = useSelector(state => {
     return {
       eventsIds: state.events.ids,
@@ -20,16 +22,28 @@ export function HomePage() {
       eventsLoading: state.events.loading,
       eventsError: state.events.error,
       organizationIdLoading: state.users.loading,
-      organizationIdError: state.users.error
+      organizationIdError: state.users.error,
+      modalIsOpen: state.modals.isOpen
     }
   })
+
+  const dispatch = useDispatch()
+
+  function handleOpenModal() {
+    dispatch(openModal())
+  }
 
   return (
     <HomeTemplate>
       <HomeStyled>
         <HomeTitle>
           <h3>Your Events</h3>
-          <Button>Add Event</Button>
+          <Button type="button" onClick={handleOpenModal}>
+            Add Event
+          </Button>
+          <Modal isOpen={modalIsOpen}>
+            <EventForm />
+          </Modal>
         </HomeTitle>
         {eventsLoading || organizationIdLoading ? (
           <h1>Loading...</h1>
