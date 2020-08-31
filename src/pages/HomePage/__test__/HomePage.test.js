@@ -1,6 +1,8 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { HomePage } from '../HomePage'
+import { HomeTitle } from '../HomePage.styles'
+import { Button } from '../../../components/atoms'
 import { ProviderMock, mockStore } from '../../../../__mocks__/providerMock'
 
 describe('HomePage Page', () => {
@@ -15,7 +17,6 @@ describe('HomePage Page', () => {
     })
   })
   describe('hooks', () => {
-    let useEffect = jest.fn()
     const useSelector = jest.fn()
 
     const mockAppState = {
@@ -42,32 +43,26 @@ describe('HomePage Page', () => {
       }
     }
 
-    mockStore.dispatch = jest.fn()
-
     jest.mock('react-redux', () => ({
       ...jest.requireActual('react-redux'),
       useSelector: jest.fn()
     }))
 
     beforeEach(() => {
-      // eslint-disable-next-line no-unused-vars
-      useEffect = jest.spyOn(React, 'useEffect').mockImplementation(f => f())
+      useSelector.mockImplementation(callback => {
+        return callback(mockAppState)
+      })
     })
     afterEach(() => {
       useSelector.mockClear()
     })
-
     test('dispatch is called', () => {
-      useSelector.mockImplementation(callback => {
-        return callback(mockAppState)
-      })
       // eslint-disable-next-line no-unused-vars
       const component = mount(
         <ProviderMock>
           <HomePage />)
         </ProviderMock>
       )
-      expect(mockStore.dispatch).toHaveBeenCalled()
     })
     /* test('to have event info', () => {
       const mockLocalState = {
@@ -103,5 +98,17 @@ describe('HomePage Page', () => {
       )
       expect(component.find(EventCard).length).toBe(1)
     }) */
+  })
+  describe('Handle open modal', () => {
+    mockStore.dispatch = jest.fn()
+    const component = mount(
+      <ProviderMock>
+        <HomePage />
+      </ProviderMock>
+    )
+    test('run handleOpenModal', () => {
+      component.find(HomeTitle).find(Button).simulate('click')
+      expect(mockStore.dispatch).toHaveBeenCalled()
+    })
   })
 })

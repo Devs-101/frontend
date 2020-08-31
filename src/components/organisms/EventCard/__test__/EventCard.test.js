@@ -1,8 +1,10 @@
 import React from 'react'
 import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
+import { ProviderMock } from '../../../../../__mocks__/providerMock'
 import { EventCard } from '../EventCard'
 import {
+  EventCardStyled,
   EventTitle,
   EventDescription,
   EventAttendeeCounter,
@@ -11,7 +13,11 @@ import {
 
 describe('EventCard organism', () => {
   describe('render', () => {
-    const component = shallow(<EventCard />)
+    const component = shallow(
+      <ProviderMock>
+        <EventCard />
+      </ProviderMock>
+    )
     it('is expected to be rendered', () => {
       expect(component.length).toBe(1)
     })
@@ -20,13 +26,15 @@ describe('EventCard organism', () => {
 
 describe('to have props', () => {
   const component = mount(
-    <EventCard
-      imageUrl="url"
-      eventName="eventName"
-      eventDescription="eventDescription"
-      attendeeCounter="attendeeCounter"
-      eventDate="eventDate"
-    />
+    <ProviderMock>
+      <EventCard
+        imageUrl="url"
+        eventName="eventName"
+        eventDescription="eventDescription"
+        attendeeCounter="attendeeCounter"
+        eventDate="eventDate"
+      />
+    </ProviderMock>
   )
   it('Is expected to have image Conference image', () => {
     expect(component.find('img').prop('src')).toBe('url')
@@ -44,5 +52,21 @@ describe('to have props', () => {
 
   it('is expected to have eventDate', () => {
     expect(component.find(EventDate).text()).toBe('eventDate')
+  })
+  describe('Events', () => {
+    test('handleClick', () => {
+      const component = mount(
+        <ProviderMock>
+          <EventCard
+            eventName="eventName"
+            eventDescription="eventDescription"
+            attendeeCounter="attendeeCounter"
+            eventDate="eventDate"
+          />
+        </ProviderMock>
+      )
+      const eventCardStyled = component.find(EventCardStyled)
+      eventCardStyled.simulate('click')
+    })
   })
 })

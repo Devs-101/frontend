@@ -1,9 +1,19 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import formSpeaker from '../../../assets/images/formSpeaker.png'
+import { colors } from '../../../styles/colors'
 
 export const SpeakerFormStyled = styled.div`
-  padding: 25px;
+  width: 90%;
+  background: ${colors.grey};
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 10px;
+
   h2 {
     text-align: center;
   }

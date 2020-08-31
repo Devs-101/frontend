@@ -1,8 +1,10 @@
 import React from 'react'
-import { AgendaStyled, ContainerStyled } from './AgendaPage.styles'
+import { AgendaStyled, AgendaTitle } from './AgendaPage.styles'
+import { useSelector, useDispatch } from 'react-redux'
+import { Button } from '../../components/atoms'
+import { openModal } from '../../redux/slices/modals'
 import { MainTemplate } from '../../templates'
-import { AgendaCard } from '../../components/organisms/'
-import { TitlePage } from '../../components/molecules'
+import { AgendaCard, AgendaForm, Modal } from '../../components/organisms/'
 
 const MOCKS = [
   {
@@ -26,22 +28,38 @@ const MOCKS = [
 ]
 
 export function AgendaPage() {
+  const { modalIsOpen } = useSelector(state => {
+    return {
+      modalIsOpen: state.modals.isOpen
+    }
+  })
+
+  const dispatch = useDispatch()
+
+  function handleOpenModal() {
+    dispatch(openModal())
+  }
+
   return (
     <MainTemplate>
-      <TitlePage title="Agenda" button="Add" />
+      <AgendaTitle>
+        <h3>Your Events</h3>
+        <Button type="button" onClick={handleOpenModal}>
+          Add Event
+        </Button>
+        <Modal isOpen={modalIsOpen}>
+          <AgendaForm />
+        </Modal>
+      </AgendaTitle>
       <AgendaStyled>
-        <main>
-          <ContainerStyled>
-            {MOCKS.map(talk => (
-              <AgendaCard
-                key={talk.id}
-                date={talk.date}
-                title={talk.title}
-                description={talk.description}
-              />
-            ))}
-          </ContainerStyled>
-        </main>
+        {MOCKS.map(talk => (
+          <AgendaCard
+            key={talk.id}
+            date={talk.date}
+            title={talk.title}
+            description={talk.description}
+          />
+        ))}
       </AgendaStyled>
     </MainTemplate>
   )
