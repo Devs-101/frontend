@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { HomeStyled, HomeTitle } from './HomePage.styles'
+import { HomeStyled, HomeTitle, Main } from './HomePage.styles'
 import { Button } from '../../components/atoms'
 import { HomeTemplate } from '../../templates'
 import { EventCard, Modal, EventForm } from '../../components/organisms'
@@ -50,7 +50,7 @@ export function HomePage() {
         ) : !!eventsError || organizationIdError ? (
           <h1>Error</h1>
         ) : (
-          <main>
+          <Main>
             {eventsIds.map(eventId => {
               const event = eventsById[eventId]
               return (
@@ -65,7 +65,7 @@ export function HomePage() {
                 />
               )
             })}
-          </main>
+          </Main>
         )}
       </HomeStyled>
     </HomeTemplate>
