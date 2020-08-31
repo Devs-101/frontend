@@ -1,0 +1,49 @@
+import { config } from '../config'
+
+export function getAllSponsors(eventId, token) {
+  if (eventId) {
+    return fetch(`${config.API_URL}/sponsors/${eventId}`, {
+      method: 'GET',
+      headers: {
+        'x-access-token': token
+      }
+    })
+  }
+  return Promise.reject(Error('Please provide an event Id'))
+}
+
+export function createSponsor(sponsorInfo, eventId, token) {
+  if (eventId) {
+    const formData = new FormData()
+    Object.entries(sponsorInfo).forEach(entry =>
+      formData.append(entry[0], entry[1])
+    )
+
+    return fetch(`${config.API_URL}/sponsors/${eventId}/new`, {
+      method: 'POST',
+      headers: {
+        'x-access-token': token
+      },
+      body: formData
+    })
+  }
+  return Promise.reject(Error('Please provide an event Id'))
+}
+
+export function updateSponsor(sponsorInfo, sponsorId, token) {
+  if (sponsorId) {
+    const formData = new FormData()
+    Object.entries(sponsorInfo).forEach(entry =>
+      formData.append(entry[0], entry[1])
+    )
+
+    return fetch(`${config.API_URL}/sponsors/${sponsorId}/update`, {
+      method: 'PUT',
+      headers: {
+        'x-access-token': token
+      },
+      body: formData
+    })
+  }
+  return Promise.reject(Error('Please provide an sponsor Id'))
+}

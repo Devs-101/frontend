@@ -10,3 +10,18 @@ export const AgendaStyled = styled.div`
     padding: 40px 60px;
   `};
 `
+export const AgendaTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 18px;
+  }
+
+  ${breakpoint.md`
+    padding: 0;
+  `}
+`

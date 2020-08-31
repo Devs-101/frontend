@@ -1,6 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../atoms'
+import { useDispatch } from 'react-redux'
+import { closeModal } from '../../../redux/slices/modals'
 import AgendaFormData from './AgendaFormData.json'
 import { FormField } from '../../molecules'
 import { AgendaFomrStyled, SubmitSection, Title } from './AgendaForm.styles'
@@ -12,10 +14,18 @@ export function AgendaForm() {
     Promise.resolve(data)
   }
 
+  const dispatch = useDispatch()
+
+  function handleCloseModal() {
+    dispatch(closeModal())
+  }
+
   return (
     <AgendaFomrStyled onSubmit={handleSubmit(onSubmit)}>
       <SubmitSection>
-        <Button type="button">{AgendaFormData.buttonCancel}</Button>
+        <Button onClick={handleCloseModal}>
+          {AgendaFormData.buttonCancel}
+        </Button>{' '}
         <Button type="submit">{AgendaFormData.buttonSave}</Button>
       </SubmitSection>
       <Title>{AgendaFormData.title}</Title>
