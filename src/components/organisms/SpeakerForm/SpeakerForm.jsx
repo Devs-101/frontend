@@ -1,14 +1,24 @@
 import React from 'react'
 import SpeakerFormData from './SpeakerFormData.json'
+import { useDispatch } from 'react-redux'
+import { closeModal } from '../../../redux/slices/modals'
 import { SpeakerFormStyled, SubmitSection } from './SpeakerForm.styles'
 import { Button } from '../../atoms/Button/Button'
 import { FormField } from '../../molecules/FormField/FormField'
 
 export function SpeakerForm() {
+  const dispatch = useDispatch()
+
+  function handleCloseModal() {
+    dispatch(closeModal())
+  }
+
   return (
     <SpeakerFormStyled>
       <SubmitSection>
-        <Button>{SpeakerFormData.buttonCancel}</Button>
+        <Button onClick={handleCloseModal}>
+          {SpeakerFormData.buttonCancel}
+        </Button>
         <Button>{SpeakerFormData.buttonAdd}</Button>
       </SubmitSection>
       <h2>{SpeakerFormData.title}</h2>
