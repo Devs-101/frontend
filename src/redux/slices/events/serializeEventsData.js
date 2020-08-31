@@ -8,6 +8,16 @@ export function serializeGetAllEventsResponseData(getAllEventsResponseData) {
   return byId
 }
 
+export function serializeCreateEventInfo(eventInfo) {
+  return {
+    name: eventInfo.name,
+    dateHour: {
+      initDate: eventInfo.initDate,
+      endDate: eventInfo.endDate
+    }
+  }
+}
+
 export function serializeEventInfo(eventInfo) {
   return {
     eventStatus: eventInfo.status || false,

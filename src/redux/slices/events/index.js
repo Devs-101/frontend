@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getAllEvents, createEvent } from '../../../services'
 import {
   serializeGetAllEventsResponseData,
-  serializeEventInfo
+  serializeCreateEventInfo
 } from './serializeEventsData'
 
 export const getAllEventsAsync = createAsyncThunk(
@@ -26,8 +26,12 @@ export const createEventAsync = createAsyncThunk(
   'events/createEvent',
   async ({ eventInfo, organizationId }) => {
     const jwt = window.sessionStorage.getItem('jwt')
-    const eventInfoSerialized = serializeEventInfo(eventInfo)
-    const createEventResponse = await createEvent(eventInfoSerialized, jwt)
+    const eventInfoSerialized = serializeCreateEventInfo(eventInfo)
+    const createEventResponse = await createEvent(
+      eventInfoSerialized,
+      organizationId,
+      jwt
+    )
     if (!createEventResponse.ok) {
       throw Error('Error creating the event')
     }

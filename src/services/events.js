@@ -17,6 +17,7 @@ export function createEvent(eventInfo, organizationId, token) {
     return fetch(`${config.API_URL}/events/${organizationId}/new`, {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       },
       body: JSON.stringify(eventInfo)
@@ -30,7 +31,8 @@ export function updateEvent(eventInfo, organizationId, token) {
     return fetch(`${config.API_URL}/events/${organizationId}/update`, {
       method: 'PUT',
       headers: {
-        'x-access-token': token
+        'x-access-token': token,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(eventInfo)
     })
