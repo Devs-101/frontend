@@ -11,7 +11,7 @@ const mockSponsorData = {
   description: 'Evento de prueba de Juan Pablo.'
 }
 
-describe('Speakers Services', () => {
+describe('Sponsors Services', () => {
   describe('getAllSponsors service', () => {
     describe('When event id is defined', () => {
       beforeEach(() => {
@@ -55,7 +55,7 @@ describe('Speakers Services', () => {
   })
 
   describe('updateSponsor service', () => {
-    describe('When event id is defined', () => {
+    describe('When sponsor id is defined', () => {
       beforeEach(() => {
         fetch.resetMocks()
       })

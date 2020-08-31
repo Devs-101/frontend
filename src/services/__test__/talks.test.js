@@ -1,9 +1,9 @@
-import { getAllSpeakers, updateSpeaker, createSpeaker } from '../speakers'
+import { getAllTalks, updateTalk, createTalk } from '../talks'
 
 const token = 't0k3n5tr1ng'
 const eventId = '3v3n71d'
-const speakerId = 'sp34k3r'
-const mockSpeakersData = {
+const talkId = 't4lk'
+const mockTalkData = {
   eventStatus: false,
   countDown: true,
   allowRegister: true,
@@ -11,8 +11,8 @@ const mockSpeakersData = {
   description: 'Evento de prueba de Juan Pablo.'
 }
 
-describe('Speakers Services', () => {
-  describe('getAllSpeakers service', () => {
+describe('Talks Services', () => {
+  describe('getAllTalks service', () => {
     describe('When event id is defined', () => {
       beforeEach(() => {
         fetch.resetMocks()
@@ -20,18 +20,18 @@ describe('Speakers Services', () => {
 
       test('it returns the data', () => {
         fetch.mockResponseOnce(() =>
-          getAllSpeakers(eventId, token)
+          getAllTalks(eventId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
-        getAllSpeakers(eventId, token).then(response => {
+        getAllTalks(eventId, token).then(response => {
           expect(response).toEqual('ok')
         })
       })
 
       test('it fails with error message', () => {
         fetch.mockReject(new Error('Error'))
-        getAllSpeakers(eventId, token).catch(error =>
+        getAllTalks(eventId, token).catch(error =>
           expect(error).toEqual(Error('Error'))
         )
       })
@@ -43,77 +43,77 @@ describe('Speakers Services', () => {
       })
       test('it fails with error message', () => {
         fetch.mockResponseOnce(() =>
-          getAllSpeakers(eventId, token)
+          getAllTalks(eventId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
-        getAllSpeakers(undefined, token).catch(error =>
+        getAllTalks(undefined, token).catch(error =>
           expect(error).toEqual(Error('Please provide an event Id'))
         )
       })
     })
   })
 
-  describe('updateSpeaker service', () => {
-    describe('When speaker id is defined', () => {
+  describe('updateTalk service', () => {
+    describe('When talk id is defined', () => {
       beforeEach(() => {
         fetch.resetMocks()
       })
 
       test('it returns the data', () => {
         fetch.mockResponseOnce(() =>
-          updateSpeaker(mockSpeakersData, speakerId, token)
+          updateTalk(mockTalkData, talkId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
-        updateSpeaker(mockSpeakersData, speakerId, token).then(response => {
+        updateTalk(mockTalkData, talkId, token).then(response => {
           expect(response).toEqual('ok')
         })
       })
 
       test('it fails with error message', () => {
         fetch.mockReject(new Error('Error'))
-        updateSpeaker(mockSpeakersData, speakerId, token).catch(error =>
+        updateTalk(mockTalkData, talkId, token).catch(error =>
           expect(error).toEqual(Error('Error'))
         )
       })
     })
 
-    describe('When speaker id is undefined', () => {
+    describe('When talk id is undefined', () => {
       beforeEach(() => {
         fetch.resetMocks()
       })
       test('it fails with error message', () => {
         fetch.mockResponseOnce(() =>
-          updateSpeaker(mockSpeakersData, undefined, token)
+          updateTalk(mockTalkData, undefined, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
-        updateSpeaker(mockSpeakersData, undefined, token).catch(error =>
-          expect(error).toEqual(Error('Please provide an speaker Id'))
+        updateTalk(mockTalkData, undefined, token).catch(error =>
+          expect(error).toEqual(Error('Please provide an talk Id'))
         )
       })
     })
   })
 
-  describe('createSpeaker service', () => {
+  describe('createTalk service', () => {
     describe('When event id is defined', () => {
       beforeEach(() => {
         fetch.resetMocks()
       })
       test('it returns the data', () => {
         fetch.mockResponseOnce(() =>
-          createSpeaker(mockSpeakersData, eventId, token)
+          createTalk(mockTalkData, eventId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
-        createSpeaker(mockSpeakersData, eventId, token).then(response =>
+        createTalk(mockTalkData, eventId, token).then(response =>
           expect(response).toEqual('ok')
         )
       })
       test('it fails with error message', () => {
         fetch.mockReject(new Error('Error'))
-        createSpeaker(mockSpeakersData, eventId, token).catch(error =>
+        createTalk(mockTalkData, eventId, token).catch(error =>
           expect(error).toEqual(Error('Error'))
         )
       })
@@ -124,11 +124,11 @@ describe('Speakers Services', () => {
       })
       test('it fails with error', () => {
         fetch.mockResponseOnce(() =>
-          createSpeaker(mockSpeakersData, eventId, token)
+          createTalk(mockTalkData, eventId, token)
             .then(res => res.json())
             .then(data => 'ok')
         )
-        createSpeaker(mockSpeakersData, undefined, token).catch(error =>
+        createTalk(mockTalkData, undefined, token).catch(error =>
           expect(error).toEqual(Error('Please provide an event Id'))
         )
       })
