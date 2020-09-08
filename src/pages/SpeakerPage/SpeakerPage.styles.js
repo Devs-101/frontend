@@ -19,7 +19,7 @@ export const SpeakerTitle = styled.div`
   justify-content: space-between;
   padding: 0 24px;
   align-items: center;
-  margin-bottom: 24px;
+  height: 60px;
 
   h3 {
     font-size: 18px;
@@ -27,5 +27,8 @@ export const SpeakerTitle = styled.div`
 
   ${breakpoint.md`
     padding: 0;
+    h3 {
+      font-size: 24px;
+    }
   `}
 `
