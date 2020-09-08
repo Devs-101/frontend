@@ -5,6 +5,7 @@ export function getAllSpeakers(eventId, token) {
     return fetch(`${config.API_URL}/speakers/${eventId}`, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       }
     })
@@ -22,9 +23,10 @@ export function createSpeaker(speakerInfo, eventId, token) {
     return fetch(`${config.API_URL}/speakers/${eventId}/new`, {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       },
-      body: formData
+      body: JSON.stringify(speakerInfo)
     })
   }
   return Promise.reject(Error('Please provide an event Id'))

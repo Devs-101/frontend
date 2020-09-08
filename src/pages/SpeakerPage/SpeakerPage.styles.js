@@ -31,9 +31,8 @@ export const SpeakerTitle = styled.div`
   ${breakpoint.md`
     box-shadow: none;
     padding: 0;
-
     h3 {
-    font-size: 24px;
-  }
+      font-size: 24px;
+    }
   `}
 `
