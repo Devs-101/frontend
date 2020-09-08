@@ -38,13 +38,21 @@ export const createEventAsync = createAsyncThunk(
   }
 )
 
+export const selectedEventAsync = createAsyncThunk(
+  'events/selectedEvent',
+  async eventId => {
+    return eventId
+  }
+)
+
 export const eventsSlice = createSlice({
   name: 'events',
   initialState: {
     entities: {},
     ids: [],
     loading: false,
-    error: null
+    error: null,
+    selected: null
   },
   reducers: {},
   extraReducers: {
@@ -71,6 +79,14 @@ export const eventsSlice = createSlice({
     [createEventAsync.rejected]: (state, { error }) => {
       state.loading = false
       state.error = error.message
+    },
+    [selectedEventAsync.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        window.sessionStorage.setItem('selectedEventId', payload)
+      }
+      state.loading = false
+      state.error = null
+      state.selected = state.entities[payload]
     }
   }
 })
