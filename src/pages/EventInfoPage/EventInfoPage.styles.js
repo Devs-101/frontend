@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
-export const EventInfoStyled = styled.div`
+export const EventInfoStyled = styled.form`
   background-color: ${colors.grey};
 `
 

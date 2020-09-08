@@ -34,9 +34,9 @@ export function SpeakerPage() {
   return (
     <MainTemplate>
       <SpeakerTitle>
-        <h3>Your Events</h3>
+        <h3>Speakers</h3>
         <Button type="button" onClick={handleOpenModal}>
-          Add Event
+          Add speaker
         </Button>
         <Modal isOpen={modalIsOpen}>
           <SpeakerForm />
