@@ -23,9 +23,9 @@ export function SponsorPage() {
   return (
     <MainTemplate>
       <SponsorTitle>
-        <h3>Your Events</h3>
+        <h3>Sponsors</h3>
         <Button type="button" onClick={handleOpenModal}>
-          Add Event
+          Add sponsor
         </Button>
         <Modal isOpen={modalIsOpen}>
           <SponsorForm />

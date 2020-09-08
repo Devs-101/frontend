@@ -43,9 +43,9 @@ export function AgendaPage() {
   return (
     <MainTemplate>
       <AgendaTitle>
-        <h3>Your Events</h3>
+        <h3>Agenda</h3>
         <Button type="button" onClick={handleOpenModal}>
-          Add Event
+          Add Speech
         </Button>
         <Modal isOpen={modalIsOpen}>
           <AgendaForm />
