@@ -9,7 +9,7 @@ import {
   EventFooter,
   EventAttendeeCounter,
   EventDate
-} from './EventCard.styes'
+} from './EventCard.styles'
 
 export function EventCard({
   eventId,
