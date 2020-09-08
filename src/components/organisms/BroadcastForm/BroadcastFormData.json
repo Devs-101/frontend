@@ -1,0 +1,34 @@
+{
+  "title": "Message",
+  "buttonCancel": "Cancel",
+  "buttonSave": "Save",
+  "fields": [
+    {
+      "label": "Subjet:",
+      "id": "broadcastFormSubjet",
+      "type": "text"
+    },
+    {
+      "label": "Message:",
+      "id": "broadcastFormMessage",
+      "type": "textarea"
+    },
+    {
+      "label": "",
+      "id": "broadcastFormImage",
+      "type": "file"
+    },
+    {
+      "label": "Send:",
+      "id": "broadcastFormSend",
+      "type": "select",
+      "options": [
+        {
+          "id": "1",
+          "value": "1",
+          "label": "One day before"
+        }
+      ]
+    }
+  ]
+}
