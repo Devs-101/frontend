@@ -11,7 +11,7 @@ export function FormField({ id, label, register, type, options }) {
     return (
       <div>
         <LabelStyled htmlFor={id}>{label}</LabelStyled>
-        <SelectStyled name={id} id={id}>
+        <SelectStyled name={id} id={id} ref={register}>
           {options.map(option => (
             <option value={option.value} key={option.id}>
               {option.label}

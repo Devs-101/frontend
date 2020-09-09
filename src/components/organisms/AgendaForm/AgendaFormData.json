@@ -1,7 +1,7 @@
 {
   "title": "Agenda",
   "buttonCancel": "Cancel",
-  "buttonSave": "Save",
+  "buttonAdd": "Save",
   "fields": [
     {
       "label": "Conference name:",
@@ -12,6 +12,11 @@
       "label": "Time",
       "id": "agendaFormTime",
       "type": "date"
+    },
+    {
+      "label": "Duration in Minutes",
+      "id": "agendaFormDuration",
+      "type": "number"
     },
     {
       "label": "Conference description:",

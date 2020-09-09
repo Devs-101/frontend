@@ -11,7 +11,7 @@ export function AgendaCard({ avatar, date, title, description }) {
   return (
     <AgendaCardStyled>
       <figure>
-        <img src={avatar || profile} alt="" />
+        <img src={avatar || profile} alt={title} />
       </figure>
       <AgendaCardText>
         <AgendaCardTitle>{title}</AgendaCardTitle>
