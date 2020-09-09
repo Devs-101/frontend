@@ -26,7 +26,7 @@ export function FormField({ id, label, register, type, options }) {
     return (
       <div>
         <LabelStyled htmlFor={id}>{label}</LabelStyled>
-        <TextAreaStyled name={id} id={id}></TextAreaStyled>
+        <TextAreaStyled name={id} id={id} ref={register}></TextAreaStyled>
       </div>
     )
   }

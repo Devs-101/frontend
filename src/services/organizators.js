@@ -9,7 +9,7 @@ export function getAllOrganizators(eventId, token) {
       }
     })
   }
-  return Promise.reject(Error('Please provide an event Id'))
+  return Promise.reject(Error('Please provide an organizator Id'))
 }
 
 export function createOrganizator(organizatorInfo, eventId, token) {
@@ -27,7 +27,7 @@ export function createOrganizator(organizatorInfo, eventId, token) {
       body: formData
     })
   }
-  return Promise.reject(Error('Please provide an event Id'))
+  return Promise.reject(Error('Please provide an organizator Id'))
 }
 
 export function updateOrganizators(organizatorInfo, organizatorId, token) {

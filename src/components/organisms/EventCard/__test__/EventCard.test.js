@@ -9,7 +9,7 @@ import {
   EventDescription,
   EventAttendeeCounter,
   EventDate
-} from '../EventCard.styes'
+} from '../EventCard.styles'
 
 describe('EventCard organism', () => {
   describe('render', () => {
