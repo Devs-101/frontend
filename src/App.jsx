@@ -19,7 +19,7 @@ import {
   PublishPage
 } from './pages'
 import { verifyUserAsync } from './redux/slices/users'
-import { getAllEventsAsync, selectedEventAsync } from './redux/slices/events'
+import { getAllEventsAsync } from './redux/slices/events'
 
 function PrivateRoute({ children, ...rest }) {
   const jwt = window.sessionStorage.getItem('jwt')
