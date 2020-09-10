@@ -8,8 +8,7 @@
     {
       "label": "",
       "id": "SponsorFormLogo",
-      "type": "file",
-      "backgroundImage": ""
+      "type": "file"
     },
     {
       "label": "Name:",

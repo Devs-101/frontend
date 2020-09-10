@@ -7,7 +7,7 @@ export const SponsorCardStyled = styled.div`
   flex-direction: column;
   width: 100%;
   border-radius: 10px;
-  padding: 25px 24px;
+  padding: 20px;
   background-color: ${colors.white};
   cursor: pointer;
   align-items: center;
