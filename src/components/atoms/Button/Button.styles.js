@@ -10,4 +10,12 @@ export const ButtonStyled = styled.button`
   border: none;
   font-size: 16px;
   cursor: pointer;
+  margin-right: 10px;
+  &.delete {
+    background-color: ${colors.delete.normal};
+
+    &:hover {
+      background-color: ${colors.delete.hover};
+    }
+  }
 `

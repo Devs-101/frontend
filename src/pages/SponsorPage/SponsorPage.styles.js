@@ -3,20 +3,19 @@ import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
 export const SponsorPageStyled = styled.div`
-  padding: 24px 0;
+  padding: 20px;
   background-color: ${colors.grey};
-  margin-top: 24px;
-
-  ${breakpoint.md`
-    display: flex;
-    padding: 40px 62px;
-  `}
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
 `
 
 export const SponsorTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 20px;
   align-items: center;
   width: 100%;
   height: 60px;
@@ -29,7 +28,6 @@ export const SponsorTitle = styled.div`
 
   ${breakpoint.md`
     box-shadow: none;
-    padding: 0;
 
     h3 {
     font-size: 24px;
