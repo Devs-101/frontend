@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../atoms'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { closeModal } from '../../../redux/slices/modals'
 import AgendaFormData from './AgendaFormData.json'
 import { FormField } from '../../molecules'
