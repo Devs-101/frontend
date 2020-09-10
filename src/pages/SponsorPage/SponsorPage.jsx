@@ -59,9 +59,9 @@ export function SponsorPage() {
           <SponsorForm eventId={eventId} sponsor={selectedSponsor} />
         </Modal>
       </SponsorTitle>
-      {sponsorsLoading || sponsorsLoading ? (
+      {sponsorsLoading ? (
         <h1>Loading...</h1>
-      ) : !!sponsorsError || sponsorsError ? (
+      ) : sponsorsError ? (
         <h1>Error</h1>
       ) : sponsorsIds.length === 0 ? (
         <h1>No Sponsors yet, create a new one.</h1>
