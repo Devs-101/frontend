@@ -23,10 +23,9 @@ export function createSpeaker(speakerInfo, eventId, token) {
     return fetch(`${config.API_URL}/speakers/${eventId}/new`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         'x-access-token': token
       },
-      body: JSON.stringify(speakerInfo)
+      body: formData
     })
   }
   return Promise.reject(Error('Please provide an event Id'))
@@ -45,6 +44,18 @@ export function updateSpeaker(speakerInfo, speakerId, token) {
         'x-access-token': token
       },
       body: formData
+    })
+  }
+  return Promise.reject(Error('Please provide an speaker Id'))
+}
+
+export function deleteSpeaker(speakerId, token) {
+  if (speakerId) {
+    return fetch(`${config.API_URL}/speakers/${speakerId}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token
+      }
     })
   }
   return Promise.reject(Error('Please provide an speaker Id'))
