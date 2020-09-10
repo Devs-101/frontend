@@ -23,7 +23,7 @@ export const FormStyled = styled.form`
       width: 200px;
       height: 200px;
       margin: 0 auto 24px;
-      background-image: url(${formImage});
+      background-image: url(${props => props.backgroundImage || formImage});
 
       ${breakpoint.md`
           grid-row: 2 / 5;
