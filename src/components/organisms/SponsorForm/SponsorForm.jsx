@@ -19,8 +19,6 @@ export function SponsorForm({ eventId, sponsor }) {
     sponsor = serializeSponsorToFormData(sponsor)
   }
 
-  console.log('sponsor', sponsor)
-
   const dispatch = useDispatch()
   const { handleSubmit, register, watch } = useForm({
     defaultValues: sponsor
@@ -30,9 +28,7 @@ export function SponsorForm({ eventId, sponsor }) {
   const watchSponsorFormLogo = watch('SponsorFormLogo')
 
   React.useEffect(() => {
-    console.log('watchSponsorFormLogo', watchSponsorFormLogo)
     if (watchSponsorFormLogo && watchSponsorFormLogo.length >= 1) {
-      console.log('instanceof File')
       const image = watchSponsorFormLogo[0]
       const reader = new FileReader()
       reader.readAsDataURL(image)
@@ -43,12 +39,10 @@ export function SponsorForm({ eventId, sponsor }) {
       if (sponsor.SponsorFormIMG) {
         setIsImage(sponsor.SponsorFormIMG)
       }
-      console.log('!!instanceof File')
     }
   }, [watchSponsorFormLogo])
 
   function onSubmit(data) {
-    console.log('onSubmit', data)
     if (data.SponsorFormLogo) data.SponsorFormLogo = data.SponsorFormLogo[0]
     const sponsorFormDataSerialized = serializeSponsorFormData(data)
     dispatch(
@@ -62,7 +56,6 @@ export function SponsorForm({ eventId, sponsor }) {
   }
 
   function onUpdate(data) {
-    console.log('onUpdate', data)
     if (data.SponsorFormLogo.length === 0) {
       data.SponsorFormLogo = sponsor.SponsorFormIMG
     } else {
@@ -80,7 +73,6 @@ export function SponsorForm({ eventId, sponsor }) {
   }
 
   function onDelete(data) {
-    console.log('onDelete', data)
     dispatch(
       deleteSponsorAsync({
         sponsorId: data.SponsorFormId
@@ -94,7 +86,6 @@ export function SponsorForm({ eventId, sponsor }) {
     dispatch(closeModal())
   }
 
-  console.log('Re-render', SponsorFormData.fields[0])
   return (
     <FormStyled backgroundImage={isImage}>
       <SubmitSection>

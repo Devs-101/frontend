@@ -33,7 +33,6 @@ export const getAllSponsorsAsync = createAsyncThunk(
 export const createSponsorAsync = createAsyncThunk(
   'sponsors/createSponsor',
   async ({ sponsorInfo, eventId }) => {
-    console.log('createSponsorAsync', sponsorInfo)
     const jwt = window.sessionStorage.getItem('jwt')
     if (!eventId) {
       eventId = window.sessionStorage.getItem('selectedEventId')
@@ -53,7 +52,6 @@ export const createSponsorAsync = createAsyncThunk(
 export const updateSponsorAsync = createAsyncThunk(
   'sponsors/updateSponsor',
   async ({ sponsorInfo, sponsorId }) => {
-    console.log('createSponsorAsync', sponsorInfo)
     const jwt = window.sessionStorage.getItem('jwt')
     if (!sponsorId) {
       sponsorId = window.sessionStorage.getItem('selectSponsorId')
@@ -73,7 +71,6 @@ export const updateSponsorAsync = createAsyncThunk(
 export const deleteSponsorAsync = createAsyncThunk(
   'sponsors/deleteSponsor',
   async ({ sponsorId }) => {
-    console.log('deleteSponsorAsync', sponsorId)
     const jwt = window.sessionStorage.getItem('jwt')
     if (!sponsorId) {
       sponsorId = window.sessionStorage.getItem('selectSponsorId')

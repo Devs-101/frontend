@@ -20,9 +20,6 @@ export function createSponsor(sponsorInfo, eventId, token) {
       formData.append(entry[0], entry[1])
     )
 
-    console.log('formData::', formData)
-    console.log('createSponsor::', sponsorInfo)
-
     return fetch(`${config.API_URL}/sponsors/${eventId}/new`, {
       method: 'POST',
       headers: {
@@ -40,9 +37,6 @@ export function updateSponsor(sponsorInfo, sponsorId, token) {
     Object.entries(sponsorInfo).forEach(entry =>
       formData.append(entry[0], entry[1])
     )
-
-    console.log('formData::', formData)
-    console.log('createSponsor::', sponsorInfo)
 
     return fetch(`${config.API_URL}/sponsors/${sponsorId}/update`, {
       method: 'PUT',

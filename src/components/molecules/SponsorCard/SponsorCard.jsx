@@ -9,7 +9,6 @@ export function SponsorCard({ id, logoUrl, name, webSiteUrl, onClick }) {
   const dispatch = useDispatch()
 
   async function handleClick() {
-    console.log('handleClick', id)
     await dispatch(selectedSponsorAsync(id))
     dispatch(openModal())
   }
