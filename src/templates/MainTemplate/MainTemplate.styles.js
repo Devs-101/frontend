@@ -71,10 +71,6 @@ export const Main = styled.main`
 
 export const MainContentStyled = styled.div`
   width: 100%;
-
-  ${breakpoint.md`
-    padding: 20px 100px;
-  `}
 `
 
 export const Logout = styled.p`
