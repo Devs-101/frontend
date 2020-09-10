@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { openModal } from '../../../redux/slices/modals'
 import { selectedSponsorAsync } from '../../../redux/slices/sponsors'
 
-export function SponsorCard({ id, logoUrl, name, webSiteUrl, onClick }) {
+export function SponsorCard({ id, logoUrl, name, webSiteUrl }) {
   const dispatch = useDispatch()
 
   async function handleClick() {
