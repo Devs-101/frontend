@@ -7,3 +7,14 @@ export function serializeSpeakerFormData(speakerFormData) {
     img: speakerFormData.SpeakerFormLogo
   }
 }
+
+export function serializeSpeakerToFormData(speakerFormData) {
+  return {
+    SpeakerFormName: speakerFormData.name || '',
+    SpeakerFormTwitter: speakerFormData.twitter || '',
+    SpeakerFormBio: speakerFormData.bio || '',
+    SpeakerFormRol: speakerFormData.rol || '',
+    SpeakerFormIMG: speakerFormData.img || '',
+    SpeakerFormId: speakerFormData._id || ''
+  }
+}

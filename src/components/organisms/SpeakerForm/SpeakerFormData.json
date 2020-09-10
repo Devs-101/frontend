@@ -1,8 +1,9 @@
 {
   "title": "Speaker",
   "buttonCancel": "Cancel",
-  "buttonAdd": "Add",
-  "buttonSave": "Save",
+  "buttonAdd": "Save",
+  "buttonUpdate": "Update",
+  "buttonDelete": "Delete",
   "fields": [
     {
       "label": "",

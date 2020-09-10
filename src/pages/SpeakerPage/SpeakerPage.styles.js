@@ -3,15 +3,13 @@ import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
 export const SpeakerPageStyled = styled.div`
-  padding: 24px 0;
+  padding: 20px;
   background-color: ${colors.grey};
-
-  ${breakpoint.md`
-    display: grid;
-    column-gap: 10px;
-    grid-template-columns: repeat(auto-fill, 300px);
-    padding: 40px 60px;
-  `};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
 `
 
 export const SpeakerTitle = styled.div`
@@ -30,7 +28,7 @@ export const SpeakerTitle = styled.div`
 
   ${breakpoint.md`
     box-shadow: none;
-    padding: 0;
+
     h3 {
       font-size: 24px;
     }
