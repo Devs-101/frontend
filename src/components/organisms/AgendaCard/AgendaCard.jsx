@@ -5,11 +5,21 @@ import {
   AgendaCardDate,
   AgendaCardTitle
 } from './AgendaCard.styles'
+import { useDispatch } from 'react-redux'
+import { openModal } from '../../../redux/slices/modals'
 import profile from '../../../assets/images/avatar.png'
+import { selectedTalkAsync } from '../../../redux/slices/talks/'
 
-export function AgendaCard({ avatar, date, title, description }) {
+export function AgendaCard({ id, avatar, date, title, description }) {
+  const dispatch = useDispatch()
+
+  async function handleClick() {
+    await dispatch(selectedTalkAsync(id))
+    dispatch(openModal())
+  }
+
   return (
-    <AgendaCardStyled>
+    <AgendaCardStyled onClick={handleClick}>
       <figure>
         <img src={avatar || profile} alt={title} />
       </figure>

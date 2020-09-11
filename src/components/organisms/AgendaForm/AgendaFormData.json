@@ -2,6 +2,8 @@
   "title": "Agenda",
   "buttonCancel": "Cancel",
   "buttonAdd": "Save",
+  "buttonUpdate": "Update",
+  "buttonDelete": "Delete",
   "fields": [
     {
       "label": "Conference name:",

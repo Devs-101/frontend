@@ -49,3 +49,15 @@ export function updateTalk(talkInfo, talkId, token) {
   }
   return Promise.reject(Error('Please provide an talk Id'))
 }
+
+export function deleteTalk(talkId, token) {
+  if (talkId) {
+    return fetch(`${config.API_URL}/talks/${talkId}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token
+      }
+    })
+  }
+  return Promise.reject(Error('Please provide an talk Id'))
+}
