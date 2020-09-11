@@ -9,6 +9,7 @@ export const AgendaCardStyled = styled.div`
   background: ${colors.white};
   color: ${colors.primary};
   margin-bottom: 15px;
+  cursor: pointer;
 
   figure {
     margin: auto;
@@ -17,6 +18,7 @@ export const AgendaCardStyled = styled.div`
     img {
       width: 100%;
       border-radius: 50%;
+      height: -webkit-fill-available;
     }
   }
 `

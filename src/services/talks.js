@@ -5,6 +5,7 @@ export function getAllTalks(eventId, token) {
     return fetch(`${config.API_URL}/talks/${eventId}`, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       }
     })
@@ -22,9 +23,10 @@ export function createTalk(talkInfo, eventId, token) {
     return fetch(`${config.API_URL}/talks/${eventId}/new`, {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       },
-      body: formData
+      body: JSON.stringify(talkInfo)
     })
   }
   return Promise.reject(Error('Please provide an event Id'))

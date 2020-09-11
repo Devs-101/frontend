@@ -1,8 +1,15 @@
 {
   "title": "Sponsor",
   "buttonCancel": "Cancel",
-  "buttonSave": "Save",
+  "buttonAdd": "Save",
+  "buttonUpdate": "Update",
+  "buttonDelete": "Delete",
   "fields": [
+    {
+      "label": "",
+      "id": "SponsorFormLogo",
+      "type": "file"
+    },
     {
       "label": "Name:",
       "id": "SponsorFormName",
