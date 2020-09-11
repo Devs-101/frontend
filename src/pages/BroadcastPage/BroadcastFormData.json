@@ -1,0 +1,22 @@
+{
+  "title": "Broadcast",
+  "buttonCancel": "Cancel",
+  "buttonAdd": "Save",
+  "fields": [
+    {
+      "label": "Subjet:",
+      "id": "broadcastFormSubjet",
+      "type": "text"
+    },
+    {
+      "label": "Message:",
+      "id": "broadcastFormMessage",
+      "type": "textarea"
+    },
+    {
+      "label": "",
+      "id": "broadcastFormLogo",
+      "type": "file"
+    }
+  ]
+}
