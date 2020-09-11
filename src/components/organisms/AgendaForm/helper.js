@@ -7,3 +7,14 @@ export function serializeTalkFormData(talkFormData) {
     speakerId: talkFormData.agendaFormSpeakerId
   }
 }
+
+export function serializeTalkToFormData(talkFormData) {
+  return {
+    agendaFormId: talkFormData._id || '',
+    agendaFormName: talkFormData.name || '',
+    agendaFormConference: talkFormData.description || '',
+    agendaFormTime: talkFormData.initDate || '',
+    agendaFormDuration: talkFormData.durationInMinutes || '',
+    agendaFormSpeakerId: talkFormData.speakerId._id || ''
+  }
+}
