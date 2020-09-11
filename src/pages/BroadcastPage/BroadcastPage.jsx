@@ -26,7 +26,6 @@ export function BroadcastPage() {
       const broadcastInfo = serializeBroadcastToFormData(res.payload.broadcast)
       setValue('broadcastFormSubjet', broadcastInfo.broadcastFormSubjet)
       setValue('broadcastFormMessage', broadcastInfo.broadcastFormMessage)
-      console.log(res.payload.broadcast)
       setIsImage(broadcastInfo.BroadcastFormIMG)
       setBroadcast(broadcastInfo)
     })
@@ -44,7 +43,6 @@ export function BroadcastPage() {
         setIsImage(e.target.result)
       }
     } else {
-      console.log(broadcast)
       if (broadcast.BroadcastFormIMG) {
         setIsImage(broadcast.BroadcastFormIMG)
       }
@@ -52,7 +50,6 @@ export function BroadcastPage() {
   }, [watchBroadcastFormLogo])
 
   function onUpdate(data) {
-    console.log('onUpdate', data)
     if (data.broadcastFormLogo.length === 0) {
       data.broadcastFormLogo = broadcast.BroadcastFormIMG
     } else {

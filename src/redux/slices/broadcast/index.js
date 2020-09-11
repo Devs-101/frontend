@@ -30,7 +30,7 @@ export const updateBroadcastAsync = createAsyncThunk(
     if (!eventId) {
       eventId = window.sessionStorage.getItem('selectedEventId')
     }
-    console.log(broadcastInfo)
+
     const broadcastInfoSerialized = serializeUpdateBroadcastInfo(broadcastInfo)
     const updateBroadcastResponse = await updateBroadcast(
       broadcastInfoSerialized,
