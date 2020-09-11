@@ -4,20 +4,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import { MainTemplate } from '../../templates'
 import { Button } from '../../components/atoms'
 import { openModal } from '../../redux/slices/modals'
-import { getAllSpeakersAsync } from '../../redux/slices/speakers'
+import {
+  getAllSpeakersAsync,
+  selectedSpeakerAsync
+} from '../../redux/slices/speakers'
 import { SpeakerCard, SpeakerForm, Modal } from '../../components/organisms'
 
 export function SpeakerPage() {
-  const { modalIsOpen, selectedEvent } = useSelector(state => {
+  const { modalIsOpen, selectedEvent, selectedSpeaker } = useSelector(state => {
     return {
       modalIsOpen: state.modals.isOpen,
-      selectedEvent: state.events.selected || null
+      selectedEvent: state.events.selected || false,
+      selectedSpeaker: state.speakers.selected || false
     }
   })
 
+  let eventId
   const dispatch = useDispatch()
   React.useEffect(() => {
-    let eventId
     if (selectedEvent) {
       eventId = selectedEvent._id
     }
@@ -38,24 +42,25 @@ export function SpeakerPage() {
     }
   })
 
-  function handleOpenModal() {
+  async function handleOpenNewModal() {
+    await dispatch(selectedSpeakerAsync())
     dispatch(openModal())
   }
 
   return (
     <MainTemplate>
       <SpeakerTitle>
-        <h3>Your Speakers</h3>
-        <Button type="button" onClick={handleOpenModal}>
+        <h3>Speakers</h3>
+        <Button type="button" onClick={handleOpenNewModal}>
           Add Speaker
         </Button>
         <Modal isOpen={modalIsOpen}>
-          <SpeakerForm />
+          <SpeakerForm eventId={eventId} speaker={selectedSpeaker} />
         </Modal>
       </SpeakerTitle>
-      {speakersLoading || speakersLoading ? (
+      {speakersLoading ? (
         <h1>Loading...</h1>
-      ) : !!speakersError || speakersError ? (
+      ) : speakersError ? (
         <h1>Error</h1>
       ) : speakersIds.length === 0 ? (
         <h1>No Speakers yet, create a new one.</h1>
@@ -66,6 +71,7 @@ export function SpeakerPage() {
             return (
               <SpeakerCard
                 key={speakerId}
+                id={speakerId}
                 imageUrl={speaker.img}
                 speakerName={speaker.name}
                 speakerRol={speaker.rol}

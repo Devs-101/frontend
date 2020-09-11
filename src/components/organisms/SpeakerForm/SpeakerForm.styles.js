@@ -24,10 +24,7 @@ export const SpeakerFormStyled = styled.div`
         height: 200px;
         margin-left: auto;
         margin-right: auto;
-        background-image: url(${formSpeaker});
-        ${breakpoint.md`
-          grid-row: 1 / 4;
-        `}
+        background-image: url(${props => props.backgroundImage || formSpeaker});
       }
       input {
         display: none;
