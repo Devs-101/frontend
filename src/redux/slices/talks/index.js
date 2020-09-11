@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllTalks, createTalk } from '../../../services'
+import {
+  getAllTalks,
+  createTalk,
+  updateTalk,
+  deleteTalk
+} from '../../../services'
 import {
   serializeGetAllTalksResponseData,
   serializeCreateTalkInfo
@@ -41,13 +46,50 @@ export const createTalkAsync = createAsyncThunk(
   }
 )
 
+export const updateTalkAsync = createAsyncThunk(
+  'talks/updateTalk',
+  async ({ talkInfo, talkId }) => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    if (!talkId) {
+      talkId = window.sessionStorage.getItem('selectTalkId')
+    }
+    const talkInfoSerialized = serializeCreateTalkInfo(talkInfo)
+    const createTalkResponse = await updateTalk(talkInfoSerialized, talkId, jwt)
+    if (!createTalkResponse.ok) {
+      throw Error('Error updating the talk')
+    }
+  }
+)
+
+export const deleteTalkAsync = createAsyncThunk(
+  'talks/deleteTalk',
+  async ({ talkId }) => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    if (!talkId) {
+      talkId = window.sessionStorage.getItem('selectTalkId')
+    }
+    const createTalkResponse = await deleteTalk(talkId, jwt)
+    if (!createTalkResponse.ok) {
+      throw Error('Error deleting the talk')
+    }
+  }
+)
+
+export const selectedTalkAsync = createAsyncThunk(
+  'talks/selectedTalk',
+  async talkId => {
+    return talkId
+  }
+)
+
 export const talksSlice = createSlice({
   name: 'talks',
   initialState: {
     entities: {},
     ids: [],
     loading: false,
-    error: null
+    error: null,
+    selected: false
   },
   reducers: {},
   extraReducers: {
@@ -74,6 +116,17 @@ export const talksSlice = createSlice({
     [createTalkAsync.rejected]: (state, { error }) => {
       state.loading = false
       state.error = error.message
+    },
+    [selectedTalkAsync.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.error = null
+
+      if (payload) {
+        window.sessionStorage.setItem('selectTalkId', payload)
+        state.selected = state.entities[payload]
+      } else {
+        state.selected = false
+      }
     }
   }
 })
