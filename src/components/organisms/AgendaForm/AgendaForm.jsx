@@ -1,13 +1,18 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Button } from '../../atoms'
+import { Button } from '../../atoms/'
 import { useDispatch } from 'react-redux'
 import { closeModal } from '../../../redux/slices/modals'
 import AgendaFormData from './AgendaFormData.json'
 import { FormField } from '../../molecules'
 import { AgendaFormStyled, SubmitSection } from './AgendaForm.styles'
-import { createTalkAsync, getAllTalksAsync } from '../../../redux/slices/talks'
-import { serializeTalkFormData } from './helper'
+import {
+  createTalkAsync,
+  getAllTalksAsync,
+  updateTalkAsync,
+  deleteTalkAsync
+} from '../../../redux/slices/talks'
+import { serializeTalkFormData, serializeTalkToFormData } from './helper'
 
 const speakersForm = speakers => {
   const speakersForm = {
@@ -30,7 +35,13 @@ const speakersForm = speakers => {
   return speakersForm
 }
 
-export function AgendaForm({ speakers, eventId }) {
+export function AgendaForm({ speakers, eventId, talk }) {
+  if (talk) {
+    talk = serializeTalkToFormData(talk)
+  }
+
+  console.log('TALKK', talk)
+
   if (!eventId) {
     eventId = window.sessionStorage.getItem('selectedEventId')
   }
@@ -42,7 +53,9 @@ export function AgendaForm({ speakers, eventId }) {
   }
 
   const dispatch = useDispatch()
-  const { handleSubmit, register } = useForm()
+  const { handleSubmit, register } = useForm({
+    defaultValues: talk
+  })
 
   function onSubmit(data) {
     const talkFormDataSerialized = serializeTalkFormData(data)
@@ -50,6 +63,29 @@ export function AgendaForm({ speakers, eventId }) {
       createTalkAsync({
         talkInfo: talkFormDataSerialized,
         eventId
+      })
+    )
+      .then(() => dispatch(getAllTalksAsync(eventId)))
+      .then(() => dispatch(closeModal()))
+  }
+
+  function onUpdate(data) {
+    const talkFormDataSerialized = serializeTalkFormData(data)
+    dispatch(
+      updateTalkAsync({
+        talkInfo: talkFormDataSerialized,
+        talkId: data.agendaFormId
+      })
+    )
+      .then(() => dispatch(getAllTalksAsync(eventId)))
+      .then(() => dispatch(closeModal()))
+  }
+
+  function onDelete(data) {
+    console.log('onDelete', data)
+    dispatch(
+      deleteTalkAsync({
+        talkId: data.agendaFormId
       })
     )
       .then(() => dispatch(getAllTalksAsync(eventId)))
@@ -66,9 +102,20 @@ export function AgendaForm({ speakers, eventId }) {
         <Button onClick={handleCloseModal}>
           {AgendaFormData.buttonCancel}
         </Button>
-        <Button onClick={handleSubmit(onSubmit)}>
-          {AgendaFormData.buttonAdd}
-        </Button>
+        {talk ? (
+          <>
+            <Button onClick={handleSubmit(onUpdate)}>
+              {AgendaFormData.buttonUpdate}
+            </Button>
+            <Button className="delete" onClick={handleSubmit(onDelete)}>
+              {AgendaFormData.buttonDelete}
+            </Button>
+          </>
+        ) : (
+          <Button onClick={handleSubmit(onSubmit)}>
+            {AgendaFormData.buttonAdd}
+          </Button>
+        )}
       </SubmitSection>
       <h2>{AgendaFormData.title}</h2>
       {AgendaFormData.fields.map(field => (
