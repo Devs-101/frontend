@@ -12,21 +12,21 @@ export const Container = styled.div`
   ${breakpoint.md`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     column-gap: 25px;
 
-    div:nth-of-type(1){
+    div:nth-of-type(1),
+    div:nth-of-type(5),
+    div:nth-of-type(6) {
       grid-column: 1 / 3;
     }
     
-    div:nth-of-type(2){
+    div:nth-of-type(2),
+    div:nth-of-type(4) {
       grid-column: 1 / 2;
-      grid-row: 2 / 3;
     }
     
     div:nth-of-type(3){
-      grid-column: 1 / 3;
-      grid-row: 3 / 4;
+      grid-column: 2 / 3;
     }
   `}
 `
