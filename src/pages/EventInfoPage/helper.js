@@ -16,3 +16,16 @@ export function serializeEventFormData(eventFormData) {
     slug: eventFormData.slug || null
   }
 }
+
+export function serializeEventToFormData(eventData) {
+  if (eventData) {
+    return {
+      DetailsFormName: eventData.name,
+      DetailsFormUrlSlug: eventData.slug,
+      DetailsFormDescription: eventData.description,
+      DetailsFormInitialDate: eventData.dateHour.initDate,
+      DetailsFormEndDate: eventData.dateHour.endDate
+    }
+  }
+  return {}
+}

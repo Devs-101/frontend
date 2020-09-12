@@ -4,30 +4,24 @@ import { EventInfoStyled, AgendaTitle, Container } from './EventInfoPage.styles'
 import EventInfoPageData from './EventInfoPageData.json'
 import { FormField } from '../../components/molecules'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectedEventAsync, updateEventAsync } from '../../redux/slices/events'
+import { updateEventAsync } from '../../redux/slices/events'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../components/atoms'
-import { serializeEventFormData } from './helper'
+import { serializeEventFormData, serializeEventToFormData } from './helper'
 import { useParams } from 'react-router-dom'
 
 export function EventInfoPage() {
   const { eventId } = useParams()
-  let { selectedEvent } = useSelector(state => {
-    return {
-      selectedEvent: state.events.selected || false
-    }
+  const eventDefaultData = useSelector(state => {
+    const selectedEvent = state.events.entities[eventId] || null
+    return serializeEventToFormData(selectedEvent)
   })
 
-  const { handleSubmit, register } = useForm()
+  const { handleSubmit, register } = useForm({
+    defaultValues: eventDefaultData
+  })
 
   const dispatch = useDispatch()
-  React.useEffect(() => {
-    if (!selectedEvent) {
-      dispatch(selectedEventAsync(eventId)).then(
-        res => (selectedEvent = res.payload)
-      )
-    }
-  }, [])
 
   function onSubmit(data) {
     const eventFormDataSerialized = serializeEventFormData(data)
@@ -36,7 +30,7 @@ export function EventInfoPage() {
         eventInfo: eventFormDataSerialized,
         eventId
       })
-    ).then(() => dispatch(selectedEventAsync(selectedEvent._id)))
+    )
   }
 
   return (
