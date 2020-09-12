@@ -10,22 +10,19 @@ import {
   selectedSponsorAsync
 } from '../../redux/slices/sponsors'
 import { SponsorPageStyled, SponsorTitle } from './SponsorPage.styles'
+import { useParams } from 'react-router-dom'
 
 export function SponsorPage() {
-  const { modalIsOpen, selectedEvent, selectedSponsor } = useSelector(state => {
+  const { modalIsOpen, selectedSponsor } = useSelector(state => {
     return {
       modalIsOpen: state.modals.isOpen,
-      selectedEvent: state.events.selected || false,
       selectedSponsor: state.sponsors.selected || false
     }
   })
 
-  let eventId
+  const { eventId } = useParams()
   const dispatch = useDispatch()
   React.useEffect(() => {
-    if (selectedEvent) {
-      eventId = selectedEvent._id
-    }
     dispatch(getAllSponsorsAsync(eventId))
   }, [])
 

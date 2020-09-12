@@ -2,6 +2,9 @@ import React from 'react'
 // import { useForm } from 'react-hook-form'
 import { MainTemplate } from '../../templates'
 import { Button } from '../../components/atoms'
+import { useSelector, useDispatch } from 'react-redux'
+import { readyForPublishEventAsync } from '../../redux/slices/events'
+import { useParams } from 'react-router-dom'
 import heroImg from '../../assets/images/placeholder_banner.png'
 import textImg from '../../assets/images/conference_picture.png'
 import {
@@ -23,6 +26,20 @@ import { SponsorCard, FormField } from '../../components/molecules'
 
 export function PublishPage() {
   // const { register, handleSubmit } = useForm()
+
+  const { readyForPublish } = useSelector(state => {
+    return {
+      readyForPublish: state.events.readyForPublish || false
+    }
+  })
+
+  const { eventId } = useParams()
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(readyForPublishEventAsync(eventId))
+  }, [])
+
+  console.log('readyForPublish', readyForPublish)
 
   return (
     <MainTemplate>

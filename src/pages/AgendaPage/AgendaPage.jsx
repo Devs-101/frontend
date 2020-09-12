@@ -7,22 +7,19 @@ import { MainTemplate } from '../../templates'
 import { AgendaCard, AgendaForm, Modal } from '../../components/organisms/'
 import { getAllTalksAsync, selectedTalkAsync } from '../../redux/slices/talks'
 import { getAllSpeakersAsync } from '../../redux/slices/speakers'
+import { useParams } from 'react-router-dom'
 
 export function AgendaPage() {
-  const { modalIsOpen, selectedEvent, selectedTalk } = useSelector(state => {
+  const { eventId } = useParams()
+  const { modalIsOpen, selectedTalk } = useSelector(state => {
     return {
       modalIsOpen: state.modals.isOpen,
-      selectedEvent: state.events.selected || false,
       selectedTalk: state.talks.selected || false
     }
   })
 
-  let eventId
   const dispatch = useDispatch()
   React.useEffect(() => {
-    if (selectedEvent) {
-      eventId = selectedEvent._id
-    }
     dispatch(getAllTalksAsync(eventId))
     dispatch(getAllSpeakersAsync(eventId))
   }, [])

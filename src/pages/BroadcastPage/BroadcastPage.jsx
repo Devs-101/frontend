@@ -14,9 +14,10 @@ import {
   serializeBroadcastToFormData,
   serializeBroadcastFormData
 } from './helper'
+import { useParams } from 'react-router-dom'
 
 export function BroadcastPage() {
-  const eventId = window.sessionStorage.getItem('selectedEventId') || false
+  const { eventId } = useParams()
   const [isImage, setIsImage] = React.useState('')
   const [broadcast, setBroadcast] = React.useState({})
 

@@ -18,19 +18,31 @@ export function serializeCreateEventInfo(eventInfo) {
   }
 }
 
-export function serializeEventInfo(eventInfo) {
+export function serializeReadyForPublishEventInfo(eventInfo) {
   return {
-    eventStatus: eventInfo.status || false,
-    countDown: eventInfo.countDown || true,
-    allowRegister: eventInfo.allowRegister || false,
-    name: eventInfo.name || '',
-    description: eventInfo.description || '',
+    eventId: eventInfo.data.eventId,
+    checkComplete: eventInfo.data.checkComplete
+  }
+}
+
+export function serializeEventInfo(eventInfo) {
+  console.log(eventInfo)
+  const { data } = eventInfo
+  return {
+    _id: data._id,
+    eventStatus: data.status || false,
+    countDown: data.countDown || true,
+    allowRegister: data.allowRegister || false,
+    name: data.name || '',
+    description: data.description || '',
     dateHour: {
-      initDate: eventInfo.initDate || null,
-      endDate: eventInfo.endDate || null
+      initDate: data.dateHour.initDate || null,
+      endDate: data.dateHour.endDate || null
     },
-    theme: eventInfo.theme || null,
-    fullUrl: eventInfo.fullUrl || null,
-    organizators: eventInfo.organizators || []
+    theme: data.theme || null,
+    fullUrl: data.fullUrl || null,
+    organizators: data.organizators || [],
+    organizationId: data.organizationId || null,
+    slug: data.slug || null
   }
 }
