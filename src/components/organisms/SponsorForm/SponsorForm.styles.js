@@ -24,6 +24,9 @@ export const FormStyled = styled.form`
       height: 200px;
       margin: 0 auto 24px;
       background-image: url(${props => props.backgroundImage || formImage});
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
 
       ${breakpoint.md`
           grid-row: 2 / 5;
