@@ -1,6 +1,6 @@
 import React from 'react'
 import { MainTemplate } from '../../templates'
-import { SponsorCard } from '../../components/molecules'
+import { SponsorCard, TitleContainer } from '../../components/molecules'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from '../../components/atoms'
 import { openModal } from '../../redux/slices/modals'
@@ -9,7 +9,7 @@ import {
   getAllSponsorsAsync,
   selectedSponsorAsync
 } from '../../redux/slices/sponsors'
-import { SponsorPageStyled, SponsorTitle } from './SponsorPage.styles'
+import { SponsorPageStyled } from './SponsorPage.styles'
 import { useParams } from 'react-router-dom'
 
 export function SponsorPage() {
@@ -47,7 +47,7 @@ export function SponsorPage() {
 
   return (
     <MainTemplate>
-      <SponsorTitle>
+      <TitleContainer>
         <h3>Sponsors</h3>
         <Button type="button" onClick={handleOpenNewModal}>
           Add sponsor
@@ -55,7 +55,7 @@ export function SponsorPage() {
         <Modal isOpen={modalIsOpen}>
           <SponsorForm eventId={eventId} sponsor={selectedSponsor} />
         </Modal>
-      </SponsorTitle>
+      </TitleContainer>
       {sponsorsLoading ? (
         <h1>Loading...</h1>
       ) : sponsorsError ? (
