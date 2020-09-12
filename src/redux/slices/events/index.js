@@ -1,8 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllEvents, createEvent } from '../../../services'
+import {
+  getAllEvents,
+  updateEvent,
+  createEvent,
+  getEvent,
+  readyForPublishEvent
+} from '../../../services'
 import {
   serializeGetAllEventsResponseData,
-  serializeCreateEventInfo
+  serializeCreateEventInfo,
+  serializeEventInfo,
+  serializeReadyForPublishEventInfo
 } from './serializeEventsData'
 
 export const getAllEventsAsync = createAsyncThunk(
@@ -22,6 +30,26 @@ export const getAllEventsAsync = createAsyncThunk(
   }
 )
 
+export const getEventAsync = createAsyncThunk(
+  'events/getEvent',
+  async eventId => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    if (!eventId) {
+      eventId = window.sessionStorage.getItem('selectedEventId')
+    }
+    const getEventsResponse = await getEvent(eventId, jwt)
+    if (!getEventsResponse.ok) {
+      throw Error('Error fetching events')
+    }
+    const getEventResponseData = await getEventsResponse.json()
+    const getEventResponseDataSerialized = serializeEventInfo(
+      getEventResponseData
+    )
+
+    return getEventResponseDataSerialized
+  }
+)
+
 export const createEventAsync = createAsyncThunk(
   'events/createEvent',
   async ({ eventInfo, organizationId }) => {
@@ -38,10 +66,68 @@ export const createEventAsync = createAsyncThunk(
   }
 )
 
+export const updateEventAsync = createAsyncThunk(
+  'events/updateEvent',
+  async ({ eventInfo, eventId }) => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    if (!eventId) {
+      eventId = window.sessionStorage.getItem('selectedEventId')
+    }
+    const eventInfoSerialized = serializeEventInfo(eventInfo)
+    const createEventResponse = await updateEvent(
+      eventInfoSerialized,
+      eventId,
+      jwt
+    )
+    if (!createEventResponse.ok) {
+      throw Error('Error updating the event')
+    }
+  }
+)
+
 export const selectedEventAsync = createAsyncThunk(
   'events/selectedEvent',
   async eventId => {
-    return eventId
+    console.log('selectedEventAsync', eventId)
+    if (!eventId) {
+      eventId = window.sessionStorage.getItem('selectedEventId')
+    }
+    const jwt = window.sessionStorage.getItem('jwt')
+    console.log({ eventId })
+    const getEventsResponse = await getEvent(eventId, jwt)
+    if (!getEventsResponse.ok) {
+      throw Error('Error fetching the event')
+    }
+    const getEventResponseData = await getEventsResponse.json()
+    const getEventResponseDataSerialized = serializeEventInfo(
+      getEventResponseData
+    )
+
+    console.log('!!!selectedEventAsync', getEventResponseDataSerialized)
+
+    return getEventResponseDataSerialized
+  }
+)
+
+export const readyForPublishEventAsync = createAsyncThunk(
+  'events/readyForPublishEvent',
+  async eventId => {
+    if (!eventId) eventId = window.sessionStorage.getItem('selectedEventId')
+    const jwt = window.sessionStorage.getItem('jwt')
+    const getEventsResponse = await readyForPublishEvent(eventId, jwt)
+    console.log('getEventsResponse', getEventsResponse)
+    if (!getEventsResponse.ok) {
+      throw Error('Error fetching the event')
+    }
+    const getEventResponseData = await getEventsResponse.json()
+    console.log('getEventResponseData', getEventResponseData)
+    const getEventResponseDataSerialized = serializeReadyForPublishEventInfo(
+      getEventResponseData
+    )
+
+    console.log('!!!readyForPublishEvent', getEventResponseDataSerialized)
+
+    return getEventResponseDataSerialized
   }
 )
 
@@ -52,7 +138,8 @@ export const eventsSlice = createSlice({
     ids: [],
     loading: false,
     error: null,
-    selected: null
+    selected: null,
+    readyForPublish: false
   },
   reducers: {},
   extraReducers: {
@@ -82,11 +169,17 @@ export const eventsSlice = createSlice({
     },
     [selectedEventAsync.fulfilled]: (state, { payload }) => {
       if (payload) {
-        window.sessionStorage.setItem('selectedEventId', payload)
+        window.sessionStorage.setItem('selectedEventId', payload._id)
       }
       state.loading = false
       state.error = null
       state.selected = state.entities[payload]
+    },
+    [readyForPublishEventAsync.fulfilled]: (state, { payload }) => {
+      console.log('readyForPublishEventAsync::', payload)
+      state.loading = false
+      state.error = null
+      state.readyForPublish = payload
     }
   }
 })

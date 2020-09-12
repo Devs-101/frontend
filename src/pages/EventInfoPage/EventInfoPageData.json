@@ -1,21 +1,46 @@
 {
   "title": "Event Details",
-  "button": "Save",
+  "buttonAdd": "Save",
   "fields": [
     {
-      "label": "Event name:",
+      "label": "Name:",
       "id": "DetailsFormName",
       "type": "text"
     },
     {
-      "label": "Event Date",
-      "id": "DetailsFormDate",
+      "label": "Url:",
+      "id": "DetailsFormUrlSlug",
+      "type": "text"
+    },
+    {
+      "label": "Description:",
+      "id": "DetailsFormDescription",
+      "type": "textarea"
+    },
+    {
+      "label": "Image:",
+      "id": "DetailsFormLogo",
+      "type": "file"
+    },
+    {
+      "label": "Initial Date",
+      "id": "DetailsFormInitialDate",
+      "type": "date"
+    },
+    {
+      "label": "End Date",
+      "id": "DetailsFormEndDate",
       "type": "date"
     },
     {
       "label": "Banner title:",
-      "id": "DetailsFormBanner",
+      "id": "DetailsFormBannerTitle",
       "type": "text"
+    },
+    {
+      "label": "Banner Image:",
+      "id": "DetailsFormBannerImg",
+      "type": "file"
     },
     {
       "label": "Timezone:",
