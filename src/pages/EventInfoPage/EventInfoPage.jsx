@@ -12,10 +12,15 @@ import { useParams } from 'react-router-dom'
 
 export function EventInfoPage() {
   const { eventId } = useParams()
-  const eventDefaultData = useSelector(state => {
-    const selectedEvent = state.events.entities[eventId] || null
-    return serializeEventToFormData(selectedEvent)
+  const { selectedEvent, eventsIsLoading, eventsError } = useSelector(state => {
+    return {
+      selectedEvent: state.events.entities[eventId] || null,
+      eventsIsLoading: state.events.loading,
+      eventsError: state.events.error
+    }
   })
+
+  const eventDefaultData = serializeEventToFormData(selectedEvent)
 
   const { handleSubmit, register } = useForm({
     defaultValues: eventDefaultData
@@ -43,16 +48,22 @@ export function EventInfoPage() {
       </TitleContainer>
       <EventInfoStyled>
         <Container>
-          {EventInfoPageData.fields.map(field => (
-            <FormField
-              key={field.id}
-              id={field.id}
-              label={field.label}
-              type={field.type}
-              options={field.options}
-              register={register}
-            />
-          ))}
+          {eventsIsLoading ? (
+            <h1>Loading...</h1>
+          ) : eventsError ? (
+            <h1>Error</h1>
+          ) : (
+            EventInfoPageData.fields.map(field => (
+              <FormField
+                key={field.id}
+                id={field.id}
+                label={field.label}
+                type={field.type}
+                options={field.options}
+                register={register}
+              />
+            ))
+          )}
         </Container>
       </EventInfoStyled>
     </MainTemplate>
