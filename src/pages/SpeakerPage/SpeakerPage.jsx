@@ -1,5 +1,5 @@
 import React from 'react'
-import { SpeakerPageStyled, SpeakerTitle } from './SpeakerPage.styles'
+import { SpeakerPageStyled } from './SpeakerPage.styles'
 import { useSelector, useDispatch } from 'react-redux'
 import { MainTemplate } from '../../templates'
 import { Button } from '../../components/atoms'
@@ -9,6 +9,7 @@ import {
   selectedSpeakerAsync
 } from '../../redux/slices/speakers'
 import { SpeakerCard, SpeakerForm, Modal } from '../../components/organisms'
+import { TitleContainer } from '../../components/molecules'
 import { useParams } from 'react-router-dom'
 
 export function SpeakerPage() {
@@ -46,7 +47,7 @@ export function SpeakerPage() {
 
   return (
     <MainTemplate>
-      <SpeakerTitle>
+      <TitleContainer>
         <h3>Speakers</h3>
         <Button type="button" onClick={handleOpenNewModal}>
           Add Speaker
@@ -54,7 +55,7 @@ export function SpeakerPage() {
         <Modal isOpen={modalIsOpen}>
           <SpeakerForm eventId={eventId} speaker={selectedSpeaker} />
         </Modal>
-      </SpeakerTitle>
+      </TitleContainer>
       {speakersLoading ? (
         <h1>Loading...</h1>
       ) : speakersError ? (
