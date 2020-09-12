@@ -1,6 +1,6 @@
 import React from 'react'
 import { SponsorCardStyled, SponsorCardText } from './SponsorCard.styles'
-import sponsorImage from '../../../assets/images/sponsor.png'
+import sponsorImage from '../../../assets/images/formImage.png'
 import { useDispatch } from 'react-redux'
 import { openModal } from '../../../redux/slices/modals'
 import { selectedSponsorAsync } from '../../../redux/slices/sponsors'
