@@ -71,6 +71,8 @@ export const Main = styled.main`
 
 export const MainContentStyled = styled.div`
   width: 100%;
+  max-width: 1400px;
+  margin: 25px auto;
 `
 
 export const Logout = styled.p`
