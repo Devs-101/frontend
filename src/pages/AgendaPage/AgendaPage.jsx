@@ -5,44 +5,21 @@ import { Button } from '../../components/atoms'
 import { openModal } from '../../redux/slices/modals'
 import { MainTemplate } from '../../templates'
 import { AgendaCard, AgendaForm, Modal } from '../../components/organisms/'
-import { getAllTalksAsync } from '../../redux/slices/talks'
+import { getAllTalksAsync, selectedTalkAsync } from '../../redux/slices/talks'
 import { getAllSpeakersAsync } from '../../redux/slices/speakers'
-
-const MOCKS = [
-  {
-    id: '1',
-    date: '28 / 08/ 20 - 10:00 am',
-    title: 'Talk 1',
-    description: 'Super Description of Talk 1'
-  },
-  {
-    id: '2',
-    date: '28 / 08/ 20 - 10:00 am',
-    title: 'Talk 2',
-    description: 'Super Description of Talk 2'
-  },
-  {
-    id: '3',
-    date: '28 / 08/ 20 - 10:00 am',
-    title: 'Talk 3',
-    description: 'Super Description of Talk 3'
-  }
-]
+import { useParams } from 'react-router-dom'
 
 export function AgendaPage() {
-  const { modalIsOpen, selectedEvent } = useSelector(state => {
+  const { eventId } = useParams()
+  const { modalIsOpen, selectedTalk } = useSelector(state => {
     return {
       modalIsOpen: state.modals.isOpen,
-      selectedEvent: state.events.selected || null
+      selectedTalk: state.talks.selected || false
     }
   })
 
-  let eventId
   const dispatch = useDispatch()
   React.useEffect(() => {
-    if (selectedEvent) {
-      eventId = selectedEvent._id
-    }
     dispatch(getAllTalksAsync(eventId))
     dispatch(getAllSpeakersAsync(eventId))
   }, [])
@@ -67,7 +44,8 @@ export function AgendaPage() {
     }
   })
 
-  function handleOpenModal() {
+  async function handleOpenNewModal() {
+    await dispatch(selectedTalkAsync())
     dispatch(openModal())
   }
 
@@ -75,11 +53,15 @@ export function AgendaPage() {
     <MainTemplate>
       <AgendaTitle>
         <h3>Schedule</h3>
-        <Button type="button" onClick={handleOpenModal}>
+        <Button type="button" onClick={handleOpenNewModal}>
           Add Talk
         </Button>
         <Modal isOpen={modalIsOpen}>
-          <AgendaForm speakers={speakersById} eventId={eventId} />
+          <AgendaForm
+            speakers={speakersById}
+            eventId={eventId}
+            talk={selectedTalk}
+          />
         </Modal>
       </AgendaTitle>
       {talksLoading || speakersLoading ? (
@@ -94,7 +76,8 @@ export function AgendaPage() {
             const talk = talksById[talkId]
             return (
               <AgendaCard
-                key={talk._id}
+                key={talkId}
+                id={talkId}
                 date={talk.initDate}
                 title={talk.name}
                 description={talk.description}
