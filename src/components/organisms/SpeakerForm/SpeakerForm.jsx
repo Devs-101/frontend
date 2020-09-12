@@ -82,7 +82,6 @@ export function SpeakerForm({ eventId, speaker }) {
       .then(() => dispatch(closeModal()))
   }
 
-
   function handleCloseModal() {
     dispatch(closeModal())
   }
