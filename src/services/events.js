@@ -14,7 +14,7 @@ export function getAllEvents(organizationId, token) {
 
 export function getEvent(eventId, token) {
   if (eventId) {
-    return fetch(`${config.API_URL}/events/5f56fe689d08f946b84a3f6d/get`, {
+    return fetch(`${config.API_URL}/events/${eventId}/get`, {
       method: 'GET',
       headers: {
         'x-access-token': token
@@ -26,13 +26,24 @@ export function getEvent(eventId, token) {
 
 export function createEvent(eventInfo, organizationId, token) {
   if (organizationId) {
+    const formData = new FormData()
+    Object.entries(eventInfo).forEach(entry => {
+      console.log(entry[0])
+      if (entry[0] === 'dateHour') {
+        Object.entries(entry[1]).forEach(subentry => {
+          formData.append(`${entry[0]}[${subentry[0]}]`, subentry[1])
+        })
+      } else {
+        formData.append(entry[0], entry[1])
+      }
+    })
+
     return fetch(`${config.API_URL}/events/${organizationId}/new`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         'x-access-token': token
       },
-      body: JSON.stringify(eventInfo)
+      body: formData
     })
   }
   return Promise.reject(Error('Please provide an organization Id'))

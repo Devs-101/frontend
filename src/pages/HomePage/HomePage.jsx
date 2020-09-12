@@ -57,7 +57,7 @@ export function HomePage() {
                 <EventCard
                   key={eventId}
                   eventId={eventId}
-                  imageUrl={event.imageUrl}
+                  imageUrl={event.img}
                   eventName={event.name}
                   eventDescription={event.description}
                   attendeeCounter={event.attendeeCounter}

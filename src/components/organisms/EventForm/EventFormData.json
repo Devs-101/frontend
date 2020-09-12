@@ -18,6 +18,16 @@
       "label": "End date:",
       "id": "EventFormEndDate",
       "type": "date"
+    },
+    {
+      "label": "Description:",
+      "id": "EventFormDescription",
+      "type": "textarea"
+    },
+    {
+      "label": "",
+      "id": "EventFormLogo",
+      "type": "file"
     }
   ]
 }

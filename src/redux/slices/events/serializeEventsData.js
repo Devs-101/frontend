@@ -14,7 +14,9 @@ export function serializeCreateEventInfo(eventInfo) {
     dateHour: {
       initDate: eventInfo.initDate,
       endDate: eventInfo.endDate
-    }
+    },
+    description: eventInfo.description,
+    img: eventInfo.img
   }
 }
 
