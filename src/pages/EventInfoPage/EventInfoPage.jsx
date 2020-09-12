@@ -1,8 +1,8 @@
 import React from 'react'
 import { MainTemplate } from '../../templates'
-import { EventInfoStyled, AgendaTitle, Container } from './EventInfoPage.styles'
+import { EventInfoStyled, Container } from './EventInfoPage.styles'
 import EventInfoPageData from './EventInfoPageData.json'
-import { FormField } from '../../components/molecules'
+import { FormField, TitleContainer } from '../../components/molecules'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateEventAsync } from '../../redux/slices/events'
 import { useForm } from 'react-hook-form'
@@ -35,12 +35,12 @@ export function EventInfoPage() {
 
   return (
     <MainTemplate>
-      <AgendaTitle>
+      <TitleContainer>
         <h3>{EventInfoPageData.title}</h3>
         <Button onClick={handleSubmit(onSubmit)}>
           {EventInfoPageData.buttonAdd}
         </Button>
-      </AgendaTitle>
+      </TitleContainer>
       <EventInfoStyled>
         <Container>
           {EventInfoPageData.fields.map(field => (
