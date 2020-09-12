@@ -25,6 +25,9 @@ export const SpeakerFormStyled = styled.div`
         margin-left: auto;
         margin-right: auto;
         background-image: url(${props => props.backgroundImage || formSpeaker});
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
       }
       input {
         display: none;
