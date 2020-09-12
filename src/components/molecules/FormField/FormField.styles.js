@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors } from '../../../styles/colors'
 
 export const LabelStyled = styled.label`
-  font-size: 12px;
+  font-size: 16px;
   display: block;
   padding-left: 20px;
   margin-bottom: 5px;
