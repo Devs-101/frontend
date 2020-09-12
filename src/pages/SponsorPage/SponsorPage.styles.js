@@ -15,7 +15,6 @@ export const SponsorPageStyled = styled.div`
 export const SponsorTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
   align-items: center;
   width: 100%;
   height: 60px;

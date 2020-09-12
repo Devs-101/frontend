@@ -15,7 +15,6 @@ export const SpeakerPageStyled = styled.div`
 export const SpeakerTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
   align-items: center;
   width: 100%;
   height: 60px;
