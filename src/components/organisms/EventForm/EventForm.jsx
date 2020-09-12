@@ -17,9 +17,23 @@ export function EventForm() {
   const { id: organizationId } = useSelector(
     state => state.users.organizationInfo
   )
-  const { handleSubmit, register } = useForm()
+  const { handleSubmit, register, watch } = useForm()
+  const [isImage, setIsImage] = React.useState('')
+  const watchEventFormLogo = watch('EventFormLogo')
+
+  React.useEffect(() => {
+    if (watchEventFormLogo && watchEventFormLogo.length >= 1) {
+      const image = watchEventFormLogo[0]
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onload = e => {
+        setIsImage(e.target.result)
+      }
+    }
+  }, [watchEventFormLogo])
 
   function onSubmit(data) {
+    if (data.EventFormLogo) data.EventFormLogo = data.EventFormLogo[0]
     const eventFormDataSerialized = serializeEventFormData(data)
     dispatch(
       createEventAsync({ eventInfo: eventFormDataSerialized, organizationId })
@@ -33,7 +47,7 @@ export function EventForm() {
   }
 
   return (
-    <EventFormStyled>
+    <EventFormStyled backgroundImage={isImage}>
       <SubmitSection>
         <Button onClick={handleCloseModal}>{EventFormData.buttonCancel}</Button>
         <Button onClick={handleSubmit(onSubmit)}>
