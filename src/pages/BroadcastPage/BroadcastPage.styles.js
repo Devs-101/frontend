@@ -20,12 +20,13 @@ export const BroadcastFomrStyled = styled.form`
 
   div:nth-of-type(3) {
     label {
-      height: 130px;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
+      height: 250px;
       background-image: url(${props => props.backgroundImage || placeholder});
       background-repeat: no-repeat;
       background-size: contain;
+      background-position: center;
+      margin: 20px 0 0 0;
     }
     input {
       display: none;

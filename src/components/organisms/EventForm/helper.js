@@ -2,6 +2,8 @@ export function serializeEventFormData(eventFormData) {
   return {
     name: eventFormData.EventFormName,
     initDate: new Date(eventFormData.EventFormInitialDate).toISOString(),
-    endDate: new Date(eventFormData.EventFormEndDate).toISOString()
+    endDate: new Date(eventFormData.EventFormEndDate).toISOString(),
+    description: eventFormData.EventFormDescription,
+    img: eventFormData.EventFormLogo
   }
 }

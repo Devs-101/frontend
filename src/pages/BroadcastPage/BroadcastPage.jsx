@@ -2,7 +2,7 @@ import React from 'react'
 import { BroadcastFomrStyled, BroadcastTitle } from './BroadcastPage.styles'
 import { useDispatch } from 'react-redux'
 import { MainTemplate } from '../../templates'
-import { FormField } from '../../components/molecules/'
+import { FormField, TitleContainer } from '../../components/molecules/'
 import { Button } from '../../components/atoms'
 import broadcastFormData from './BroadcastFormData.json'
 import { useForm } from 'react-hook-form'
@@ -67,12 +67,12 @@ export function BroadcastPage() {
 
   return (
     <MainTemplate>
-      <BroadcastTitle>
+      <TitleContainer>
         <h3>Broadcast</h3>
         <Button onClick={handleSubmit(onUpdate)}>
           {broadcastFormData.buttonAdd}
         </Button>
-      </BroadcastTitle>
+      </TitleContainer>
       <BroadcastFomrStyled
         backgroundImage={isImage}
         onSubmit={handleSubmit(onUpdate)}

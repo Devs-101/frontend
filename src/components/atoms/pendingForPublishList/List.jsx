@@ -11,7 +11,7 @@ const listOfStatus = {
   NO_EVENT_HEADER_IMAGE: 'NO_EVENT_HEADER_IMAGE_INFO'
 }
 
-export function Button({ readyForPublish }) {
+export function List({ readyForPublish }) {
   return (
     <>
       {readyForPublish.map(item => (

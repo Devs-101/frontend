@@ -51,6 +51,9 @@ export const NavBarItemStyled = styled.li`
     ${breakpoint.md`
       width: 100%;
       height: 70px;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      padding: 0 20px;
     `}
   }
 
@@ -58,7 +61,6 @@ export const NavBarItemStyled = styled.li`
     display: none;
     justify-content: center;
     font-weight: 700;
-    margin-left: 16px;
 
     ${breakpoint.md`
     display: block;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { AgendaStyled, AgendaTitle } from './AgendaPage.styles'
+import { AgendaStyled } from './AgendaPage.styles'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from '../../components/atoms'
 import { openModal } from '../../redux/slices/modals'
@@ -8,6 +8,7 @@ import { AgendaCard, AgendaForm, Modal } from '../../components/organisms/'
 import { getAllTalksAsync, selectedTalkAsync } from '../../redux/slices/talks'
 import { getAllSpeakersAsync } from '../../redux/slices/speakers'
 import { useParams } from 'react-router-dom'
+import { TitleContainer } from '../../components/molecules'
 
 export function AgendaPage() {
   const { eventId } = useParams()
@@ -51,7 +52,7 @@ export function AgendaPage() {
 
   return (
     <MainTemplate>
-      <AgendaTitle>
+      <TitleContainer>
         <h3>Schedule</h3>
         <Button type="button" onClick={handleOpenNewModal}>
           Add Talk
@@ -63,7 +64,7 @@ export function AgendaPage() {
             talk={selectedTalk}
           />
         </Modal>
-      </AgendaTitle>
+      </TitleContainer>
       {talksLoading || speakersLoading ? (
         <h1>Loading...</h1>
       ) : !!talksError || speakersError ? (
