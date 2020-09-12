@@ -9,22 +9,19 @@ import {
   selectedSpeakerAsync
 } from '../../redux/slices/speakers'
 import { SpeakerCard, SpeakerForm, Modal } from '../../components/organisms'
+import { useParams } from 'react-router-dom'
 
 export function SpeakerPage() {
-  const { modalIsOpen, selectedEvent, selectedSpeaker } = useSelector(state => {
+  const { modalIsOpen, selectedSpeaker } = useSelector(state => {
     return {
       modalIsOpen: state.modals.isOpen,
-      selectedEvent: state.events.selected || false,
       selectedSpeaker: state.speakers.selected || false
     }
   })
 
-  let eventId
+  const { eventId } = useParams()
   const dispatch = useDispatch()
   React.useEffect(() => {
-    if (selectedEvent) {
-      eventId = selectedEvent._id
-    }
     dispatch(getAllSpeakersAsync(eventId))
   }, [])
 
