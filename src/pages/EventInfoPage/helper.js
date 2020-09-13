@@ -1,19 +1,23 @@
 export function serializeEventFormData(eventFormData) {
   return {
     eventStatus: eventFormData.status || false,
-    countDown: eventFormData.countDown || true,
-    allowRegister: eventFormData.allowRegister || false,
-    name: eventFormData.name || '',
-    description: eventFormData.description || '',
+    countDown: eventFormData.DetailsFormCountdown || false,
+    allowRegister: eventFormData.DetailsFormAllowRegister || false,
+    name: eventFormData.DetailsFormName || '',
+    description: eventFormData.DetailsFormDescription || '',
     dateHour: {
-      initDate: eventFormData.dateHour.initDate || null,
-      endDate: eventFormData.dateHour.endDate || null
+      initDate: eventFormData.DetailsFormInitialDate || null,
+      endDate: eventFormData.DetailsFormEndDate || null
     },
     theme: eventFormData.theme || null,
-    fullUrl: eventFormData.fullUrl || null,
     organizators: eventFormData.organizators || [],
     organizationId: eventFormData.organizationId || null,
-    slug: eventFormData.slug || null
+    slug: eventFormData.slug || null,
+    bannerOrHeader: {
+      isBanner: true,
+      text: eventFormData.DetailsFormBannerTitle,
+      img: ''
+    }
   }
 }
 

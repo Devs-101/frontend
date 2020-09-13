@@ -273,6 +273,16 @@
       "label": "Click to Add Event Image",
       "id": "DetailsFormLogo",
       "type": "file"
+    },
+    {
+      "label": "Allow email register",
+      "id": "DetailsFormAllowRegister",
+      "type": "checkbox"
+    },
+    {
+      "label": "Show countdown",
+      "id": "DetailsFormCountdown",
+      "type": "checkbox"
     }
   ]
 }
