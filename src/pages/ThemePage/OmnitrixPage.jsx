@@ -1,5 +1,4 @@
 import React from 'react'
-import { MainTemplate } from '../../templates'
 // import { useSelector } from 'react-redux'
 import { Button } from '../../components/atoms'
 import heroImg from '../../assets/images/placeholder_banner.png'
@@ -20,9 +19,10 @@ import {
 } from './OmnitrixPage.styles'
 import { SpeakerCard, AgendaCard } from '../../components/organisms'
 import { SponsorCard, FormField } from '../../components/molecules'
+import { Countdown } from '../../components/atoms/Countdown'
 // import { useParams } from 'react-router-dom'
 
-export function OmnitrixPage() {
+export function OmnitrixPage({ countDown }) {
   // const { eventId } = useParams()
 
   return (
@@ -31,6 +31,7 @@ export function OmnitrixPage() {
         <img src={heroImg} alt="" />
         <HeroInfo>
           <h1>I am so excited</h1>
+          <Countdown initDate={countDown} />
           <Time>
             <div>
               <h1>00</h1>
