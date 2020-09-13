@@ -4,7 +4,8 @@ import {
   updateEvent,
   createEvent,
   getEvent,
-  readyForPublishEvent
+  readyForPublishEvent,
+  publishEvent
 } from '../../../services'
 import {
   serializeGetAllEventsResponseData,
@@ -88,12 +89,10 @@ export const updateEventAsync = createAsyncThunk(
 export const selectedEventAsync = createAsyncThunk(
   'events/selectedEvent',
   async eventId => {
-    console.log('selectedEventAsync', eventId)
     if (!eventId) {
       eventId = window.sessionStorage.getItem('selectedEventId')
     }
     const jwt = window.sessionStorage.getItem('jwt')
-    console.log({ eventId })
     const getEventsResponse = await getEvent(eventId, jwt)
     if (!getEventsResponse.ok) {
       throw Error('Error fetching the event')
@@ -102,8 +101,6 @@ export const selectedEventAsync = createAsyncThunk(
     const getEventResponseDataSerialized = serializeEventInfo(
       getEventResponseData
     )
-
-    console.log('!!!selectedEventAsync', getEventResponseDataSerialized)
 
     return getEventResponseDataSerialized
   }
@@ -115,17 +112,30 @@ export const readyForPublishEventAsync = createAsyncThunk(
     if (!eventId) eventId = window.sessionStorage.getItem('selectedEventId')
     const jwt = window.sessionStorage.getItem('jwt')
     const getEventsResponse = await readyForPublishEvent(eventId, jwt)
-    console.log('getEventsResponse', getEventsResponse)
     if (!getEventsResponse.ok) {
       throw Error('Error fetching the event')
     }
     const getEventResponseData = await getEventsResponse.json()
-    console.log('getEventResponseData', getEventResponseData)
     const getEventResponseDataSerialized = serializeReadyForPublishEventInfo(
       getEventResponseData
     )
 
-    console.log('!!!readyForPublishEvent', getEventResponseDataSerialized)
+    return getEventResponseDataSerialized
+  }
+)
+
+export const publishEventAsync = createAsyncThunk(
+  'events/publishEvent',
+  async ({ theme, eventId }) => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    const getEventsResponse = await publishEvent(theme, eventId, jwt)
+    if (!getEventsResponse.ok) {
+      throw Error('Error fetching the event')
+    }
+    const getEventResponseData = await getEventsResponse.json()
+    const getEventResponseDataSerialized = serializeEventInfo(
+      getEventResponseData
+    )
 
     return getEventResponseDataSerialized
   }
@@ -176,10 +186,14 @@ export const eventsSlice = createSlice({
       state.selected = state.entities[payload]
     },
     [readyForPublishEventAsync.fulfilled]: (state, { payload }) => {
-      console.log('readyForPublishEventAsync::', payload)
       state.loading = false
       state.error = null
       state.readyForPublish = payload
+    },
+    [publishEventAsync.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.error = null
+      state.entities[payload._id] = payload
     }
   }
 })

@@ -23,12 +23,12 @@ export function serializeCreateEventInfo(eventInfo) {
 export function serializeReadyForPublishEventInfo(eventInfo) {
   return {
     eventId: eventInfo.data.eventId,
-    checkComplete: eventInfo.data.checkComplete
+    checkComplete: eventInfo.data.checkComplete,
+    initDate: eventInfo.data.initDate
   }
 }
 
 export function serializeEventInfo(eventInfo) {
-  console.log(eventInfo)
   const { data } = eventInfo
   return {
     _id: data._id,
