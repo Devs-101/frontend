@@ -78,7 +78,7 @@ export function BroadcastPage() {
         onSubmit={handleSubmit(onUpdate)}
       >
         {!broadcast ? (
-          <h1>Cargando Datos</h1>
+          <h1>Loading Data</h1>
         ) : (
           broadcastFormData.fields.map(field => (
             <FormField

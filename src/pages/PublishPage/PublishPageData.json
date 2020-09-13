@@ -1,0 +1,19 @@
+{
+  "title": "Event Details",
+  "buttonAdd": "Save",
+  "theme": "omnitrix",
+  "themes": [
+    {
+      "label": "Omnitrix",
+      "id": "omnitrix"
+    },
+    {
+      "label": "Cuteness",
+      "id": "cuteness"
+    },
+    {
+      "label": "POE Tribute",
+      "id": "poetribute"
+    }
+  ]
+}
