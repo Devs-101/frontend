@@ -1,6 +1,5 @@
 export function serializeEventFormData(eventFormData) {
   return {
-    eventStatus: eventFormData.status || false,
     countDown: eventFormData.DetailsFormCountdown || false,
     allowRegister: eventFormData.DetailsFormAllowRegister || false,
     name: eventFormData.DetailsFormName || '',
@@ -9,14 +8,13 @@ export function serializeEventFormData(eventFormData) {
       initDate: eventFormData.DetailsFormInitialDate || null,
       endDate: eventFormData.DetailsFormEndDate || null
     },
-    theme: eventFormData.theme || null,
+    img: eventFormData.DetailsFormLogo || null,
     organizators: eventFormData.organizators || [],
-    organizationId: eventFormData.organizationId || null,
-    slug: eventFormData.slug || null,
+    slug: eventFormData.DetailsFormUrlSlug || null,
     bannerOrHeader: {
       isBanner: true,
       text: eventFormData.DetailsFormBannerTitle,
-      img: ''
+      img: eventFormData.DetailsFormBannerImg
     }
   }
 }
@@ -38,7 +36,11 @@ export function serializeEventToFormData(eventData) {
       DetailsFormDescription: eventData.description,
       DetailsFormInitialDate: parseDateToString(eventData.dateHour.initDate),
       DetailsFormEndDate: parseDateToString(eventData.dateHour.endDate),
-      DetailsFormBannerTitle: eventData.bannerOrHeader.text
+      DetailsFormBannerTitle: eventData.bannerOrHeader.text,
+      DetailsFormBannerImgURL: eventData.bannerOrHeader.img,
+      DetailsFormLogoURL: eventData.img,
+      DetailsFormAllowRegister: eventData.allowRegister,
+      DetailsFormCountdown: eventData.countDown
     }
   }
   return {}
