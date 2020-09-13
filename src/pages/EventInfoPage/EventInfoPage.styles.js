@@ -9,8 +9,38 @@ export const EventInfoStyled = styled.form`
   `}
 `
 
-export const Container = styled.div`
+export const Container = styled.form`
   padding: 24px;
+
+  div:nth-of-type(6),
+  div:nth-of-type(8) {
+    label {
+      display: block;
+      height: 200px;
+      width: 100%;
+      border-radius: 10px;
+      border: 5px dashed ${colors.darkGrey};
+      text-align: center;
+      line-height: 200px;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  div:nth-of-type(8) {
+    label {
+      height: 160px;
+      line-height: 160px;
+    }
+  }
+
+  div:nth-of-type(7) {
+    textarea {
+      height: 135px;
+    }
+  }
 
   ${breakpoint.md`
     display: grid;
@@ -31,7 +61,7 @@ export const Container = styled.div`
     div:nth-of-type(3){
       grid-column: 2 / 3;
     }
-  `}
+  `};
 `
 export const AgendaTitle = styled.div`
   display: flex;
