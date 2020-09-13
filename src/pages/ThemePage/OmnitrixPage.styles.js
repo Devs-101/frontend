@@ -3,10 +3,7 @@ import breakpoint from '../../styles/breakpoints'
 // import { colors } from '../../styles/colors'
 
 export const PublishPageStyled = styled.div`
-  ${breakpoint.md`
-    width: 1000px;
-    margin: auto;
-  `}
+  width: 100%;
 `
 
 export const Hero = styled.div`
