@@ -10,7 +10,10 @@ export const ButtonStyled = styled.button`
   border: none;
   font-size: 16px;
   cursor: pointer;
-  margin-right: 10px;
+  margin-left: 10px;
+  &:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+  }
   &.delete {
     background-color: ${colors.delete.normal};
 
