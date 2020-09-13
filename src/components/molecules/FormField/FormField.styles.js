@@ -42,3 +42,10 @@ export const SelectStyled = styled.select`
     border: none;
   }
 `
+
+export const ChecboxContainerStyled = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  grid-column-gap: 20px;
+  justify-content: center;
+`
