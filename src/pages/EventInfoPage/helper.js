@@ -37,7 +37,8 @@ export function serializeEventToFormData(eventData) {
       DetailsFormUrlSlug: eventData.slug,
       DetailsFormDescription: eventData.description,
       DetailsFormInitialDate: parseDateToString(eventData.dateHour.initDate),
-      DetailsFormEndDate: parseDateToString(eventData.dateHour.endDate)
+      DetailsFormEndDate: parseDateToString(eventData.dateHour.endDate),
+      DetailsFormBannerTitle: eventData.bannerOrHeader.text
     }
   }
   return {}
