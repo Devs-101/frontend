@@ -3,7 +3,8 @@ import {
   LabelStyled,
   InputStyled,
   TextAreaStyled,
-  SelectStyled
+  SelectStyled,
+  ChecboxContainerStyled
 } from './FormField.styles'
 
 export function FormField({ id, label, register, type, options }) {
@@ -33,6 +34,13 @@ export function FormField({ id, label, register, type, options }) {
         <LabelStyled htmlFor={id}>{label}</LabelStyled>
         <InputStyled name={id} id={id} type={type} ref={register} />
       </div>
+    )
+  } else if (type === 'checkbox') {
+    return (
+      <ChecboxContainerStyled>
+        <InputStyled name={id} id={id} type={type} ref={register} />
+        <LabelStyled htmlFor={id}>{label}</LabelStyled>
+      </ChecboxContainerStyled>
     )
   }
 
