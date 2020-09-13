@@ -4,30 +4,29 @@ import { EventInfoStyled, Container } from './EventInfoPage.styles'
 import EventInfoPageData from './EventInfoPageData.json'
 import { FormField, TitleContainer } from '../../components/molecules'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectedEventAsync, updateEventAsync } from '../../redux/slices/events'
+import { updateEventAsync } from '../../redux/slices/events'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../components/atoms'
-import { serializeEventFormData } from './helper'
+import { serializeEventFormData, serializeEventToFormData } from './helper'
 import { useParams } from 'react-router-dom'
 
 export function EventInfoPage() {
   const { eventId } = useParams()
-  let { selectedEvent } = useSelector(state => {
+  const { selectedEvent, eventsIsLoading, eventsError } = useSelector(state => {
     return {
-      selectedEvent: state.events.selected || false
+      selectedEvent: state.events.entities[eventId] || null,
+      eventsIsLoading: state.events.loading,
+      eventsError: state.events.error
     }
   })
 
-  const { handleSubmit, register } = useForm()
+  const eventDefaultData = serializeEventToFormData(selectedEvent)
+
+  const { handleSubmit, register } = useForm({
+    defaultValues: eventDefaultData
+  })
 
   const dispatch = useDispatch()
-  React.useEffect(() => {
-    if (!selectedEvent) {
-      dispatch(selectedEventAsync(eventId)).then(
-        res => (selectedEvent = res.payload)
-      )
-    }
-  }, [])
 
   function onSubmit(data) {
     const eventFormDataSerialized = serializeEventFormData(data)
@@ -36,7 +35,7 @@ export function EventInfoPage() {
         eventInfo: eventFormDataSerialized,
         eventId
       })
-    ).then(() => dispatch(selectedEventAsync(selectedEvent._id)))
+    )
   }
 
   return (
@@ -49,16 +48,22 @@ export function EventInfoPage() {
       </TitleContainer>
       <EventInfoStyled>
         <Container>
-          {EventInfoPageData.fields.map(field => (
-            <FormField
-              key={field.id}
-              id={field.id}
-              label={field.label}
-              type={field.type}
-              options={field.options}
-              register={register}
-            />
-          ))}
+          {eventsIsLoading ? (
+            <h1>Loading...</h1>
+          ) : eventsError ? (
+            <h1>Error</h1>
+          ) : (
+            EventInfoPageData.fields.map(field => (
+              <FormField
+                key={field.id}
+                id={field.id}
+                label={field.label}
+                type={field.type}
+                options={field.options}
+                register={register}
+              />
+            ))
+          )}
         </Container>
       </EventInfoStyled>
     </MainTemplate>

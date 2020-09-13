@@ -4,6 +4,9 @@ import { colors } from '../../styles/colors'
 
 export const EventInfoStyled = styled.form`
   background-color: ${colors.grey};
+  ${breakpoint.md`
+    border-radius: 4px;
+  `}
 `
 
 export const Container = styled.div`
@@ -12,28 +15,27 @@ export const Container = styled.div`
   ${breakpoint.md`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     column-gap: 25px;
 
-    div:nth-of-type(1){
+    div:nth-of-type(1),
+    div:nth-of-type(5),
+    div:nth-of-type(6) {
       grid-column: 1 / 3;
     }
     
-    div:nth-of-type(2){
+    div:nth-of-type(2),
+    div:nth-of-type(4) {
       grid-column: 1 / 2;
-      grid-row: 2 / 3;
     }
     
     div:nth-of-type(3){
-      grid-column: 1 / 3;
-      grid-row: 3 / 4;
+      grid-column: 2 / 3;
     }
   `}
 `
 export const AgendaTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
   align-items: center;
   width: 100%;
   height: 60px;

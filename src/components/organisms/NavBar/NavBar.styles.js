@@ -2,11 +2,8 @@ import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 
 export const NavBarContainerStyled = styled.nav`
-  height: 106px;
-
   ${breakpoint.md`
   box-shadow: 0px 3px 6px #00000029;
-  height: calc(100vh - 60px);
   width: 250px;
   padding-top: 40px;
   `}

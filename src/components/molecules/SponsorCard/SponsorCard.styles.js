@@ -21,10 +21,12 @@ export const SponsorCardStyled = styled.div`
   figure {
     width: 260px;
     height: 260px;
+    margin-bottom: 1rem;
 
     img {
       width: 100%;
-      object-fit: scale-down;
+      height: 100%;
+      object-fit: cover;
     }
   }
 `
@@ -41,6 +43,7 @@ export const SponsorCardText = styled.div`
 
   h2 {
     font-size: 18px;
+    margin-bottom: 0.5em;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

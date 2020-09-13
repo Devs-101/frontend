@@ -13,7 +13,7 @@
     {
       "label": "Time",
       "id": "agendaFormTime",
-      "type": "date"
+      "type": "datetime-local"
     },
     {
       "label": "Duration in Minutes",

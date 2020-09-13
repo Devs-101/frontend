@@ -29,7 +29,7 @@ describe('EventForm Organism', () => {
     it('Is epected to have title text', () => {
       expect(component.find('h2').text()).toBe('Event')
     })
-    it('Is epected to have 2 FormField', () => {
+    it('Is epected to have 3 FormField', () => {
       expect(component.find(FormField).length).toBe(3)
     })
   })
