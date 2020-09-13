@@ -4,8 +4,12 @@ import { Button } from '../../atoms/'
 import { useDispatch } from 'react-redux'
 import { closeModal } from '../../../redux/slices/modals'
 import AgendaFormData from './AgendaFormData.json'
-import { FormField } from '../../molecules'
-import { AgendaFormStyled, SubmitSection } from './AgendaForm.styles'
+import {
+  FormField,
+  ModalTitleContainer,
+  ModalFormContainer
+} from '../../molecules'
+import { AgendaFormStyled } from './AgendaForm.styles'
 import {
   createTalkAsync,
   getAllTalksAsync,
@@ -97,37 +101,41 @@ export function AgendaForm({ speakers, eventId, talk }) {
   }
 
   return (
-    <AgendaFormStyled onSubmit={handleSubmit(onSubmit)}>
-      <SubmitSection>
-        <Button onClick={handleCloseModal}>
-          {AgendaFormData.buttonCancel}
-        </Button>
-        {talk ? (
-          <>
-            <Button onClick={handleSubmit(onUpdate)}>
-              {AgendaFormData.buttonUpdate}
-            </Button>
-            <Button className="delete" onClick={handleSubmit(onDelete)}>
-              {AgendaFormData.buttonDelete}
-            </Button>
-          </>
-        ) : (
-          <Button onClick={handleSubmit(onSubmit)}>
-            {AgendaFormData.buttonAdd}
+    <ModalFormContainer>
+      <ModalTitleContainer>
+        <h3>{AgendaFormData.title}</h3>
+        <div>
+          <Button onClick={handleCloseModal}>
+            {AgendaFormData.buttonCancel}
           </Button>
-        )}
-      </SubmitSection>
-      <h2>{AgendaFormData.title}</h2>
-      {AgendaFormData.fields.map(field => (
-        <FormField
-          key={field.id}
-          id={field.id}
-          label={field.label}
-          type={field.type}
-          options={field.options}
-          register={register}
-        />
-      ))}
-    </AgendaFormStyled>
+          {talk ? (
+            <>
+              <Button onClick={handleSubmit(onUpdate)}>
+                {AgendaFormData.buttonUpdate}
+              </Button>
+              <Button className="delete" onClick={handleSubmit(onDelete)}>
+                {AgendaFormData.buttonDelete}
+              </Button>
+            </>
+          ) : (
+            <Button onClick={handleSubmit(onSubmit)}>
+              {AgendaFormData.buttonAdd}
+            </Button>
+          )}
+        </div>
+      </ModalTitleContainer>
+      <AgendaFormStyled>
+        {AgendaFormData.fields.map(field => (
+          <FormField
+            key={field.id}
+            id={field.id}
+            label={field.label}
+            type={field.type}
+            options={field.options}
+            register={register}
+          />
+        ))}
+      </AgendaFormStyled>
+    </ModalFormContainer>
   )
 }
