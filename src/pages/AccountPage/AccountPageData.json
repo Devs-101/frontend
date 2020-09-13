@@ -1,6 +1,6 @@
 {
   "title": "Your account",
-  "button": "Save",
+  "buttonAdd": "Save",
   "fields": [
     {
       "label": "Name:",
@@ -13,9 +13,14 @@
       "type": "email"
     },
     {
-      "label": "Organization:",
-      "id": "DetailsFormEmail",
-      "type": "email"
+      "label": "Organization name:",
+      "id": "DetailsFormOrganization",
+      "type": "text"
+    },
+    {
+      "label": "Organization slug:",
+      "id": "DetailsFormOrganizationSlug",
+      "type": "text"
     }
   ]
 }
