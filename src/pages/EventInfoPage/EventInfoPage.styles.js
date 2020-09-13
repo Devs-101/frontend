@@ -2,15 +2,45 @@ import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
-export const EventInfoStyled = styled.form`
+export const EventInfoStyled = styled.div`
   background-color: ${colors.grey};
   ${breakpoint.md`
     border-radius: 4px;
   `}
 `
 
-export const Container = styled.div`
+export const Container = styled.form`
   padding: 24px;
+
+  div:nth-of-type(6),
+  div:nth-of-type(8) {
+    label {
+      display: block;
+      height: 200px;
+      width: 100%;
+      border-radius: 10px;
+      border: 5px dashed ${colors.darkGrey};
+      text-align: center;
+      line-height: 200px;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  div:nth-of-type(8) {
+    label {
+      height: 170px;
+      line-height: 170px;
+    }
+  }
+
+  div:nth-of-type(7) {
+    textarea {
+      height: 135px;
+    }
+  }
 
   ${breakpoint.md`
     display: grid;
@@ -31,7 +61,7 @@ export const Container = styled.div`
     div:nth-of-type(3){
       grid-column: 2 / 3;
     }
-  `}
+  `};
 `
 export const AgendaTitle = styled.div`
   display: flex;

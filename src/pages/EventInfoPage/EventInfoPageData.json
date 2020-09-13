@@ -13,7 +13,7 @@
       "type": "date"
     },
     {
-      "label": "Timezone:",
+      "label": "Timezone",
       "id": "DetailsFormTimezone",
       "type": "select",
       "options": [
@@ -255,12 +255,12 @@
       "type": "date"
     },
     {
-      "label": "Banner title:",
+      "label": "Banner title",
       "id": "DetailsFormBannerTitle",
       "type": "text"
     },
     {
-      "label": "Banner Image:",
+      "label": "Click to Add Banner Image",
       "id": "DetailsFormBannerImg",
       "type": "file"
     },
@@ -270,9 +270,19 @@
       "type": "textarea"
     },
     {
-      "label": "Event Image:",
+      "label": "Click to Add Event Image",
       "id": "DetailsFormLogo",
       "type": "file"
+    },
+    {
+      "label": "Allow email register",
+      "id": "DetailsFormAllowRegister",
+      "type": "checkbox"
+    },
+    {
+      "label": "Show countdown",
+      "id": "DetailsFormCountdown",
+      "type": "checkbox"
     }
   ]
 }

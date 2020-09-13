@@ -29,7 +29,12 @@ export function EventInfoPage() {
   const dispatch = useDispatch()
 
   function onSubmit(data) {
-    const eventFormDataSerialized = serializeEventFormData(data)
+    const allData = {
+      ...data,
+      ...selectedEvent
+    }
+    const eventFormDataSerialized = serializeEventFormData(allData)
+    console.log('SERIALIZED DATA', eventFormDataSerialized)
     dispatch(
       updateEventAsync({
         eventInfo: eventFormDataSerialized,
