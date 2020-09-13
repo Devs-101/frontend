@@ -2,7 +2,11 @@ import styled from 'styled-components'
 import { colors } from '../../styles/colors'
 import breakpoint from '../../styles/breakpoints'
 
-export const MainTemplateStyled = styled.div``
+export const MainTemplateStyled = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
 
 export const HeaderStyled = styled.header`
   display: flex;
@@ -62,10 +66,12 @@ export const IconStyled = styled.p`
   }
 `
 export const Main = styled.main`
+  flex-grow: 1;
   display: block;
   width: 100%;
   ${breakpoint.md`
     display: flex;
+    align-items: stretch;
   `}
 `
 
