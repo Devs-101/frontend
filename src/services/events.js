@@ -28,7 +28,6 @@ export function createEvent(eventInfo, organizationId, token) {
   if (organizationId) {
     const formData = new FormData()
     Object.entries(eventInfo).forEach(entry => {
-      console.log(entry[0])
       if (entry[0] === 'dateHour') {
         Object.entries(entry[1]).forEach(subentry => {
           formData.append(`${entry[0]}[${subentry[0]}]`, subentry[1])
@@ -78,8 +77,6 @@ export function readyForPublishEvent(eventId, token) {
 
 export function publishEvent(theme, eventId, token) {
   if (eventId) {
-    console.log('publishEvent', eventId)
-    console.log('publishEvent', theme)
     return fetch(`${config.API_URL}/events/${eventId}/publish`, {
       method: 'POST',
       headers: {

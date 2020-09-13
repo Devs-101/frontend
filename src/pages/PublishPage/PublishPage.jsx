@@ -36,7 +36,6 @@ export function PublishPage() {
   const { checkComplete, initDate } = readyForPublish
 
   function handleClickToolbar(event) {
-    console.log(event.currentTarget.getAttribute('data-value'))
     setThemeSelected(event.currentTarget.getAttribute('data-value'))
   }
 
@@ -45,8 +44,6 @@ export function PublishPage() {
   }
 
   function handleClickSubmit() {
-    console.log('themeSelected', themeSelected)
-    console.log('eventId', eventId)
     dispatch(
       publishEventAsync({
         theme: themeSelected,
@@ -54,8 +51,6 @@ export function PublishPage() {
       })
     )
   }
-
-  console.log(readyForPublish)
 
   return (
     <MainTemplate>
