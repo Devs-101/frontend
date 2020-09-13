@@ -12,8 +12,8 @@ export const EventInfoStyled = styled.div`
 export const Container = styled.form`
   padding: 24px;
 
-  div:nth-of-type(6),
-  div:nth-of-type(8) {
+  div:nth-of-type(7),
+  div:nth-of-type(9) {
     label {
       display: block;
       height: 200px;
@@ -22,6 +22,11 @@ export const Container = styled.form`
       border: 5px dashed ${colors.darkGrey};
       text-align: center;
       line-height: 200px;
+      cursor: pointer;
+
+      &:hover {
+        border-color: ${colors.primary};
+      }
     }
 
     input {
@@ -29,14 +34,27 @@ export const Container = styled.form`
     }
   }
 
-  div:nth-of-type(8) {
+  div:nth-of-type(7) {
     label {
-      height: 170px;
-      line-height: 170px;
+      background-image: url(${props => props.banerImage || 'none'});
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
     }
   }
 
-  div:nth-of-type(7) {
+  div:nth-of-type(9) {
+    label {
+      height: 170px;
+      line-height: 170px;
+      background-image: url(${props => props.eventImage || 'none'});
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  div:nth-of-type(8) {
     textarea {
       height: 135px;
     }
@@ -47,41 +65,20 @@ export const Container = styled.form`
     grid-template-columns: 1fr 1fr;
     column-gap: 25px;
 
-    div:nth-of-type(1),
-    div:nth-of-type(5),
-    div:nth-of-type(6) {
+    div:nth-of-type(6),
+    div:nth-of-type(7) {
       grid-column: 1 / 3;
     }
-    
-    div:nth-of-type(2),
-    div:nth-of-type(4) {
+
+    div:nth-of-type(1),    
+    div:nth-of-type(3),
+    div:nth-of-type(5) {
       grid-column: 1 / 2;
     }
     
-    div:nth-of-type(3){
+    div:nth-of-type(2),
+    div:nth-of-type(4){
       grid-column: 2 / 3;
     }
   `};
-`
-export const AgendaTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-  background-color: ${colors.white};
-  box-shadow: 0px 3px 6px #00000029;
-
-  h3 {
-    font-size: 18px;
-  }
-
-  ${breakpoint.md`
-    box-shadow: none;
-    padding: 0;
-
-    h3 {
-    font-size: 24px;
-  }
-  `}
 `
