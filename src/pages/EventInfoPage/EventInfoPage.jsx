@@ -4,7 +4,7 @@ import { EventInfoStyled, Container } from './EventInfoPage.styles'
 import EventInfoPageData from './EventInfoPageData.json'
 import { FormField, TitleContainer } from '../../components/molecules'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateEventAsync } from '../../redux/slices/events'
+import { updateEventAsync, selectedEventAsync } from '../../redux/slices/events'
 import { useForm } from 'react-hook-form'
 import { Button } from '../../components/atoms'
 import { serializeEventFormData, serializeEventToFormData } from './helper'
@@ -20,27 +20,84 @@ export function EventInfoPage() {
     }
   })
 
+  let [isBannerImage, setIsBannerImage] = React.useState('')
+  let [isEventImage, setIsEventImage] = React.useState('')
+
   const eventDefaultData = serializeEventToFormData(selectedEvent)
 
-  const { handleSubmit, register } = useForm({
+  const { handleSubmit, register, watch } = useForm({
     defaultValues: eventDefaultData
   })
 
+  const watchDetailsFormBannerImg = watch('DetailsFormBannerImg')
+  const watchDetailsFormLogo = watch('DetailsFormLogo')
+
+  React.useEffect(() => {
+    if (watchDetailsFormBannerImg && watchDetailsFormBannerImg.length >= 1) {
+      const image = watchDetailsFormBannerImg[0]
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onload = e => {
+        setIsBannerImage(e.target.result)
+      }
+    } else if (selectedEvent !== null) {
+      if (selectedEvent.DetailsFormBannerImgURL) {
+        setIsBannerImage(selectedEvent.DetailsFormBannerImgURL)
+      }
+    }
+  }, [watchDetailsFormBannerImg])
+
+  React.useEffect(() => {
+    if (watchDetailsFormLogo && watchDetailsFormLogo.length >= 1) {
+      const image = watchDetailsFormLogo[0]
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onload = e => {
+        setIsEventImage(e.target.result)
+      }
+    } else if (selectedEvent !== null) {
+      if (selectedEvent.DetailsFormLogoURL) {
+        setIsEventImage(selectedEvent.DetailsFormLogoURL)
+      }
+    }
+  }, [watchDetailsFormLogo])
+
   const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(selectedEventAsync(eventId))
+  }, [])
 
   function onSubmit(data) {
+    if (data.DetailsFormBannerImg.length === 0) {
+      data.DetailsFormBannerImg = selectedEvent.bannerOrHeader.img
+    } else {
+      data.DetailsFormBannerImg = data.DetailsFormBannerImg[0]
+    }
+
+    if (data.DetailsFormLogo.length === 0) {
+      data.DetailsFormLogo = selectedEvent.img
+    } else {
+      data.DetailsFormLogo = data.DetailsFormLogo[0]
+    }
     const allData = {
       ...data,
       ...selectedEvent
     }
     const eventFormDataSerialized = serializeEventFormData(allData)
-    console.log('SERIALIZED DATA', eventFormDataSerialized)
     dispatch(
       updateEventAsync({
         eventInfo: eventFormDataSerialized,
         eventId
       })
-    )
+    ).then(() => dispatch(selectedEventAsync(eventId)))
+  }
+
+  if (!isBannerImage && selectedEvent) {
+    isBannerImage = selectedEvent.bannerOrHeader.img
+  }
+
+  if (!isEventImage && selectedEvent) {
+    isEventImage = selectedEvent.img
   }
 
   return (
@@ -52,7 +109,7 @@ export function EventInfoPage() {
         </Button>
       </TitleContainer>
       <EventInfoStyled>
-        <Container>
+        <Container banerImage={isBannerImage} eventImage={isEventImage}>
           {eventsIsLoading ? (
             <h1>Loading...</h1>
           ) : eventsError ? (
