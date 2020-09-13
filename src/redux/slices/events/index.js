@@ -11,7 +11,8 @@ import {
   serializeGetAllEventsResponseData,
   serializeCreateEventInfo,
   serializeEventInfo,
-  serializeReadyForPublishEventInfo
+  serializeReadyForPublishEventInfo,
+  serializeUpdateEventInfo
 } from './serializeEventsData'
 
 export const getAllEventsAsync = createAsyncThunk(
@@ -74,7 +75,7 @@ export const updateEventAsync = createAsyncThunk(
     if (!eventId) {
       eventId = window.sessionStorage.getItem('selectedEventId')
     }
-    const eventInfoSerialized = serializeEventInfo(eventInfo)
+    const eventInfoSerialized = serializeUpdateEventInfo(eventInfo)
     const createEventResponse = await updateEvent(
       eventInfoSerialized,
       eventId,
@@ -83,6 +84,13 @@ export const updateEventAsync = createAsyncThunk(
     if (!createEventResponse.ok) {
       throw Error('Error updating the event')
     }
+
+    const getEventResponseData = await createEventResponse.json()
+    const getEventResponseDataSerialized = serializeEventInfo(
+      getEventResponseData
+    )
+
+    return getEventResponseDataSerialized
   }
 )
 
@@ -185,12 +193,25 @@ export const eventsSlice = createSlice({
       state.error = null
       state.selected = state.entities[payload]
     },
+    [getEventAsync.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        window.sessionStorage.setItem('selectedEventId', payload._id)
+      }
+      state.loading = false
+      state.error = null
+      state.entities[payload._id] = payload
+    },
     [readyForPublishEventAsync.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.error = null
       state.readyForPublish = payload
     },
     [publishEventAsync.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.error = null
+      state.entities[payload._id] = payload
+    },
+    [updateEventAsync.fulfilled]: (state, { payload }) => {
       state.loading = false
       state.error = null
       state.entities[payload._id] = payload
