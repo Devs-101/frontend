@@ -4,6 +4,9 @@ import { colors } from '../../styles/colors'
 
 export const EventInfoStyled = styled.form`
   background-color: ${colors.grey};
+  ${breakpoint.md`
+    border-radius: 4px;
+  `}
 `
 
 export const Container = styled.div`

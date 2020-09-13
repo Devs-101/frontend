@@ -3,12 +3,8 @@ import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
 export const AgendaStyled = styled.div`
-  padding: 24px 0;
+  padding: 24px;
   background-color: ${colors.grey};
-
-  ${breakpoint.md`
-    padding: 40px 60px;
-  `};
 `
 export const AgendaTitle = styled.div`
   display: flex;

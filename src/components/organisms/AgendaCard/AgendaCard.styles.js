@@ -15,17 +15,18 @@ export const AgendaCardStyled = styled.div`
     margin: auto;
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
     img {
       width: 100%;
+      height: 100%;
       border-radius: 50%;
-      height: -webkit-fill-available;
     }
   }
 `
 export const AgendaCardText = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
-  width: 100%;
+  flex-grow: 1;
   margin-left: 16px;
   row-gap: 4px;
 
