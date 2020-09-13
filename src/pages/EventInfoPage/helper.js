@@ -17,14 +17,23 @@ export function serializeEventFormData(eventFormData) {
   }
 }
 
+function parseDateToString(date) {
+  if (date) {
+    const dateString = date.split('T')[0]
+    return dateString
+  }
+
+  return null
+}
+
 export function serializeEventToFormData(eventData) {
   if (eventData) {
     return {
       DetailsFormName: eventData.name,
       DetailsFormUrlSlug: eventData.slug,
       DetailsFormDescription: eventData.description,
-      DetailsFormInitialDate: eventData.dateHour.initDate,
-      DetailsFormEndDate: eventData.dateHour.endDate
+      DetailsFormInitialDate: parseDateToString(eventData.dateHour.initDate),
+      DetailsFormEndDate: parseDateToString(eventData.dateHour.endDate)
     }
   }
   return {}

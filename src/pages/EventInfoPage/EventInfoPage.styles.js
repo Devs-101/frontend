@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
-export const EventInfoStyled = styled.form`
+export const EventInfoStyled = styled.div`
   background-color: ${colors.grey};
   ${breakpoint.md`
     border-radius: 4px;
@@ -31,8 +31,8 @@ export const Container = styled.form`
 
   div:nth-of-type(8) {
     label {
-      height: 160px;
-      line-height: 160px;
+      height: 170px;
+      line-height: 170px;
     }
   }
 
