@@ -8,6 +8,11 @@
       "type": "text"
     },
     {
+      "label": "Slug:",
+      "id": "DetailsFormUrlSlug",
+      "type": "text"
+    },
+    {
       "label": "Initial Date",
       "id": "DetailsFormInitialDate",
       "type": "date"
