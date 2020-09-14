@@ -2,7 +2,7 @@ import React from 'react'
 import SponsorFormData from './SponsorFormData.json'
 import { useForm } from 'react-hook-form'
 import { SponsorFormStyled } from './SponsorForm.styles'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { closeModal } from '../../../redux/slices/modals'
 import { Button } from '../../atoms/Button/Button'
 import {
@@ -19,6 +19,12 @@ import {
 import { serializeSponsorFormData, serializeSponsorToFormData } from './helper'
 
 export function SponsorForm({ eventId, sponsor }) {
+  const { sponsorLoading } = useSelector(state => {
+    return {
+      sponsorLoading: state.sponsors.loading || false
+    }
+  })
+
   if (sponsor) {
     sponsor = serializeSponsorToFormData(sponsor)
   }
@@ -94,25 +100,29 @@ export function SponsorForm({ eventId, sponsor }) {
     <ModalFormContainer>
       <ModalTitleContainer>
         <h3>{SponsorFormData.title}</h3>
-        <div>
-          <Button onClick={handleCloseModal}>
-            {SponsorFormData.buttonCancel}
-          </Button>
-          {sponsor ? (
-            <>
-              <Button onClick={handleSubmit(onUpdate)}>
-                {SponsorFormData.buttonUpdate}
-              </Button>
-              <Button className="delete" onClick={handleSubmit(onDelete)}>
-                {SponsorFormData.buttonDelete}
-              </Button>
-            </>
-          ) : (
-            <Button onClick={handleSubmit(onSubmit)}>
-              {SponsorFormData.buttonAdd}
+        {sponsorLoading ? (
+          <Button>Loading</Button>
+        ) : (
+          <div>
+            <Button onClick={handleCloseModal}>
+              {SponsorFormData.buttonCancel}
             </Button>
-          )}
-        </div>
+            {sponsor ? (
+              <>
+                <Button className="update" onClick={handleSubmit(onUpdate)}>
+                  {SponsorFormData.buttonUpdate}
+                </Button>
+                <Button className="delete" onClick={handleSubmit(onDelete)}>
+                  {SponsorFormData.buttonDelete}
+                </Button>
+              </>
+            ) : (
+              <Button className="save" onClick={handleSubmit(onSubmit)}>
+                {SponsorFormData.buttonAdd}
+              </Button>
+            )}
+          </div>
+        )}
       </ModalTitleContainer>
       <SponsorFormStyled backgroundImage={isImage}>
         {SponsorFormData.fields.map(field => (
