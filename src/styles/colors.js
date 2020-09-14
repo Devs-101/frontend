@@ -31,5 +31,16 @@ export const colors = {
   add: {
     normal: '#F05742',
     hover: '#DC2E17'
+  },
+  theme: {
+    poe: {
+      title: '#fce49e',
+      bg_main: '#121212',
+      bg_one: '#151718',
+      bg_card: '#211b14',
+      bg_card_hover: '#392810',
+      input_border: '#88623b',
+      color_button: '#A5F1FF'
+    }
   }
 }

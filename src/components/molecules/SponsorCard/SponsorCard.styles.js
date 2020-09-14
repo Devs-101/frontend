@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import { colors } from '../../../styles/colors'
+import subtleGrunge from '../../../assets/images/subtle-grunge.png'
 
 export const SponsorCardStyled = styled.div`
   display: flex;
@@ -27,6 +28,20 @@ export const SponsorCardStyled = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  &.POETHEME {
+    background-color: ${colors.theme.poe.bg_card};
+
+    &:hover {
+      background-color: ${colors.theme.poe.bg_card_hover};
+    }
+
+    &:before {
+      background-image: url(${subtleGrunge});
+      opacity: 0.1;
+      z-index: -1;
     }
   }
 `

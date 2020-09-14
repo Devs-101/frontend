@@ -8,7 +8,7 @@ import {
   getPublishedEventAsync
 } from '../../redux/slices/events'
 import { useParams } from 'react-router-dom'
-import { OmnitrixPage } from '../ThemePage/'
+import { OmnitrixPage, PoePage } from '../ThemePage/'
 import { Container, Toolbar, IframeContainer } from './PublishPage.styles'
 import PublishPageData from './PublishPageData.json'
 
@@ -24,6 +24,7 @@ export function PublishPage() {
     PublishPageData.theme
   )
   const [withContainer, setWithContainer] = React.useState('auto')
+  const [eventStatus, setEventStatus] = React.useState(false)
 
   const { eventId } = useParams()
   const dispatch = useDispatch()
@@ -55,6 +56,13 @@ export function PublishPage() {
         eventId
       })
     )
+  }
+
+  if (publishedEvent) {
+    if (themeSelected !== publishedEvent.event.theme) {
+      setThemeSelected(publishedEvent.event.theme)
+      setEventStatus(publishedEvent.event.eventStatus)
+    }
   }
 
   return (
@@ -104,15 +112,19 @@ export function PublishPage() {
                 Phone
               </li>
             </ul>
-            <Button className="add" onClick={handleClickSubmit}>
-              {PublishPageData.buttonAdd}
-            </Button>
+            {eventStatus ? (
+              <Button className="cancel">Event Published</Button>
+            ) : (
+              <Button className="add" onClick={handleClickSubmit}>
+                {PublishPageData.buttonAdd}
+              </Button>
+            )}
           </Toolbar>
           <IframeContainer width={withContainer}>
             {themeSelected === 'omnitrix' ? (
-              <OmnitrixPage eventId={eventId} countDown={initDate} />
+              <OmnitrixPage eventIdProp={eventId} countDown={initDate} />
             ) : themeSelected === 'poe' ? (
-              <p>POE</p>
+              <PoePage eventIdProp={eventId} countDown={initDate} />
             ) : (
               <p>Invalid Theme</p>
             )}
