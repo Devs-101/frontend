@@ -44,8 +44,6 @@ export function AgendaForm({ speakers, eventId, talk }) {
     talk = serializeTalkToFormData(talk)
   }
 
-  console.log('TALKK', talk)
-
   if (!eventId) {
     eventId = window.sessionStorage.getItem('selectedEventId')
   }
@@ -86,7 +84,6 @@ export function AgendaForm({ speakers, eventId, talk }) {
   }
 
   function onDelete(data) {
-    console.log('onDelete', data)
     dispatch(
       deleteTalkAsync({
         talkId: data.agendaFormId
@@ -105,12 +102,12 @@ export function AgendaForm({ speakers, eventId, talk }) {
       <ModalTitleContainer>
         <h3>{AgendaFormData.title}</h3>
         <div>
-          <Button onClick={handleCloseModal}>
+          <Button className="cancel" onClick={handleCloseModal}>
             {AgendaFormData.buttonCancel}
           </Button>
           {talk ? (
             <>
-              <Button onClick={handleSubmit(onUpdate)}>
+              <Button className="update" onClick={handleSubmit(onUpdate)}>
                 {AgendaFormData.buttonUpdate}
               </Button>
               <Button className="delete" onClick={handleSubmit(onDelete)}>
@@ -118,7 +115,7 @@ export function AgendaForm({ speakers, eventId, talk }) {
               </Button>
             </>
           ) : (
-            <Button onClick={handleSubmit(onSubmit)}>
+            <Button className="save" onClick={handleSubmit(onSubmit)}>
               {AgendaFormData.buttonAdd}
             </Button>
           )}
