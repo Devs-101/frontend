@@ -49,7 +49,7 @@ export function SpeakerPage() {
     <MainTemplate>
       <TitleContainer>
         <h3>Speakers</h3>
-        <Button type="button" onClick={handleOpenNewModal}>
+        <Button className="add" onClick={handleOpenNewModal}>
           Add Speaker
         </Button>
         <Modal isOpen={modalIsOpen}>

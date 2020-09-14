@@ -54,7 +54,7 @@ export function AgendaPage() {
     <MainTemplate>
       <TitleContainer>
         <h3>Schedule</h3>
-        <Button type="button" onClick={handleOpenNewModal}>
+        <Button className="add" onClick={handleOpenNewModal}>
           Add Talk
         </Button>
         <Modal isOpen={modalIsOpen}>

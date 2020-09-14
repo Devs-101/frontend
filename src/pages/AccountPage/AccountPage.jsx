@@ -20,8 +20,6 @@ export function AccountPage() {
 
   const { handleSubmit, register, setValue } = useForm()
 
-  console.log(accountInfo)
-
   setValue('DetailsFormName', accountInfo.DetailsFormName)
   setValue('DetailsFormEmail', accountInfo.DetailsFormEmail)
   setValue('DetailsFormOrganization', accountInfo.DetailsFormOrganization)

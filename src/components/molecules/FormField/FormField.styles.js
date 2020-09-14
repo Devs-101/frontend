@@ -10,7 +10,7 @@ export const LabelStyled = styled.label`
 `
 
 export const InputStyled = styled.input`
-  background-color: ${colors.white};
+  background-color: ${colors.grey};
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -19,7 +19,7 @@ export const InputStyled = styled.input`
 `
 
 export const TextAreaStyled = styled.textarea`
-  background-color: ${colors.white};
+  background-color: ${colors.grey};
   height: 112px;
   border-radius: 10px;
   border: none;
@@ -29,7 +29,7 @@ export const TextAreaStyled = styled.textarea`
 `
 
 export const SelectStyled = styled.select`
-  background-color: ${colors.white};
+  background-color: ${colors.grey};
   height: 40px;
   border-radius: 10px;
   border: none;

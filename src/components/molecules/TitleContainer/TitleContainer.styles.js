@@ -14,6 +14,7 @@ export const TitleContainerStyle = styled.div`
 
   h3 {
     font-size: 18px;
+    color: ${colors.title};
   }
 
   ${breakpoint.md`

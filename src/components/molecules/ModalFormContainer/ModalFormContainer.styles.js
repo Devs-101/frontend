@@ -4,7 +4,7 @@ import { colors } from '../../../styles/colors'
 
 export const ModalFormContainerStyle = styled.div`
   width: 90%;
-  background: ${colors.grey};
+  background: ${colors.white};
   padding: 20px;
   position: absolute;
   top: 50%;

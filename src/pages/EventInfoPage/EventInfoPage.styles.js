@@ -3,7 +3,6 @@ import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
 export const EventInfoStyled = styled.div`
-  background-color: ${colors.grey};
   ${breakpoint.md`
     border-radius: 4px;
   `}
@@ -38,7 +37,7 @@ export const Container = styled.form`
     label {
       background-image: url(${props => props.banerImage || 'none'});
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
       background-position: center;
     }
   }
