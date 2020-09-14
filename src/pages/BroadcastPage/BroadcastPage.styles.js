@@ -1,18 +1,33 @@
 import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
+import placeholder from '../../assets/images/placeholder.png'
 
-export const BroadcastPageStyled = styled.div`
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  padding: 50px 30px 30px 30px;
-  background-color: ${colors.grey};
-  max-width: 100%;
+export const BroadcastFormStyled = styled.form`
+  padding: 20px;
+  z-index: 1;
 
-  ${breakpoint.md`
-    grid-template-columns: 1fr;
-    padding: 35px 120px;
-    `}
+  div:nth-of-type(3) {
+    label {
+      width: 100%;
+      height: 250px;
+      background-image: url(${props => props.backgroundImage || placeholder});
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      margin: 20px 0 0 0;
+      border-radius: 10px;
+      border: 5px dashed ${colors.darkGrey};
+      text-align: center;
+      line-height: 200px;
+      cursor: pointer;
+
+      &:hover {
+        border-color: ${colors.primary};
+      }
+    }
+    input {
+      display: none;
+    }
+  }
 `

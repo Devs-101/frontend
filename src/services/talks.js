@@ -5,6 +5,7 @@ export function getAllTalks(eventId, token) {
     return fetch(`${config.API_URL}/talks/${eventId}`, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       }
     })
@@ -22,9 +23,10 @@ export function createTalk(talkInfo, eventId, token) {
     return fetch(`${config.API_URL}/talks/${eventId}/new`, {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       },
-      body: formData
+      body: JSON.stringify(talkInfo)
     })
   }
   return Promise.reject(Error('Please provide an event Id'))
@@ -43,6 +45,18 @@ export function updateTalk(talkInfo, talkId, token) {
         'x-access-token': token
       },
       body: formData
+    })
+  }
+  return Promise.reject(Error('Please provide an talk Id'))
+}
+
+export function deleteTalk(talkId, token) {
+  if (talkId) {
+    return fetch(`${config.API_URL}/talks/${talkId}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token
+      }
     })
   }
   return Promise.reject(Error('Please provide an talk Id'))

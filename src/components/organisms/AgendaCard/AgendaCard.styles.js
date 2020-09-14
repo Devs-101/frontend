@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import { colors } from '../../../styles/colors'
+import subtleGrunge from '../../../assets/images/subtle-grunge.png'
 
 export const AgendaCardStyled = styled.div`
   display: flex;
@@ -9,21 +10,38 @@ export const AgendaCardStyled = styled.div`
   background: ${colors.white};
   color: ${colors.primary};
   margin-bottom: 15px;
+  cursor: pointer;
 
   figure {
     margin: auto;
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
     img {
       width: 100%;
+      height: 100%;
       border-radius: 50%;
+    }
+  }
+
+  &.POETHEME {
+    background-color: ${colors.theme.poe.bg_card};
+
+    &:hover {
+      background-color: ${colors.theme.poe.bg_card_hover};
+    }
+
+    &:before {
+      background-image: url(${subtleGrunge});
+      opacity: 0.1;
+      z-index: -1;
     }
   }
 `
 export const AgendaCardText = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
-  width: 100%;
+  flex-grow: 1;
   margin-left: 16px;
   row-gap: 4px;
 

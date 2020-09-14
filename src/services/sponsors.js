@@ -5,6 +5,7 @@ export function getAllSponsors(eventId, token) {
     return fetch(`${config.API_URL}/sponsors/${eventId}`, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       }
     })
@@ -43,6 +44,18 @@ export function updateSponsor(sponsorInfo, sponsorId, token) {
         'x-access-token': token
       },
       body: formData
+    })
+  }
+  return Promise.reject(Error('Please provide an sponsor Id'))
+}
+
+export function deleteSponsor(sponsorId, token) {
+  if (sponsorId) {
+    return fetch(`${config.API_URL}/sponsors/${sponsorId}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token
+      }
     })
   }
   return Promise.reject(Error('Please provide an sponsor Id'))

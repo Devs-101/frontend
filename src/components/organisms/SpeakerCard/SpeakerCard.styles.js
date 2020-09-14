@@ -1,40 +1,50 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import { colors } from '../../../styles/colors'
+import subtleGrunge from '../../../assets/images/subtle-grunge.png'
 
 export const SpeakerCardStyled = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
   background-color: ${colors.white};
   color: ${colors.primary};
-  height: 208px;
   border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 16px;
+  padding: 20px;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+
+  :hover {
+    color: ${colors.white};
+    background-color: ${colors.primary};
+  }
 
   figure {
-    margin: auto 16px;
+    width: 160px;
+    height: 160px;
 
     img {
-      height: 80px;
-      width: 80px;
-      object-fit: cover;
+      width: 100%;
       border-radius: 50%;
+      object-fit: cover;
+      height: -webkit-fill-available;
     }
   }
 
-  ${breakpoint.md`
-    display: block;
-    width: 300px;
-    height: auto;
-    max-height: 340px;
-    text-align: center;
-    padding: 16px 16px 25px;
+  &.POETHEME {
+    background-color: ${colors.theme.poe.bg_card};
 
-    figure{
-      margin: 0 auto 15px;
+    &:hover {
+      background-color: ${colors.theme.poe.bg_card_hover};
     }
-  `}
+
+    &:before {
+      background-image: url(${subtleGrunge});
+      opacity: 0.1;
+      z-index: -1;
+    }
+  }
 `
 
 export const SpeakerName = styled.h3`
@@ -65,4 +75,5 @@ export const SpeakerTwitter = styled.div`
 
 export const SpeakerCardData = styled.div`
   width: 100%;
+  margin-top: 10px;
 `

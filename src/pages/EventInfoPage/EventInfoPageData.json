@@ -1,24 +1,24 @@
 {
   "title": "Event Details",
-  "button": "Save",
+  "buttonAdd": "Save",
   "fields": [
     {
-      "label": "Event name:",
+      "label": "Name:",
       "id": "DetailsFormName",
       "type": "text"
     },
     {
-      "label": "Event Date",
-      "id": "DetailsFormDate",
-      "type": "date"
-    },
-    {
-      "label": "Banner title:",
-      "id": "DetailsFormBanner",
+      "label": "Slug:",
+      "id": "DetailsFormUrlSlug",
       "type": "text"
     },
     {
-      "label": "Timezone:",
+      "label": "Initial Date",
+      "id": "DetailsFormInitialDate",
+      "type": "date"
+    },
+    {
+      "label": "Timezone",
       "id": "DetailsFormTimezone",
       "type": "select",
       "options": [
@@ -253,6 +253,41 @@
         },
         { "id": "82", "value": "13", "label": "(GMT+13:00) Nuku'alofa" }
       ]
+    },
+    {
+      "label": "End Date",
+      "id": "DetailsFormEndDate",
+      "type": "date"
+    },
+    {
+      "label": "Banner title",
+      "id": "DetailsFormBannerTitle",
+      "type": "text"
+    },
+    {
+      "label": "Click to Add Banner Image",
+      "id": "DetailsFormBannerImg",
+      "type": "file"
+    },
+    {
+      "label": "Description:",
+      "id": "DetailsFormDescription",
+      "type": "textarea"
+    },
+    {
+      "label": "Click to Add Event Image",
+      "id": "DetailsFormLogo",
+      "type": "file"
+    },
+    {
+      "label": "Allow email register",
+      "id": "DetailsFormAllowRegister",
+      "type": "checkbox"
+    },
+    {
+      "label": "Show countdown",
+      "id": "DetailsFormCountdown",
+      "type": "checkbox"
     }
   ]
 }

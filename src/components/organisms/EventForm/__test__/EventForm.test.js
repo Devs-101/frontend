@@ -29,8 +29,8 @@ describe('EventForm Organism', () => {
     it('Is epected to have title text', () => {
       expect(component.find('h2').text()).toBe('Event')
     })
-    it('Is epected to have 2 FormField', () => {
-      expect(component.find(FormField).length).toBe(2)
+    it('Is epected to have 3 FormField', () => {
+      expect(component.find(FormField).length).toBe(3)
     })
   })
   describe('Handle close modal', () => {

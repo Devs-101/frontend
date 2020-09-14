@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
+import { colors } from '../../../styles/colors'
 
 export const NavBarContainerStyled = styled.nav`
-  height: 106px;
-
+  background-color: ${colors.grey};
   ${breakpoint.md`
-  box-shadow: 0px 3px 6px #00000029;
-  height: calc(100vh - 60px);
-  width: 250px;
-  padding-top: 40px;
+    box-shadow: 0px 3px 6px #00000029;
+    width: 250px;
+    padding-top: 40px;
   `}
 `
 export const NavBarTitleStyled = styled.h2`
@@ -32,11 +31,12 @@ export const NavBarStyled = styled.ul`
 
 export const NavBarItemStyled = styled.li`
   .active {
-    background-color: #f3f3f3;
+    background-color: ${colors.navbar.selected};
+    color: ${colors.white};
   }
 
   &:hover {
-    background-color: #f3f3f3;
+    background-color: ${colors.navbar.selected};
   }
 
   a {
@@ -45,12 +45,19 @@ export const NavBarItemStyled = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: ${colors.dark};
     text-decoration: none;
+
+    &:hover {
+      color: ${colors.white};
+    }
 
     ${breakpoint.md`
       width: 100%;
       height: 70px;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      padding: 0 20px;
     `}
   }
 
@@ -58,7 +65,6 @@ export const NavBarItemStyled = styled.li`
     display: none;
     justify-content: center;
     font-weight: 700;
-    margin-left: 16px;
 
     ${breakpoint.md`
     display: block;

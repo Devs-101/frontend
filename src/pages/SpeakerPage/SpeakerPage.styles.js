@@ -3,29 +3,32 @@ import breakpoint from '../../styles/breakpoints'
 import { colors } from '../../styles/colors'
 
 export const SpeakerPageStyled = styled.div`
-  padding: 24px 0;
+  padding: 20px;
+  border-radius: 4px;
   background-color: ${colors.grey};
-
-  ${breakpoint.md`
-    display: grid;
-    column-gap: 10px;
-    grid-template-columns: repeat(auto-fill, 300px);
-    padding: 40px 60px;
-  `};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
 `
 
 export const SpeakerTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
   align-items: center;
-  margin-bottom: 24px;
+  width: 100%;
+  height: 60px;
+  background-color: ${colors.white};
+  box-shadow: 0px 3px 6px #00000029;
 
   h3 {
     font-size: 18px;
   }
 
   ${breakpoint.md`
-    padding: 0;
+    box-shadow: none;
+
+    h3 {
+      font-size: 24px;
+    }
   `}
 `

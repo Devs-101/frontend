@@ -1,39 +1,83 @@
 import React from 'react'
 import { MainTemplate } from '../../templates'
-import { SponsorCard } from '../../components/molecules'
+import { SponsorCard, TitleContainer } from '../../components/molecules'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from '../../components/atoms'
 import { openModal } from '../../redux/slices/modals'
 import { SponsorForm, Modal } from '../../components/organisms'
-import { SponsorPageStyled, SponsorTitle } from './SponsorPage.styles'
+import {
+  getAllSponsorsAsync,
+  selectedSponsorAsync
+} from '../../redux/slices/sponsors'
+import { SponsorPageStyled } from './SponsorPage.styles'
+import { useParams } from 'react-router-dom'
 
 export function SponsorPage() {
-  const { modalIsOpen } = useSelector(state => {
+  const { modalIsOpen, selectedSponsor } = useSelector(state => {
     return {
-      modalIsOpen: state.modals.isOpen
+      modalIsOpen: state.modals.isOpen,
+      selectedSponsor: state.sponsors.selected || false
     }
   })
 
+  const { eventId } = useParams()
   const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(getAllSponsorsAsync(eventId))
+  }, [])
 
-  function handleOpenModal() {
+  const {
+    sponsorsIds,
+    sponsorsById,
+    sponsorsLoading,
+    sponsorsError
+  } = useSelector(state => {
+    return {
+      sponsorsIds: state.sponsors.ids,
+      sponsorsById: state.sponsors.entities,
+      sponsorsLoading: state.sponsors.loading,
+      sponsorsError: state.sponsors.error
+    }
+  })
+
+  async function handleOpenNewModal() {
+    await dispatch(selectedSponsorAsync())
     dispatch(openModal())
   }
 
   return (
     <MainTemplate>
-      <SponsorTitle>
-        <h3>Your Events</h3>
-        <Button type="button" onClick={handleOpenModal}>
-          Add Event
+      <TitleContainer>
+        <h3>Sponsors</h3>
+        <Button className="add" onClick={handleOpenNewModal}>
+          Add sponsor
         </Button>
         <Modal isOpen={modalIsOpen}>
-          <SponsorForm />
+          <SponsorForm eventId={eventId} sponsor={selectedSponsor} />
         </Modal>
-      </SponsorTitle>
-      <SponsorPageStyled>
-        <SponsorCard />
-      </SponsorPageStyled>
+      </TitleContainer>
+      {sponsorsLoading ? (
+        <h1>Loading...</h1>
+      ) : sponsorsError ? (
+        <h1>Error</h1>
+      ) : sponsorsIds.length === 0 ? (
+        <h1>No Sponsors yet, create a new one.</h1>
+      ) : (
+        <SponsorPageStyled>
+          {sponsorsIds.map(sponsorId => {
+            const sponsor = sponsorsById[sponsorId]
+            return (
+              <SponsorCard
+                key={sponsorId}
+                id={sponsorId}
+                name={sponsor.name}
+                webSiteUrl={sponsor.url}
+                logoUrl={sponsor.img}
+              />
+            )
+          })}
+        </SponsorPageStyled>
+      )}
     </MainTemplate>
   )
 }

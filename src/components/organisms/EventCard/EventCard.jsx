@@ -1,6 +1,8 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import ConferencePlaceHolder from '../../../assets/images/ConferencePlaceHolder.jpg'
+import { selectedEventAsync } from '../../../redux/slices/events'
 import {
   EventCardStyled,
   EventImage,
@@ -8,8 +10,9 @@ import {
   EventDescription,
   EventFooter,
   EventAttendeeCounter,
-  EventDate
-} from './EventCard.styes'
+  EventDate,
+  EventLaunched
+} from './EventCard.styles'
 
 export function EventCard({
   eventId,
@@ -17,12 +20,19 @@ export function EventCard({
   eventName,
   eventDescription,
   attendeeCounter,
-  eventDate
+  eventDate,
+  launched
 }) {
+  const dispatch = useDispatch()
+
   const { push } = useHistory()
   function handleEventCardClick() {
+    dispatch(selectedEventAsync(eventId))
     push(`${eventId}/event-info`)
   }
+
+  const initDate = new Date(eventDate).toLocaleDateString()
+
   return (
     <EventCardStyled onClick={handleEventCardClick}>
       <EventImage>
@@ -32,8 +42,11 @@ export function EventCard({
       <EventDescription>{eventDescription}</EventDescription>
       <EventFooter>
         <EventAttendeeCounter>{attendeeCounter}</EventAttendeeCounter>
-        <EventDate>{eventDate}</EventDate>
+        <EventDate>Inicio: {initDate}</EventDate>
       </EventFooter>
+      <EventLaunched isLaunched={launched}>
+        {launched ? 'Launched' : 'No Launched'}
+      </EventLaunched>
     </EventCardStyled>
   )
 }

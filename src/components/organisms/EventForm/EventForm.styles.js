@@ -1,20 +1,34 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import { colors } from '../../../styles/colors'
+import ConferencePlaceHolder from '../../../assets/images/ConferencePlaceHolder.jpg'
 
 export const EventFormStyled = styled.div`
   width: 90%;
-  background: ${colors.grey};
+  margin: 40px auto 20px auto;
+  background: ${colors.white};
   padding: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1;
   border-radius: 10px;
 
   h2 {
     text-align: center;
+  }
+
+  div:nth-of-type(5) {
+    label {
+      height: 200px;
+      background-image: url(${props =>
+        props.backgroundImage || ConferencePlaceHolder});
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border: 2px solid transparent;
+      border-radius: 10px;
+    }
+    input {
+      display: none;
+    }
   }
 
   ${breakpoint.md`

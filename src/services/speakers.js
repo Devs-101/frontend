@@ -5,6 +5,7 @@ export function getAllSpeakers(eventId, token) {
     return fetch(`${config.API_URL}/speakers/${eventId}`, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'x-access-token': token
       }
     })
@@ -43,6 +44,18 @@ export function updateSpeaker(speakerInfo, speakerId, token) {
         'x-access-token': token
       },
       body: formData
+    })
+  }
+  return Promise.reject(Error('Please provide an speaker Id'))
+}
+
+export function deleteSpeaker(speakerId, token) {
+  if (speakerId) {
+    return fetch(`${config.API_URL}/speakers/${speakerId}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token
+      }
     })
   }
   return Promise.reject(Error('Please provide an speaker Id'))
