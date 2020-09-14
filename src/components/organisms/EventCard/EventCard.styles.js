@@ -13,23 +13,18 @@ export const EventCardStyled = styled.div`
   align-items: center;
   background-color: ${colors.white};
   margin: 0px;
-  border-radius: 0px;
+  border-radius: 5px;
 
   &:hover {
     box-shadow: 0px 3px 6px #00000029;
   }
-
-  ${breakpoint.md`
-    border-radius: 5px;
-    width: 300px;
-    margin: 8px 8px;
-  `}
 `
 
 export const EventImage = styled.figure`
   display: flex;
   flex-direction: column-reverse;
   border-radius: 5px 5px 0px 0px;
+  overflow: hidden;
   width: 100%;
   min-height: 150px;
   height: 200px;

@@ -48,8 +48,8 @@ export function createEvent(eventInfo, organizationId, token) {
   return Promise.reject(Error('Please provide an organization Id'))
 }
 
-export function updateEvent(eventInfo, organizationId, token) {
-  if (organizationId) {
+export function updateEvent(eventInfo, eventId, token) {
+  if (eventId) {
     const formData = new FormData()
     Object.entries(eventInfo).forEach(entry => {
       if (entry[0] === 'dateHour' || entry[0] === 'bannerOrHeader') {
@@ -61,7 +61,7 @@ export function updateEvent(eventInfo, organizationId, token) {
       }
     })
 
-    return fetch(`${config.API_URL}/events/${organizationId}/update`, {
+    return fetch(`${config.API_URL}/events/${eventId}/update`, {
       method: 'PUT',
       headers: {
         'x-access-token': token
