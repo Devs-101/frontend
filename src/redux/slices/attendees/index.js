@@ -25,10 +25,7 @@ export const getAllAttendeesAsync = createAsyncThunk(
 export const createAttendeesAsync = createAsyncThunk(
   'attendees/createAttendees',
   async ({ attendeeInfo, eventId }) => {
-    console.log('attendeeInfo', attendeeInfo)
-    console.log('eventId', eventId)
     const attendeeInfoSerialized = serializeCreateAttendeeInfo(attendeeInfo)
-    console.log('attendeeInfoSerialized', attendeeInfoSerialized)
     const createAttendeeResponse = await createAttendee(
       attendeeInfoSerialized,
       eventId
@@ -80,7 +77,6 @@ export const attendeesSlice = createSlice({
       state.error = error.message
     },
     [createAttendeesAsync.fulfilled]: (state, { payload }) => {
-      console.log('createAttendeesAsync.fulfilled', payload)
       state.loading = false
       state.error = null
       state.entities[payload._id] = payload
