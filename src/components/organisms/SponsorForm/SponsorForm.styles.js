@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import formImage from '../../../assets/images/formImage.png'
+import { colors } from '../../../styles/colors'
 
 export const SponsorFormStyled = styled.form`
   div:nth-of-type(1) {
@@ -12,10 +13,19 @@ export const SponsorFormStyled = styled.form`
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      border-radius: 10px;
+      border: 5px dashed ${colors.darkGrey};
+      text-align: center;
+      line-height: 200px;
+      cursor: pointer;
+
+      &:hover {
+        border-color: ${colors.primary};
+      }
 
       ${breakpoint.md`
-          grid-row: 2 / 5;
-        `}
+        grid-row: 2 / 5;
+      `}
     }
     input {
       display: none;
