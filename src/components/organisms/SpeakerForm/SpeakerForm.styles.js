@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import formSpeaker from '../../../assets/images/formSpeaker.png'
+import { colors } from '../../../styles/colors'
 
 export const SpeakerFormStyled = styled.form`
   div:nth-of-type(1) {
@@ -13,6 +14,15 @@ export const SpeakerFormStyled = styled.form`
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      border-radius: 10px;
+      border: 5px dashed ${colors.darkGrey};
+      text-align: center;
+      line-height: 200px;
+      cursor: pointer;
+
+      &:hover {
+        border-color: ${colors.primary};
+      }
     }
     input {
       display: none;
