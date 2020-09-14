@@ -14,11 +14,12 @@ export const TitleContainerStyle = styled.div`
 
   h3 {
     font-size: 18px;
+    color: ${colors.title};
   }
 
   ${breakpoint.md`
     box-shadow: none;
-
+    padding: 0;
     h3 {
       font-size: 24px;
     }

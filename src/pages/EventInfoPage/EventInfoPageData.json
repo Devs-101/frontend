@@ -8,19 +8,9 @@
       "type": "text"
     },
     {
-      "label": "Url:",
+      "label": "Slug:",
       "id": "DetailsFormUrlSlug",
       "type": "text"
-    },
-    {
-      "label": "Description:",
-      "id": "DetailsFormDescription",
-      "type": "textarea"
-    },
-    {
-      "label": "Image:",
-      "id": "DetailsFormLogo",
-      "type": "file"
     },
     {
       "label": "Initial Date",
@@ -28,22 +18,7 @@
       "type": "date"
     },
     {
-      "label": "End Date",
-      "id": "DetailsFormEndDate",
-      "type": "date"
-    },
-    {
-      "label": "Banner title:",
-      "id": "DetailsFormBannerTitle",
-      "type": "text"
-    },
-    {
-      "label": "Banner Image:",
-      "id": "DetailsFormBannerImg",
-      "type": "file"
-    },
-    {
-      "label": "Timezone:",
+      "label": "Timezone",
       "id": "DetailsFormTimezone",
       "type": "select",
       "options": [
@@ -278,6 +253,41 @@
         },
         { "id": "82", "value": "13", "label": "(GMT+13:00) Nuku'alofa" }
       ]
+    },
+    {
+      "label": "End Date",
+      "id": "DetailsFormEndDate",
+      "type": "date"
+    },
+    {
+      "label": "Banner title",
+      "id": "DetailsFormBannerTitle",
+      "type": "text"
+    },
+    {
+      "label": "Click to Add Banner Image",
+      "id": "DetailsFormBannerImg",
+      "type": "file"
+    },
+    {
+      "label": "Description:",
+      "id": "DetailsFormDescription",
+      "type": "textarea"
+    },
+    {
+      "label": "Click to Add Event Image",
+      "id": "DetailsFormLogo",
+      "type": "file"
+    },
+    {
+      "label": "Allow email register",
+      "id": "DetailsFormAllowRegister",
+      "type": "checkbox"
+    },
+    {
+      "label": "Show countdown",
+      "id": "DetailsFormCountdown",
+      "type": "checkbox"
     }
   ]
 }

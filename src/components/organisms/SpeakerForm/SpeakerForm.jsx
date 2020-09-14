@@ -3,9 +3,13 @@ import SpeakerFormData from './SpeakerFormData.json'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { closeModal } from '../../../redux/slices/modals'
-import { SpeakerFormStyled, SubmitSection } from './SpeakerForm.styles'
+import { SpeakerFormStyled } from './SpeakerForm.styles'
 import { Button } from '../../atoms/Button/Button'
-import { FormField } from '../../molecules/FormField/FormField'
+import {
+  FormField,
+  ModalFormContainer,
+  ModalTitleContainer
+} from '../../molecules'
 import {
   createSpeakerAsync,
   getAllSpeakersAsync,
@@ -87,28 +91,30 @@ export function SpeakerForm({ eventId, speaker }) {
   }
 
   return (
-    <SpeakerFormStyled backgroundImage={isImage}>
-      <SubmitSection>
-        <Button onClick={handleCloseModal}>
-          {SpeakerFormData.buttonCancel}
-        </Button>
-        {speaker ? (
-          <>
-            <Button onClick={handleSubmit(onUpdate)}>
-              {SpeakerFormData.buttonUpdate}
-            </Button>
-            <Button className="delete" onClick={handleSubmit(onDelete)}>
-              {SpeakerFormData.buttonDelete}
-            </Button>
-          </>
-        ) : (
-          <Button onClick={handleSubmit(onSubmit)}>
-            {SpeakerFormData.buttonAdd}
+    <ModalFormContainer>
+      <ModalTitleContainer>
+        <h3>{SpeakerFormData.title}</h3>
+        <div>
+          <Button onClick={handleCloseModal}>
+            {SpeakerFormData.buttonCancel}
           </Button>
-        )}
-      </SubmitSection>
-      <h2>{SpeakerFormData.title}</h2>
-      <form>
+          {speaker ? (
+            <>
+              <Button className="update" onClick={handleSubmit(onUpdate)}>
+                {SpeakerFormData.buttonUpdate}
+              </Button>
+              <Button className="delete" onClick={handleSubmit(onDelete)}>
+                {SpeakerFormData.buttonDelete}
+              </Button>
+            </>
+          ) : (
+            <Button className="save" onClick={handleSubmit(onSubmit)}>
+              {SpeakerFormData.buttonAdd}
+            </Button>
+          )}
+        </div>
+      </ModalTitleContainer>
+      <SpeakerFormStyled backgroundImage={isImage}>
         {SpeakerFormData.fields.map(field => (
           <FormField
             key={field.id}
@@ -118,7 +124,7 @@ export function SpeakerForm({ eventId, speaker }) {
             register={register}
           />
         ))}
-      </form>
-    </SpeakerFormStyled>
+      </SpeakerFormStyled>
+    </ModalFormContainer>
   )
 }

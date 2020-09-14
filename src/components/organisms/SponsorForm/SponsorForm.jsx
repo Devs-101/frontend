@@ -1,11 +1,15 @@
 import React from 'react'
 import SponsorFormData from './SponsorFormData.json'
 import { useForm } from 'react-hook-form'
-import { FormStyled, SubmitSection } from './SponsorForm.styles'
-import { useDispatch } from 'react-redux'
+import { SponsorFormStyled } from './SponsorForm.styles'
+import { useSelector, useDispatch } from 'react-redux'
 import { closeModal } from '../../../redux/slices/modals'
 import { Button } from '../../atoms/Button/Button'
-import { FormField } from '../../molecules/FormField/FormField'
+import {
+  FormField,
+  ModalFormContainer,
+  ModalTitleContainer
+} from '../../molecules/'
 import {
   createSponsorAsync,
   updateSponsorAsync,
@@ -15,6 +19,12 @@ import {
 import { serializeSponsorFormData, serializeSponsorToFormData } from './helper'
 
 export function SponsorForm({ eventId, sponsor }) {
+  const { sponsorLoading } = useSelector(state => {
+    return {
+      sponsorLoading: state.sponsors.loading || false
+    }
+  })
+
   if (sponsor) {
     sponsor = serializeSponsorToFormData(sponsor)
   }
@@ -87,36 +97,44 @@ export function SponsorForm({ eventId, sponsor }) {
   }
 
   return (
-    <FormStyled backgroundImage={isImage}>
-      <SubmitSection>
-        <Button onClick={handleCloseModal}>
-          {SponsorFormData.buttonCancel}
-        </Button>
-        {sponsor ? (
-          <>
-            <Button onClick={handleSubmit(onUpdate)}>
-              {SponsorFormData.buttonUpdate}
-            </Button>
-            <Button className="delete" onClick={handleSubmit(onDelete)}>
-              {SponsorFormData.buttonDelete}
-            </Button>
-          </>
+    <ModalFormContainer>
+      <ModalTitleContainer>
+        <h3>{SponsorFormData.title}</h3>
+        {sponsorLoading ? (
+          <Button>Loading</Button>
         ) : (
-          <Button onClick={handleSubmit(onSubmit)}>
-            {SponsorFormData.buttonAdd}
-          </Button>
+          <div>
+            <Button onClick={handleCloseModal}>
+              {SponsorFormData.buttonCancel}
+            </Button>
+            {sponsor ? (
+              <>
+                <Button className="update" onClick={handleSubmit(onUpdate)}>
+                  {SponsorFormData.buttonUpdate}
+                </Button>
+                <Button className="delete" onClick={handleSubmit(onDelete)}>
+                  {SponsorFormData.buttonDelete}
+                </Button>
+              </>
+            ) : (
+              <Button className="save" onClick={handleSubmit(onSubmit)}>
+                {SponsorFormData.buttonAdd}
+              </Button>
+            )}
+          </div>
         )}
-      </SubmitSection>
-      <h2>{SponsorFormData.title}</h2>
-      {SponsorFormData.fields.map(field => (
-        <FormField
-          key={field.id}
-          id={field.id}
-          label={field.label}
-          type={field.type}
-          register={register}
-        />
-      ))}
-    </FormStyled>
+      </ModalTitleContainer>
+      <SponsorFormStyled backgroundImage={isImage}>
+        {SponsorFormData.fields.map(field => (
+          <FormField
+            key={field.id}
+            id={field.id}
+            label={field.label}
+            type={field.type}
+            register={register}
+          />
+        ))}
+      </SponsorFormStyled>
+    </ModalFormContainer>
   )
 }

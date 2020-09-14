@@ -49,7 +49,7 @@ export function SponsorPage() {
     <MainTemplate>
       <TitleContainer>
         <h3>Sponsors</h3>
-        <Button type="button" onClick={handleOpenNewModal}>
+        <Button className="add" onClick={handleOpenNewModal}>
           Add sponsor
         </Button>
         <Modal isOpen={modalIsOpen}>

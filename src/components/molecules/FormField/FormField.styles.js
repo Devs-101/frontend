@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors } from '../../../styles/colors'
 
 export const LabelStyled = styled.label`
-  font-size: 12px;
+  font-size: 16px;
   display: block;
   padding-left: 20px;
   margin-bottom: 5px;
@@ -10,7 +10,7 @@ export const LabelStyled = styled.label`
 `
 
 export const InputStyled = styled.input`
-  background-color: ${colors.white};
+  background-color: ${colors.grey};
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -19,7 +19,7 @@ export const InputStyled = styled.input`
 `
 
 export const TextAreaStyled = styled.textarea`
-  background-color: ${colors.white};
+  background-color: ${colors.grey};
   height: 112px;
   border-radius: 10px;
   border: none;
@@ -29,7 +29,7 @@ export const TextAreaStyled = styled.textarea`
 `
 
 export const SelectStyled = styled.select`
-  background-color: ${colors.white};
+  background-color: ${colors.grey};
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -41,4 +41,11 @@ export const SelectStyled = styled.select`
     height: 40px;
     border: none;
   }
+`
+
+export const ChecboxContainerStyled = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  grid-column-gap: 20px;
+  justify-content: center;
 `

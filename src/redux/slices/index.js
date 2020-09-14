@@ -4,6 +4,7 @@ import { modalsSlice } from './modals'
 import { speakersSlice } from './speakers'
 import { talksSlice } from './talks'
 import { sponsorsSlice } from './sponsors'
+import { attendeesSlice } from './attendees'
 
 export const rootReducer = {
   users: usersSlice.reducer,
@@ -11,5 +12,6 @@ export const rootReducer = {
   modals: modalsSlice.reducer,
   speakers: speakersSlice.reducer,
   talks: talksSlice.reducer,
-  sponsors: sponsorsSlice.reducer
+  sponsors: sponsorsSlice.reducer,
+  attendees: attendeesSlice.reducer
 }

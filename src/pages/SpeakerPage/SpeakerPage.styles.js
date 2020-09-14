@@ -4,18 +4,16 @@ import { colors } from '../../styles/colors'
 
 export const SpeakerPageStyled = styled.div`
   padding: 20px;
+  border-radius: 4px;
   background-color: ${colors.grey};
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 20px;
-  justify-content: center;
-  align-items: center;
 `
 
 export const SpeakerTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
   align-items: center;
   width: 100%;
   height: 60px;

@@ -1,36 +1,123 @@
 import React from 'react'
-// import { useForm } from 'react-hook-form'
 import { MainTemplate } from '../../templates'
-import { List } from '../../components/atoms'
+import { List, Button } from '../../components/atoms'
 import { useSelector, useDispatch } from 'react-redux'
-import { readyForPublishEventAsync } from '../../redux/slices/events'
+import {
+  readyForPublishEventAsync,
+  publishEventAsync,
+  getPublishedEventAsync
+} from '../../redux/slices/events'
 import { useParams } from 'react-router-dom'
-// import { OmnitrixPage } from '../ThemePage/'
+import { OmnitrixPage } from '../ThemePage/'
+import { Container, Toolbar, IframeContainer } from './PublishPage.styles'
+import PublishPageData from './PublishPageData.json'
 
 export function PublishPage() {
-  const { readyForPublish } = useSelector(state => {
+  const { readyForPublish, publishedEvent } = useSelector(state => {
     return {
-      readyForPublish: state.events.readyForPublish || false
+      readyForPublish: state.events.readyForPublish || false,
+      publishedEvent: state.events.getPublished || false
     }
   })
 
+  const [themeSelected, setThemeSelected] = React.useState(
+    PublishPageData.theme
+  )
+  const [withContainer, setWithContainer] = React.useState('auto')
+
   const { eventId } = useParams()
   const dispatch = useDispatch()
+
   React.useEffect(() => {
     dispatch(readyForPublishEventAsync(eventId))
+    if (!publishedEvent) {
+      dispatch(getPublishedEventAsync(eventId))
+    }
   }, [])
 
-  console.log('readyForPublish', readyForPublish)
+  if (!readyForPublish) return false
+  // NEED LOADING
+
+  const { checkComplete, initDate } = readyForPublish
+
+  function handleClickToolbar(event) {
+    setThemeSelected(event.currentTarget.getAttribute('data-value'))
+  }
+
+  function handleClickResolution(event) {
+    setWithContainer(event.currentTarget.getAttribute('data-value'))
+  }
+
+  function handleClickSubmit() {
+    dispatch(
+      publishEventAsync({
+        theme: themeSelected,
+        eventId
+      })
+    )
+  }
 
   return (
     <MainTemplate>
-      {readyForPublish ? (
+      {checkComplete.length > 0 ? (
         <>
-          <h1>Before to cotinue, please fill:</h1>
-          <List readyForPublish={readyForPublish.checkComplete} />
+          <Container>
+            <h1>Before to cotinue, please complete:</h1>
+            <List readyForPublish={checkComplete} />
+          </Container>
         </>
       ) : (
-        <h1>Opciones de Pagina</h1>
+        <>
+          <Toolbar>
+            <ul>
+              {PublishPageData.themes.map(theme => (
+                <li
+                  key={theme.id}
+                  className={themeSelected === theme.id ? 'active' : null}
+                  data-value={theme.id}
+                  onClick={handleClickToolbar}
+                >
+                  {theme.label}
+                </li>
+              ))}
+            </ul>
+            <ul>
+              <li
+                className={withContainer === '100%' ? 'active' : null}
+                data-value="100%"
+                onClick={handleClickResolution}
+              >
+                Desktop
+              </li>
+              <li
+                className={withContainer === '1024px' ? 'active' : null}
+                data-value="1024px"
+                onClick={handleClickResolution}
+              >
+                Tablet
+              </li>
+              <li
+                className={withContainer === '375px' ? 'active' : null}
+                data-value="375px"
+                onClick={handleClickResolution}
+              >
+                Phone
+              </li>
+            </ul>
+            <Button className="add" onClick={handleClickSubmit}>
+              {PublishPageData.buttonAdd}
+            </Button>
+          </Toolbar>
+          <IframeContainer width={withContainer}>
+            {themeSelected === 'omnitrix' ? (
+              <OmnitrixPage eventId={eventId} countDown={initDate} />
+            ) : themeSelected === 'poe' ? (
+              <p>POE</p>
+            ) : (
+              <p>Invalid Theme</p>
+            )}
+          </IframeContainer>
+        </>
       )}
     </MainTemplate>
   )

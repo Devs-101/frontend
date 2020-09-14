@@ -1,0 +1,15 @@
+{
+  "title": "Event Details",
+  "buttonAdd": "Publish",
+  "theme": "omnitrix",
+  "themes": [
+    {
+      "label": "Omnitrix",
+      "id": "omnitrix"
+    },
+    {
+      "label": "POE",
+      "id": "poe"
+    }
+  ]
+}

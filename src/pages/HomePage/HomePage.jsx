@@ -61,7 +61,8 @@ export function HomePage() {
                   eventName={event.name}
                   eventDescription={event.description}
                   attendeeCounter={event.attendeeCounter}
-                  eventDate={event.eventDate}
+                  eventDate={event.dateHour.initDate}
+                  launched={event.eventStatus}
                 />
               )
             })}

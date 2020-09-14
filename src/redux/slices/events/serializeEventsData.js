@@ -23,12 +23,33 @@ export function serializeCreateEventInfo(eventInfo) {
 export function serializeReadyForPublishEventInfo(eventInfo) {
   return {
     eventId: eventInfo.data.eventId,
-    checkComplete: eventInfo.data.checkComplete
+    checkComplete: eventInfo.data.checkComplete,
+    initDate: eventInfo.data.initDate
+  }
+}
+
+export function serializeUpdateEventInfo(eventInfo) {
+  return {
+    countDown: eventInfo.countDown || true,
+    allowRegister: eventInfo.allowRegister || false,
+    name: eventInfo.name || '',
+    description: eventInfo.description || '',
+    dateHour: {
+      initDate: eventInfo.dateHour.initDate || null,
+      endDate: eventInfo.dateHour.endDate || null
+    },
+    organizators: eventInfo.organizators || [],
+    slug: eventInfo.slug || null,
+    img: eventInfo.img || '',
+    bannerOrHeader: {
+      text: eventInfo.bannerOrHeader.text || '',
+      isBanner: eventInfo.bannerOrHeader.isBanner || true,
+      img: eventInfo.bannerOrHeader.img || ''
+    }
   }
 }
 
 export function serializeEventInfo(eventInfo) {
-  console.log(eventInfo)
   const { data } = eventInfo
   return {
     _id: data._id,
@@ -45,6 +66,11 @@ export function serializeEventInfo(eventInfo) {
     fullUrl: data.fullUrl || null,
     organizators: data.organizators || [],
     organizationId: data.organizationId || null,
+    bannerOrHeader: {
+      text: eventInfo.bannerOrHeader.text || '',
+      isBanner: eventInfo.bannerOrHeader.isBanner || true,
+      img: eventInfo.bannerOrHeader.img || ''
+    },
     slug: data.slug || null
   }
 }
