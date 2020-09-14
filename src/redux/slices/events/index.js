@@ -5,7 +5,8 @@ import {
   createEvent,
   getEvent,
   readyForPublishEvent,
-  publishEvent
+  publishEvent,
+  getPublishEvent
 } from '../../../services'
 import {
   serializeGetAllEventsResponseData,
@@ -149,6 +150,20 @@ export const publishEventAsync = createAsyncThunk(
   }
 )
 
+export const getPublishedEventAsync = createAsyncThunk(
+  'events/getPublishedEvent',
+  async eventId => {
+    const jwt = window.sessionStorage.getItem('jwt')
+    const getEventsResponse = await getPublishEvent(eventId, jwt)
+    if (!getEventsResponse.ok) {
+      throw Error('Error fetching the event')
+    }
+    const getEventResponseData = await getEventsResponse.json()
+
+    return getEventResponseData
+  }
+)
+
 export const eventsSlice = createSlice({
   name: 'events',
   initialState: {
@@ -157,7 +172,8 @@ export const eventsSlice = createSlice({
     loading: false,
     error: null,
     selected: null,
-    readyForPublish: false
+    readyForPublish: false,
+    getPublished: null
   },
   reducers: {},
   extraReducers: {
@@ -215,6 +231,12 @@ export const eventsSlice = createSlice({
       state.loading = false
       state.error = null
       state.entities[payload._id] = payload
+    },
+    [getPublishedEventAsync.fulfilled]: (state, { payload }) => {
+      console.log('getPublishedEventAsync.fulfilled::', payload)
+      state.loading = false
+      state.error = null
+      state.getPublished = payload.data
     }
   }
 })
