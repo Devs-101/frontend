@@ -4,7 +4,8 @@ import { List, Button } from '../../components/atoms'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   readyForPublishEventAsync,
-  publishEventAsync
+  publishEventAsync,
+  getPublishedEventAsync
 } from '../../redux/slices/events'
 import { useParams } from 'react-router-dom'
 import { OmnitrixPage } from '../ThemePage/'
@@ -12,9 +13,10 @@ import { Container, Toolbar, IframeContainer } from './PublishPage.styles'
 import PublishPageData from './PublishPageData.json'
 
 export function PublishPage() {
-  const { readyForPublish } = useSelector(state => {
+  const { readyForPublish, publishedEvent } = useSelector(state => {
     return {
-      readyForPublish: state.events.readyForPublish || false
+      readyForPublish: state.events.readyForPublish || false,
+      publishedEvent: state.events.getPublished || false
     }
   })
 
@@ -28,6 +30,9 @@ export function PublishPage() {
 
   React.useEffect(() => {
     dispatch(readyForPublishEventAsync(eventId))
+    if (!publishedEvent) {
+      dispatch(getPublishedEventAsync(eventId))
+    }
   }, [])
 
   if (!readyForPublish) return false
@@ -63,7 +68,6 @@ export function PublishPage() {
         </>
       ) : (
         <>
-          <h1>Opciones de Pagina</h1>
           <Toolbar>
             <ul>
               {PublishPageData.themes.map(theme => (
@@ -79,21 +83,21 @@ export function PublishPage() {
             </ul>
             <ul>
               <li
-                className={themeSelected === '100%' ? 'active' : null}
+                className={withContainer === '100%' ? 'active' : null}
                 data-value="100%"
                 onClick={handleClickResolution}
               >
                 Desktop
               </li>
               <li
-                className={themeSelected === '1024px' ? 'active' : null}
+                className={withContainer === '1024px' ? 'active' : null}
                 data-value="1024px"
                 onClick={handleClickResolution}
               >
                 Tablet
               </li>
               <li
-                className={themeSelected === '375px' ? 'active' : null}
+                className={withContainer === '375px' ? 'active' : null}
                 data-value="375px"
                 onClick={handleClickResolution}
               >
@@ -106,11 +110,11 @@ export function PublishPage() {
           </Toolbar>
           <IframeContainer width={withContainer}>
             {themeSelected === 'omnitrix' ? (
-              <OmnitrixPage countDown={initDate} />
-            ) : themeSelected === 'cuteness' ? (
-              <p>Cuteness</p>
+              <OmnitrixPage eventId={eventId} countDown={initDate} />
+            ) : themeSelected === 'poe' ? (
+              <p>POE</p>
             ) : (
-              <p>Other</p>
+              <p>Invalid Theme</p>
             )}
           </IframeContainer>
         </>
