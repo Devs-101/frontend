@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-// import { colors } from '../../styles/colors'
+import { colors } from '../../styles/colors'
 
 export const Container = styled.div`
   display: grid;
@@ -22,23 +22,28 @@ export const Toolbar = styled.div`
   display: grid;
   grid-template-columns: 40% 40% 20%;
   justify-content: center;
+  background-color: ${colors.grey};
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  align-items: center;
 
   ul {
     display: flex;
     list-style: none;
 
     li {
+      font-size: 18px;
       margin-left: 10px;
       padding: none;
       cursor: pointer;
 
       &.active {
-        background: #cccccc;
+        text-decoration: underline;
       }
 
       :hover {
-        background-color: #000;
-        color: #fff;
+        text-decoration: underline;
       }
     }
   }
