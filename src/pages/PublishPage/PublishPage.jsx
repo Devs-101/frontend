@@ -100,7 +100,7 @@ export function PublishPage() {
                 Phone
               </li>
             </ul>
-            <Button onClick={handleClickSubmit}>
+            <Button className="add" onClick={handleClickSubmit}>
               {PublishPageData.buttonAdd}
             </Button>
           </Toolbar>
