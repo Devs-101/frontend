@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
+import { colors } from '../../../styles/colors'
 
 export const NavBarContainerStyled = styled.nav`
+  background-color: ${colors.grey};
   ${breakpoint.md`
-  box-shadow: 0px 3px 6px #00000029;
-  width: 250px;
-  padding-top: 40px;
+    box-shadow: 0px 3px 6px #00000029;
+    width: 250px;
+    padding-top: 40px;
   `}
 `
 export const NavBarTitleStyled = styled.h2`
@@ -29,11 +31,12 @@ export const NavBarStyled = styled.ul`
 
 export const NavBarItemStyled = styled.li`
   .active {
-    background-color: #f3f3f3;
+    background-color: ${colors.navbar.selected};
+    color: ${colors.white};
   }
 
   &:hover {
-    background-color: #f3f3f3;
+    background-color: ${colors.navbar.selected};
   }
 
   a {
@@ -42,8 +45,12 @@ export const NavBarItemStyled = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: ${colors.dark};
     text-decoration: none;
+
+    &:hover {
+      color: ${colors.white};
+    }
 
     ${breakpoint.md`
       width: 100%;
