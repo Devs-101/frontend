@@ -104,7 +104,7 @@ export function EventInfoPage() {
     <MainTemplate>
       <TitleContainer>
         <h3>{EventInfoPageData.title}</h3>
-        <Button onClick={handleSubmit(onSubmit)}>
+        <Button className="add" onClick={handleSubmit(onSubmit)}>
           {EventInfoPageData.buttonAdd}
         </Button>
       </TitleContainer>
