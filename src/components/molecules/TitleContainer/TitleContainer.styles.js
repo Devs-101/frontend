@@ -22,6 +22,7 @@ export const TitleContainerStyle = styled.div`
     padding: 0;
     h3 {
       font-size: 24px;
+      color: ${colors.title};
     }
   `}
 `
