@@ -54,6 +54,8 @@ export const Time = styled.div`
 `
 
 export const Content = styled.section`
+  display: flex;
+  flex-direction: column;
   margin-top: 30px;
   padding: 20px;
 
