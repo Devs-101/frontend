@@ -1,5 +1,5 @@
 import React from 'react'
-import { BroadcastFomrStyled, BroadcastTitle } from './BroadcastPage.styles'
+import { BroadcastFormStyled } from './BroadcastPage.styles'
 import { useDispatch } from 'react-redux'
 import { MainTemplate } from '../../templates'
 import { FormField, TitleContainer } from '../../components/molecules/'
@@ -69,11 +69,11 @@ export function BroadcastPage() {
     <MainTemplate>
       <TitleContainer>
         <h3>Broadcast</h3>
-        <Button onClick={handleSubmit(onUpdate)}>
+        <Button className="add" onClick={handleSubmit(onUpdate)}>
           {broadcastFormData.buttonAdd}
         </Button>
       </TitleContainer>
-      <BroadcastFomrStyled
+      <BroadcastFormStyled
         backgroundImage={isImage}
         onSubmit={handleSubmit(onUpdate)}
       >
@@ -91,7 +91,7 @@ export function BroadcastPage() {
             />
           ))
         )}
-      </BroadcastFomrStyled>
+      </BroadcastFormStyled>
     </MainTemplate>
   )
 }
