@@ -10,7 +10,7 @@ export const MainTemplateStyled = styled.div`
 
 export const HeaderStyled = styled.header`
   display: flex;
-  background-color: ${colors.primary};
+  background-color: ${colors.topbar};
   color: ${colors.white};
   justify-content: space-between;
   height: 40px;
