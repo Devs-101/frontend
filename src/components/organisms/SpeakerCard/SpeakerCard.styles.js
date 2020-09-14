@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../../styles/breakpoints'
 import { colors } from '../../../styles/colors'
+import subtleGrunge from '../../../assets/images/subtle-grunge.png'
 
 export const SpeakerCardStyled = styled.div`
   display: flex;
@@ -28,6 +29,20 @@ export const SpeakerCardStyled = styled.div`
       border-radius: 50%;
       object-fit: cover;
       height: -webkit-fill-available;
+    }
+  }
+
+  &.POETHEME {
+    background-color: ${colors.theme.poe.bg_card};
+
+    &:hover {
+      background-color: ${colors.theme.poe.bg_card_hover};
+    }
+
+    &:before {
+      background-image: url(${subtleGrunge});
+      opacity: 0.1;
+      z-index: -1;
     }
   }
 `
