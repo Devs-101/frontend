@@ -1,6 +1,6 @@
 {
   "title": "Event Details",
-  "buttonAdd": "Save",
+  "buttonAdd": "Publish",
   "theme": "omnitrix",
   "themes": [
     {
@@ -8,12 +8,8 @@
       "id": "omnitrix"
     },
     {
-      "label": "Cuteness",
-      "id": "cuteness"
-    },
-    {
-      "label": "POE Tribute",
-      "id": "poetribute"
+      "label": "POE",
+      "id": "poe"
     }
   ]
 }
