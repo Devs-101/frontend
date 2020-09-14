@@ -19,7 +19,8 @@ export function SpeakerCard({
   speakerName = '- - -',
   speakerRol = '- - -',
   speakerBio = '- - -',
-  speakerTwitter = '- - -'
+  speakerTwitter = '- - -',
+  className = ''
 }) {
   const dispatch = useDispatch()
 
@@ -29,7 +30,7 @@ export function SpeakerCard({
   }
 
   return (
-    <SpeakerCardStyled onClick={handleClick}>
+    <SpeakerCardStyled className={className} onClick={handleClick}>
       <figure>
         <img src={imageUrl || UserPic} alt={speakerName} />
       </figure>
