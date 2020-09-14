@@ -100,7 +100,7 @@ export function SpeakerForm({ eventId, speaker }) {
           </Button>
           {speaker ? (
             <>
-              <Button onClick={handleSubmit(onUpdate)}>
+              <Button className="update" onClick={handleSubmit(onUpdate)}>
                 {SpeakerFormData.buttonUpdate}
               </Button>
               <Button className="delete" onClick={handleSubmit(onDelete)}>
@@ -108,7 +108,7 @@ export function SpeakerForm({ eventId, speaker }) {
               </Button>
             </>
           ) : (
-            <Button onClick={handleSubmit(onSubmit)}>
+            <Button className="save" onClick={handleSubmit(onSubmit)}>
               {SpeakerFormData.buttonAdd}
             </Button>
           )}
