@@ -10,7 +10,14 @@ import { openModal } from '../../../redux/slices/modals'
 import profile from '../../../assets/images/avatar.png'
 import { selectedTalkAsync } from '../../../redux/slices/talks/'
 
-export function AgendaCard({ id, avatar, date, title, description }) {
+export function AgendaCard({
+  id,
+  avatar,
+  date,
+  title,
+  description,
+  className = ''
+}) {
   const dispatch = useDispatch()
 
   async function handleClick() {
@@ -21,7 +28,7 @@ export function AgendaCard({ id, avatar, date, title, description }) {
   const initDate = new Date(date).toLocaleDateString()
 
   return (
-    <AgendaCardStyled onClick={handleClick}>
+    <AgendaCardStyled className={className} onClick={handleClick}>
       <figure>
         <img src={avatar || profile} alt={title} />
       </figure>
