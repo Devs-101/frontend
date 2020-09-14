@@ -20,7 +20,7 @@ export function SponsorCard({ id, logoUrl, name, webSiteUrl }) {
       </figure>
       <SponsorCardText>
         <h2>{name}</h2>
-        <p>{webSiteUrl}</p>
+        <p dangerouslySetInnerHTML={{ __html: webSiteUrl }}></p>
       </SponsorCardText>
     </SponsorCardStyled>
   )

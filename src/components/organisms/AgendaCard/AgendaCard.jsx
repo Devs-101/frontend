@@ -18,6 +18,8 @@ export function AgendaCard({ id, avatar, date, title, description }) {
     dispatch(openModal())
   }
 
+  const initDate = new Date(date).toLocaleDateString()
+
   return (
     <AgendaCardStyled onClick={handleClick}>
       <figure>
@@ -25,7 +27,7 @@ export function AgendaCard({ id, avatar, date, title, description }) {
       </figure>
       <AgendaCardText>
         <AgendaCardTitle>{title}</AgendaCardTitle>
-        <AgendaCardDate>{date}</AgendaCardDate>
+        <AgendaCardDate>{initDate}</AgendaCardDate>
         <p>{description}</p>
       </AgendaCardText>
     </AgendaCardStyled>

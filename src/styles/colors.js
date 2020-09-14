@@ -7,6 +7,7 @@ export const colors = {
   grey: '#F3F3F3',
   dark: '#000000',
   topbar: '#0E263E',
+  title: '#F05742',
   selected: '#F05742',
   navbar: {
     selected: '#F05742'

@@ -99,3 +99,16 @@ export function publishEvent(theme, eventId, token) {
 
   return Promise.reject(Error('Please provide an event Id'))
 }
+
+export function getPublishEvent(eventId, token) {
+  if (eventId) {
+    return fetch(`${config.API_URL}/events/${eventId}/get-published`, {
+      method: 'GET',
+      headers: {
+        'x-access-token': token
+      }
+    })
+  }
+
+  return Promise.reject(Error('Please provide an event Id'))
+}
